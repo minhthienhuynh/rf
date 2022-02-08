@@ -1,0 +1,28 @@
+block vars
+  - var title="Master Page"
+doctype html
+//[if IE 8]><html lang="en" class="no-js ie ie8"><![endif]
+//[if IE 9]><html lang="en" class="no-js ie ie9"><![endif]
+//[if gt IE 9]><!
+html(class="no-js", lang="en")
+  //<![endif]
+  head
+    title My Site - #{title}
+    //- Required meta tags
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1")
+    meta(name="description" content="")
+    
+    link(rel="preconnect" href="https://fonts.googleapis.com")
+    link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Work+Sans:wght@300;400;500;600;700;900&display=swap" rel="stylesheet")
+    link(rel="stylesheet" href="css/main.min.css")
+
+    //[if lt IE 9]> <script src="js/ie9fix.min.js"></script><![endif]
+
+  body
+    include ../_includes/header.pug
+    section.main
+      block main
+    include ../_includes/footer.pug
+    include ../_includes/scripts.pug

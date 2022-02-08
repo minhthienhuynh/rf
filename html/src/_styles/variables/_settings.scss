@@ -1,0 +1,142 @@
+//** ------ {{ color and cusotmiaztion variables }} ------------------------------------
+//** application color table
+
+$white: #FFFFFF;
+$light-grey: #FAFAFA;
+$grey: #EEEEEE;;
+$dark-grey: #707070;
+$blue: #004789;
+$primary: #B8875E;
+$gray01: #262626;
+$gray02: #6F6F6F;
+$gray03: #9D9D9D;
+$green: #1A9288;
+$darkgreen: #166666;
+// Font
+
+@function str-replace($string, $search, $replace: "") {
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+
+@mixin font-face($name, $path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+	$src: null;
+
+	$extmods: (
+		eot: "?",
+		svg: "#" + str-replace($name, " ", "_")
+	);
+
+	$formats: (
+		otf: "opentype",
+		ttf: "truetype"
+	);
+
+	@each $ext in $exts {
+		$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+		$format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+		$src: append($src, url(quote($path + "." + $extmod)) format(quote($format)), comma);
+	}
+
+	@font-face {
+		font-family: quote($name);
+		font-style: $style;
+		font-weight: $weight;
+		src: $src;
+	}
+}
+
+// @include font-face('Arimo-Bold', '../assets/fonts/Arimo-Bold');
+// @include font-face('Arimo-Regular', '../assets/fonts/Arimo-Regular');
+
+// @mixin Arimo-Bold {
+//   font-family: 'Arimo-Bold';
+// }
+// @mixin Arimo-Regular {
+//   font-family: 'Arimo-Regular';
+// }
+// @mixin Muli-Bold {
+// 	font-family: 'Muli', sans-serif;
+// 	font-weight: 700;
+// }
+
+// @mixin Muli-Regular {
+//   font-family: 'Muli', sans-serif;
+// 	font-weight: 400;
+// }
+// @mixin Muli-Black {
+// 	font-family: 'Muli-SemiBold';
+// 	font-weight: 900;
+// }
+
+@mixin DM-Serif {
+	font-family: 'DM Serif Display', serif;
+}
+
+@mixin clearfix { 
+  &:after {
+    content: ".";
+    visibility: hidden;
+    display: block; 
+    clear: both;
+    height: 0;
+  }
+}
+
+
+/** --------------------------------------- **/
+/**
+ * SET UP WHOLE SITE
+ */
+body {
+	background: #fff;
+	color: $gray01;
+	position: relative;
+	margin: 0px;
+	line-height: 1.6;
+	font-size: 16px;
+	font-family: 'Work Sans', sans-serif;
+	letter-spacing: 0.008em;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+	padding: 0;
+}
+
+ul { 
+	margin: 0; 
+	padding: 0; 
+	li {
+		list-style: none;
+	}
+}
+
+
+/** --------------------------------------- **/
+/**
+ * CUSTOM COMPONENTS
+ */
+
+.container {
+	max-width: 1150px;
+	&.large {
+		max-width: 1310px;
+	}
+}
+
+.btn {
+	&.btn-light {
+		border: solid 1px $gray02;
+		&:hover {
+			background-color: #333;
+			border-color: #333;
+			color: $white;
+		}
+	}
+}

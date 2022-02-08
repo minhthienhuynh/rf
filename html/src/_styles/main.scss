@@ -1,0 +1,12 @@
+//VENDORS SCSS
+@import './vendors/awesome_font/fontawesome';
+@import './vendors/bootstrap';
+
+//SETTING SCSS
+@import './variables/settings';
+
+//VIEW SCSS
+@import './views/views';
+
+//RESPONSIVE
+@import './responsive/responsive';
