@@ -186,5 +186,123 @@
         background-color: $green;
     }
 }
-// PAGES
 
+.text-link-arrow {
+    font-weight: 600;
+    color: inherit;
+    padding-right: 22px;
+    padding-bottom: 1px;
+    background: url('../assets/img/icons/arrow-right-02.svg') right center / 14px no-repeat;
+    &:hover {
+        color: $green;
+        text-decoration: none;
+        padding-right: 25px;
+        background-image: url('../assets/img/icons/arrow-right-03.svg');
+    }
+}
+
+.content-section {
+    padding: 50px 0;
+    h3 {
+        margin-bottom: 1.25em;
+        font-size: 48px;
+        .section-sub-ttl {
+            display: block;
+            text-transform: uppercase;
+            font-size: 50%;
+            font-weight: 600;
+            color: $green;
+            margin-bottom: 1.1em;
+        }
+        .section-ttl {
+            @include DM-Serif;
+        }
+    }
+}
+
+.nav {
+    &.tab-title-only {
+        margin-bottom: 50px;
+        border-bottom: none;
+        justify-content: space-between;
+        .nav-link {
+            background: none;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 0.25em 0;
+            font-size: 24px;
+            font-weight: 600;
+            color: $gray02;
+            position: relative;
+            &:before {
+                content: "";
+                width: 100%;
+                height: 3px;
+                background-color: $gray02;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                border-radius: 5px;
+                opacity: 0;
+            }
+            &.active {
+                color: $green;
+                &:before {
+                    opacity: 1;
+                    background-color: $green;
+                }
+            }
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+}
+
+.btn-more {
+    color: $green;
+    font-weight: 500;
+    &:hover {
+        color: $green;
+    }
+}
+
+.basic-slider {
+    width: 100%;
+    padding: 0 50px;
+    .slick-track {
+        display: flex;
+        .slick-slide {
+            height: auto;
+        }
+    }
+    .slick-arrow {
+        width: 30px;
+        height: 30px;
+        &:before {
+            display: none;
+        }
+        &:after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: url('../assets/img/icons/arrow-big.svg') center center / 30px no-repeat;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    .slick-prev {
+        left: 0;
+    }
+    .slick-next {
+        right: 0;
+        &:after {
+            transform: rotate(180deg);
+        }
+    }
+}

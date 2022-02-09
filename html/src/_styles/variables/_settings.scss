@@ -10,6 +10,7 @@ $primary: #B8875E;
 $gray01: #262626;
 $gray02: #6F6F6F;
 $gray03: #9D9D9D;
+$gray04: #C6C6C6;
 $green: #1A9288;
 $darkgreen: #166666;
 // Font
@@ -115,6 +116,10 @@ ul {
 	li {
 		list-style: none;
 	}
+}
+
+a {
+	transition: all 0.1s;
 }
 
 
