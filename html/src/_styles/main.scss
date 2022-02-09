@@ -1,12 +1,14 @@
 //VENDORS SCSS
 @import './vendors/awesome_font/fontawesome';
 @import './vendors/bootstrap';
+@import './vendors/slick';
 
 //SETTING SCSS
 @import './variables/settings';
 
 //VIEW SCSS
 @import './views/views';
+@import './views/home';
 
 //RESPONSIVE
 @import './responsive/responsive';
