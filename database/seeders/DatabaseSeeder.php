@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
             PermissionRoleTableSeeder::class,
             SettingsTableSeeder::class,
         ]);
+        $this->call(CareerSeeder::class);
     }
 }
