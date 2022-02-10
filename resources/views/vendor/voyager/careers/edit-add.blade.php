@@ -114,6 +114,10 @@
                             </div>
                         </div>
                     @endforeach
+
+                    @if (app(\App\Services\SeoService::class)->hasSeoableTrait($dataTypeContent))
+                        @include('voyager::bread.partials.seo')
+                    @endif
                 </div>
             </div>
 
