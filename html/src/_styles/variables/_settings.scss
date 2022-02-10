@@ -2,9 +2,9 @@
 //** application color table
 
 $white: #FFFFFF;
-$light-grey: #FAFAFA;
+$lightgrey: #FAFAFA;
 $grey: #EEEEEE;;
-$dark-grey: #707070;
+$darkgrey: #707070;
 $blue: #004789;
 $primary: #B8875E;
 $gray01: #262626;
@@ -12,6 +12,7 @@ $gray02: #6F6F6F;
 $gray03: #9D9D9D;
 $gray04: #C6C6C6;
 $green: #1A9288;
+$lightgreen: #4AB499;
 $darkgreen: #166666;
 // Font
 
@@ -105,6 +106,10 @@ body {
 	letter-spacing: 0.008em;
 }
 
+::placeholder {
+	font-family: 'Work Sans', sans-serif;
+}
+
 h1, h2, h3, h4, h5, h6, p {
 	margin: 0;
 	padding: 0;
@@ -143,5 +148,41 @@ a {
 			border-color: #333;
 			color: $white;
 		}
+	}
+}
+
+.form-control {
+	border-radius: 6px;
+	&:focus {
+		border-color: $green;
+		box-shadow: none;
+		outline: none;
+	}
+}
+
+.form-check {
+	padding-left: 0;
+	.form-check-input {
+		display: none;
+	}
+	.form-check-label {
+		position: relative;
+		padding-left: 26px;
+		font-size: 14px;
+		cursor: pointer;
+		&:before {
+			content: "";
+			width: 20px;
+			height: 20px;
+			border: solid 1px #9D9D9D;
+			border-radius: 2px;
+			position: absolute;
+			left: 0;
+			top: 0.05em;
+		}
+	}
+	.form-check-input:checked + .form-check-label:before {
+		border-color: $lightgreen;
+		background: url('../assets/img/icons/tick.svg') center 45% / 14px no-repeat $lightgreen;
 	}
 }
