@@ -11710,15 +11710,25 @@ h3 {
   display: flex;
   max-width: 1330px;
   margin: 0 auto;
-  padding: 0 15px; }
+  padding: 0 15px;
+  position: relative; }
   .page-2-column:last-child {
     padding-bottom: 80px; }
-  .page-2-column .page-content .row {
-    margin-left: -10px;
-    margin-right: -10px; }
-  .page-2-column .page-content [class*="col-"] {
-    padding-left: 10px;
-    padding-right: 10px; }
+  .page-2-column .page-content {
+    padding-top: 90px; }
+    .page-2-column .page-content .row {
+      margin-left: -10px;
+      margin-right: -10px; }
+    .page-2-column .page-content [class*="col-"] {
+      padding-left: 10px;
+      padding-right: 10px; }
+  .page-2-column.search-content {
+    flex-direction: column; }
+    .page-2-column.search-content .page-content {
+      padding-top: 60px; }
+
+.highlight {
+  background-color: #FFEDAF; }
 
 .left-sidebar {
   width: 330px;
@@ -11734,7 +11744,7 @@ h3 {
   font-size: 20px;
   padding: 5px 20px 5px 50px;
   height: 42px;
-  background: url("../assets/img/icons/search.svg") left 17px center/24px no-repeat; }
+  background: url("../assets/img/icons/search.svg") left 17px center/24px no-repeat #FFFFFF; }
   .search-input::-webkit-input-placeholder {
     color: #9D9D9D; }
   .search-input::-moz-placeholder {
@@ -11745,6 +11755,34 @@ h3 {
     color: #9D9D9D; }
   .search-input::placeholder {
     color: #9D9D9D; }
+
+body.searching .searchbox {
+  height: 42px; }
+
+body.searching .input-text-wrapper {
+  transition: all 0.5s;
+  position: absolute;
+  z-index: 5;
+  left: 15px;
+  top: 0;
+  width: calc(100% - 30px); }
+
+body.searching .page-2-column .left-sidebar > *:not(.searchbox) {
+  opacity: 0.2;
+  transition: all 0.2s; }
+
+body.searching .page-2-column .page-content {
+  opacity: 0.2;
+  transition: all 0.2s; }
+
+.title-small {
+  font-size: 18px;
+  margin-bottom: 60px;
+  color: #6F6F6F; }
+  .title-small b {
+    color: #262626; }
+  .title-small .section-sub-ttl {
+    font-size: 120%; }
 
 .sidebar-ttl {
   font-size: 20px;
@@ -11850,8 +11888,8 @@ h3 {
     margin-right: 22px; }
 
 .post-card {
-  width: 290px;
-  max-width: 100%;
+  min-width: 290px;
+  width: 100%;
   border-color: #eee;
   border-radius: 6px;
   overflow: hidden;
@@ -11881,6 +11919,10 @@ h3 {
     color: #9D9D9D; }
   .post-card .btn-more {
     font-size: 14px; }
+
+.slick-slider .post-card {
+  width: 290px;
+  max-width: 100%; }
 
 .section-aboutus .container.large {
   max-width: 1280px; }

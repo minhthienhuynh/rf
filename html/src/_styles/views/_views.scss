@@ -320,10 +320,12 @@ h3 {
     max-width: 1330px;
     margin: 0 auto;
     padding: 0 15px;
+    position: relative;
     &:last-child {
         padding-bottom: 80px;
     }
     .page-content {
+        padding-top: 90px;
         .row {
             margin-left: -10px;
             margin-right: -10px;
@@ -333,6 +335,16 @@ h3 {
             padding-right: 10px;
         }
     }
+    &.search-content {
+        flex-direction: column;
+        .page-content {
+            padding-top: 60px;
+        }
+    }
+}
+
+.highlight {
+    background-color: #FFEDAF;;
 }
 
 .left-sidebar {
@@ -352,9 +364,45 @@ h3 {
     font-size: 20px;
     padding: 5px 20px 5px 50px;
     height: 42px;
-    background: url('../assets/img/icons/search.svg') left 17px center / 24px no-repeat;
+    background: url('../assets/img/icons/search.svg') left 17px center / 24px no-repeat $white;
     &::placeholder {
         color: $gray03;
+    }
+}
+
+body.searching {
+    .searchbox {
+        height: 42px;
+    }
+    .input-text-wrapper {
+        transition: all 0.5s;
+        position: absolute;
+        z-index: 5;
+        left: 15px;
+        top: 0;
+        width: calc(100% - 30px);
+    }
+    .page-2-column {
+        .left-sidebar > *:not(.searchbox) {
+            opacity: 0.2;
+            transition: all 0.2s;
+        }
+        .page-content {
+            opacity: 0.2;
+            transition: all 0.2s;
+        }
+    }
+}
+
+.title-small {
+    font-size: 18px;
+    margin-bottom: 60px;
+    color: $gray02;
+    b {
+        color: $gray01;
+    }
+    .section-sub-ttl {
+        font-size: 120%;
     }
 }
 
