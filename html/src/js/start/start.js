@@ -8,7 +8,12 @@
   
   // OnLoad Page
   $(document).ready(function($){
-    
+    $('.search-input').focus(function() {
+      $('body').addClass('searching');
+    });
+    $('.search-input').blur(function() {
+      $('body').removeClass('searching');
+    });
   });
   /* OnLoad Window */
   var init = function () {

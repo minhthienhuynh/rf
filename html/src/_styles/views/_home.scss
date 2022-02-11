@@ -34,8 +34,8 @@
 }
 
 .post-card {
-    width: 290px;
-    max-width: 100%;
+    min-width: 290px;
+    width: 100%;
     border-color: #eee;
     border-radius: 6px;
     overflow: hidden;
@@ -70,6 +70,13 @@
     }
     .btn-more {
         font-size: 14px;
+    }
+}
+
+.slick-slider {
+    .post-card {
+        width: 290px;
+        max-width: 100%;
     }
 }
 
