@@ -24,7 +24,7 @@ class SaveSeo
      * @param  BreadDataAdded|BreadDataUpdated  $event
      * @return void
      */
-    public function handle(BreadDataAdded|BreadDataUpdated $event)
+    public function handle($event)
     {
         $seoService = new SeoService();
 
