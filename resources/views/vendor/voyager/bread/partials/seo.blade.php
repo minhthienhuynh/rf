@@ -34,7 +34,7 @@
             <input type="text" class="form-control" name="seo_title" id="seo_title" placeholder="SEO Title" value="{{ @$seo->seo_title ?? '' }}">
         </div>
         <div class="form-group">
-            <label for="og_image">{{ __('voyager::post.og_image') }}</label>
+            <label for="og_image">{{ __('voyager::seeders.data_rows.og_image') }}</label>
             @if(isset($seo->og_image))
                 <div data-field-name="og_image">
                     {{--<a href="#" class="voyager-x remove-single-image" style="position:absolute;"></a>--}}
