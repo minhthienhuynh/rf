@@ -1,0 +1,75 @@
+extends _layouts/default
+block vars
+	- var title="Blog Category"
+
+block main
+	.page-visual(style="background-image: url('./assets/img/images/visual-img-02.jpg');")
+	.page-2-column
+		.left-sidebar
+			.searchbox
+				.input-text-wrapper
+					input(type="text" class="search-input form-control" placeholder="Search")
+					.close-btn
+			p.sidebar-ttl Category
+			.siderbar-block 
+				ul.category-list 
+					li
+						a.list-icon(href="#") All blogs (18) 
+					li
+						.form-check
+							input(class="form-check-input" type="checkbox" value="" id="flexCheckDefault1")
+							label(class="form-check-label" for="flexCheckDefault1") Stewardship (4)
+						.form-check
+							input(class="form-check-input" type="checkbox" value="" id="flexCheckDefault2")
+							label(class="form-check-label" for="flexCheckDefault2") Planning & Adaptive Management (4)
+						.form-check
+							input(class="form-check-input" type="checkbox" value="" id="flexCheckDefault3")
+							label(class="form-check-label" for="flexCheckDefault3") Science (3)
+						.form-check
+							input(class="form-check-input" type="checkbox" value="" id="flexCheckDefault4")
+							label(class="form-check-label" for="flexCheckDefault4") Timber (3)
+						.form-check
+							input(class="form-check-input" type="checkbox" value="" id="flexCheckDefault5")
+							label(class="form-check-label" for="flexCheckDefault5") Geospatial and Software (4)
+			p.sidebar-ttl Recent Blogs
+			.siderbar-block 
+				ul.category-list 
+					li
+						a(href="#") Weyerhaeuser
+					li
+						a(href="#") Orchard-Loner
+					li
+						a(href="#") Bluesource
+					li
+						a(href="#") Sean's PhD
+					li
+						a(href="#") Miles' PNW work
+					li
+						a(href="#") Allison’s work?
+					li
+						a(href="#") KC FLAT (soon?)
+					li
+						a(href="#") O-L lidar flight (soon?)
+					li
+						a(href="#") Twisp
+					li
+						a(href="#") Oly M&E
+		.page-content.post-detail
+			nav(aria-label="breadcrumb")
+				ol.breadcrumb
+					li.breadcrumb-item
+						a(href="./blog.html") Blog
+					li.breadcrumb-item.active(aria-current="page") Library
+			h2.post-detail-title King’s Country
+			p.post-detail-info Category: Stewardship | Tuesday, December 21, 2021
+			img(src="./assets/img/images/blog/img-01.jpg", alt="")
+			h3 King’s Country
+			p We work with forest owners on all aspects of implementing forest stewardship plans and timber sales. Services include stand exams, stream typing, cruising, harvest layout, DNR and county permitting, contract and compliance administration, We have extensive experience with thinning mature stands, wildlife habitat improvement projects, non-commercial vegetation treatments and seedling planting projects, and working with multiple stakeholders to communicate the benefits and trade-offs of forest management.
+			img(src="./assets/img/images/blog/img-02.jpg", alt="")
+			hr
+			h3 King’s Country
+			p We work with forest owners on all aspects of implementing forest stewardship plans and timber sales. Services include stand exams, stream typing, cruising, harvest layout, DNR and county permitting, contract and compliance administration, We have extensive experience with thinning mature stands, wildlife habitat improvement projects, non-commercial vegetation treatments and seedling planting projects, and working with multiple stakeholders to communicate the benefits and trade-offs of forest management.
+			p We work with forest owners on all aspects of implementing forest stewardship plans and timber sales. Services include stand exams, stream typing, cruising, harvest layout, DNR and county permitting, contract and compliance administration, We have extensive experience with thinning mature stands, wildlife habitat improvement projects, non-commercial vegetation treatments and seedling planting projects, and working with multiple stakeholders to communicate the benefits and trade-offs of forest management.
+			.block-tags 
+				a.tag(href="./blog.html") #Blog
+				a.tag(href="./blog-category.html") #Stewardship

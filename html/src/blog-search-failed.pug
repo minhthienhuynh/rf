@@ -1,0 +1,16 @@
+extends _layouts/default
+block vars
+	- var title="Blog Category"
+
+block main
+	.page-visual(style="background-image: url('./assets/img/images/visual-img-02.jpg');")
+	.page-2-column.search-content
+		.searchbox
+			.input-text-wrapper
+				input(type="text" value="kr" class="search-input form-control" placeholder="Search")
+				.close-btn
+		.page-content 
+			h2.primary-title.text-center.title-small
+				span.section-sub-ttl SEARCH RESULTS
+				span.main-ttl Your search for "<b>kr</b>" didn’t return any results.
+			.row.archive-post-card

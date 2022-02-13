@@ -4,22 +4,46 @@
 
 .services-content {
     display: flex;
-    align-items: center;
     .services-block-intro {
         width: 220px;
         margin-right: auto;
         margin-bottom: 20px;
+        padding-top: 20px;
         .services-intro-ttl {
             @include DM-Serif;
             font-size: 24px;
             margin-bottom: 0.5em;
+            transform: translateY(-1em);
+            transition: all 0.2s;
+            transition-delay: 0s;
+            text-transform: uppercase;
         }
         p {
             color: $gray02;
             line-height: 1.25em;
+            transform: translateY(1em);
+            transition: all 0.2s;
+            transition-delay: 0s;
         }
         .block-button {
             margin-top: 40px;
+            transform: translateY(1em);
+            transition: all 0.2s;
+            transition-delay: 0s;
+        }
+    }
+}
+
+.tab-pane {
+    &.show {
+        .services-content {
+            .services-block-intro {
+                .services-intro-ttl,
+                p,
+                .block-button {
+                    transform: translateY(0);
+                }
+            }
         }
     }
 }
@@ -39,8 +63,20 @@
     border-color: #eee;
     border-radius: 6px;
     overflow: hidden;
+    overflow: hidden;
     display: flex !important;
     flex-direction: column;
+    position: relative;
+    transition: all 0.2s;
+    .card-img-top {
+        margin-bottom: 0 !important;
+        width: 100%;
+    }
+    .post-link-img {
+        &:hover {
+            opacity: 0.9;
+        }
+    }
     .card-body {
         display: flex;
         flex-direction: column;
@@ -50,6 +86,9 @@
         font-size: 18px;
         font-weight: 600;
         margin-bottom: 1em;
+        a {
+            color: inherit;
+        }
     }
     .card-text {
         color: $gray02;
@@ -70,6 +109,13 @@
     }
     .btn-more {
         font-size: 14px;
+    }
+    .wrap-post-link {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
     }
 }
 
@@ -167,12 +213,11 @@
             height: 245px;
             &:before {
                 opacity: 1;
-                transition-delay: 0.2s;
+                transition-delay: 0.1s;
             }
         }
         .card-img {
             img {
-                transform: scale(1.1);
                 opacity: 0.9;
             }
         }

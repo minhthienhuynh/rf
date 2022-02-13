@@ -125,6 +125,12 @@ ul {
 
 a {
 	transition: all 0.1s;
+	color: $green;
+}
+
+img {
+	max-width: 100%;
+	flex-shrink: 0;
 }
 
 
@@ -184,5 +190,14 @@ a {
 	.form-check-input:checked + .form-check-label:before {
 		border-color: $lightgreen;
 		background: url('../assets/img/icons/tick.svg') center 45% / 14px no-repeat $lightgreen;
+	}
+}
+
+.breadcrumb {
+	padding: 0;
+	background: none;
+	margin-bottom: 30px;
+	li {
+		font-size: 20px;
 	}
 }
