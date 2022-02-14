@@ -555,6 +555,30 @@ body.searching {
         margin-top: 45px;
         margin-bottom: 45px;
     }
+    ul {
+        &:not(:last-child) {
+            margin-bottom: 35px;
+        }
+        li {
+            padding-left: 15px;
+            position: relative;
+            color: $gray02;
+            line-height: 1.3em;
+            &:before {
+                content: "";
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background: $gray02;
+                position: absolute;
+                left: 0;
+                top: 0.45em;
+            }
+            &:not(:last-child) {
+                margin-bottom: 0.3em;
+            }
+        }
+    }
 }
 
 .block-tags {
@@ -609,4 +633,8 @@ body.searching {
             color: $gray03;
         }
     }
+}
+
+.btn-apply {
+    min-width: 220px;
 }
