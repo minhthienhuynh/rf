@@ -11424,12 +11424,23 @@ img {
   .container.large {
     max-width: 1310px; }
 
+.btn:focus {
+  outline: none !important;
+  box-shadow: none !important; }
+
 .btn.btn-light {
   border: solid 1px #6F6F6F; }
   .btn.btn-light:hover {
     background-color: #333;
     border-color: #333;
     color: #FFFFFF; }
+
+.btn.btn-primary {
+  background-color: #1A9288;
+  border-color: #1A9288; }
+  .btn.btn-primary:hover, .btn.btn-primary:focus {
+    background-color: #166666 !important;
+    border-color: #166666 !important; }
 
 .form-control {
   border-radius: 6px; }
@@ -11917,6 +11928,26 @@ body.searching .page-2-column .page-content {
   margin-top: 45px;
   margin-bottom: 45px; }
 
+.post-detail ul:not(:last-child) {
+  margin-bottom: 35px; }
+
+.post-detail ul li {
+  padding-left: 15px;
+  position: relative;
+  color: #6F6F6F;
+  line-height: 1.3em; }
+  .post-detail ul li:before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #6F6F6F;
+    position: absolute;
+    left: 0;
+    top: 0.45em; }
+  .post-detail ul li:not(:last-child) {
+    margin-bottom: 0.3em; }
+
 .block-tags {
   margin-top: 40px; }
   .block-tags .tag {
@@ -11954,6 +11985,9 @@ body.searching .page-2-column .page-content {
   .section-members .member-card .card-text {
     font-size: 14px;
     color: #9D9D9D; }
+
+.btn-apply {
+  min-width: 220px; }
 
 .main-visual + .content-section {
   padding-top: 100px; }
@@ -12034,6 +12068,8 @@ body.searching .page-2-column .page-content {
     justify-content: space-between;
     margin-top: auto;
     padding-top: 20px; }
+    .post-card .card-footer .post-link {
+      margin-left: auto; }
   .post-card .post-date {
     font-size: 14px;
     color: #9D9D9D; }

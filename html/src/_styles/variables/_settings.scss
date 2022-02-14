@@ -147,12 +147,25 @@ img {
 }
 
 .btn {
+	&:focus {
+		outline: none !important;
+		box-shadow: none !important;
+	}
 	&.btn-light {
 		border: solid 1px $gray02;
 		&:hover {
 			background-color: #333;
 			border-color: #333;
 			color: $white;
+		}
+	}
+	&.btn-primary {
+		background-color: $green;
+		border-color: $green;
+		&:hover,
+		&:focus {
+			background-color: $darkgreen !important;
+			border-color: $darkgreen !important;
 		}
 	}
 }
