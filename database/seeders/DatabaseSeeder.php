@@ -27,5 +27,6 @@ class DatabaseSeeder extends Seeder
             SettingsTableSeeder::class,
         ]);
         $this->call(CareerSeeder::class);
+        $this->call(ServiceSeeder::class);
     }
 }
