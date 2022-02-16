@@ -206,7 +206,7 @@ class CareerSeeder extends AbstractSeeder
 
     protected function buildMenu()
     {
-        $this->_buildMenu($this->getPluralName(), 6);
+        $this->_buildMenu($this->getPluralName(), 4);
     }
 
     protected function buildPermission()
