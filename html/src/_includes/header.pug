@@ -7,17 +7,61 @@ header.header
     .main-nav
       ul.global-nav
         li
-          a(href="./").active HOME
+          if menu_name == "home"
+            a(href="./").active HOME
+          else
+            a(href="./") HOME
         li
-          a(href="./services.html") SERVICES
+          if menu_name == "services"
+            a(href="javascript:void(0)").active SERVICES
+          else
+            a(href="javascript:void(0)") SERVICES
+          ul.sub-menu 
+            li.sub-menu-item 
+              a.sub-menu-link(href="./services.html") Stewardship
+              span.sub-menu-desc Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.
+            li.sub-menu-item 
+              a.sub-menu-link(href="./services.html") Planning & Adaptive Management
+              span.sub-menu-desc Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.
+            li.sub-menu-item 
+              a.sub-menu-link(href="./services.html") Science
+              span.sub-menu-desc Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.
+            li.sub-menu-item 
+              a.sub-menu-link(href="./services.html") Timber
+              span.sub-menu-desc Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.
+            li.sub-menu-item 
+              a.sub-menu-link(href="./services.html") Geospatial and Software
+              span.sub-menu-desc Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.
         li
-          a(href="./about.html") ABOUT
+          if menu_name == "about"
+            a(href="javascript:void(0)").active ABOUT
+          else
+            a(href="javascript:void(0)") ABOUT
+          ul.sub-menu 
+            li.sub-menu-item 
+              a.sub-menu-link(href="./vision.html") Mission/ Vision
+              span.sub-menu-desc Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.
+            li.sub-menu-item 
+              a.sub-menu-link(href="./diversity.html") Diversity
+              span.sub-menu-desc Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.
+            li.sub-menu-item 
+              a.sub-menu-link(href="./members.html") Members
+              span.sub-menu-desc Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.
         li
-          a(href="./blog.html") BLOG
+          if menu_name == "blog"
+            a(href="./blog.html").active BLOG
+          else
+            a(href="./blog.html") BLOG
         li
-          a(href="./careers.html") CAREERS
+          if menu_name == "careers"
+            a(href="./careers.html").active CAREERS
+          else
+            a(href="./careers.html") CAREERS
         li
-          a(href="./contact.html") CONTACT
+          if menu_name == "contact"
+            a(href="./contact.html").active CONTACT
+          else
+            a(href="./contact.html") CONTACT
     .account-buttons 
       .login-button 
         a.btn.btn-light(href="./login.html") Login

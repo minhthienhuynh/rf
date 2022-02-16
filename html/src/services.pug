@@ -1,10 +1,92 @@
 extends _layouts/default
 block vars
-	- var title="Job Detail"
+	- var title="Services"
+	- var menu_name = "services"
 
 block main
 	.page-visual(style="background-image: url('./assets/img/images/visual-img-02.jpg');")
-	.container.large.post-detail
-		h2.primary-title
+	.container.post-detail
+		h2.primary-title.text-center
 			span.section-sub-ttl OUR SERVICES
 			span.section-ttl Stewardship
+		
+		.block-gallery
+			div.gallery-main 
+				div.gallery-main-item
+					img(src="./assets/img/images/services/img-01.jpg", alt="")
+				div.gallery-main-item
+					img(src="./assets/img/images/services/img-02.jpg", width="", alt="")
+				div.gallery-main-item
+					img(src="./assets/img/images/services/img-03.jpg", width="", alt="")
+				div.gallery-main-item
+					img(src="./assets/img/images/services/img-04.jpg", width="", alt="")
+				div.gallery-main-item
+					img(src="./assets/img/images/services/img-01.jpg", alt="")
+				div.gallery-main-item
+					img(src="./assets/img/images/services/img-02.jpg", width="", alt="")
+			div.gallery-thumbnail 
+				div.gallery-thumbnail-item 
+					img(src="./assets/img/images/services/thumbnail-02.jpg", alt="")
+				div.gallery-thumbnail-item 
+					img(src="./assets/img/images/services/thumbnail-03.jpg", alt="")
+				div.gallery-thumbnail-item 
+					img(src="./assets/img/images/services/thumbnail-04.jpg", alt="")
+				div.gallery-thumbnail-item 
+					img(src="./assets/img/images/services/thumbnail-01.jpg", alt="")
+				div.gallery-thumbnail-item 
+					img(src="./assets/img/images/services/thumbnail-02.jpg", alt="")
+				div.gallery-thumbnail-item 
+					img(src="./assets/img/images/services/thumbnail-03.jpg", alt="")
+
+		h3 How we do?
+		p Resilient Forestry’s mission is to achieve the greatest outcome based on the best available science for our ecosystems and their surrounding communities. Our purpose is to clearly share our knowledge and expertise with forest managers to facilitate meeting functional ecosystem management objectives over the long term. We strive to translate the latest science into practical solutions that increase the efficiency and effectiveness of management actions.
+		p We work with forest owners on all aspects of implementing forest stewardship plans and timber sales. Services include stand exams, stream typing, cruising, harvest layout, DNR and county permitting, contract and compliance administration, We have extensive experience with thinning mature stands, wildlife habitat improvement projects, non-commercial vegetation treatments and seedling planting projects, and working with multiple stakeholders to communicate the benefits and trade-offs of forest management.
+		.quote 
+			p Resilient Forestry has a unique skill set in monitoring changes in forests over time for compliance or research objectives. We design and implement seedling survival studies, pre- and post-harvest monitoring, and long-term forest vegetation surveys for public and private clients around the world.
+		hr.my-5
+		h3 Stewardship Projects
+		p Resilient Forestry LLC was formed in 2018 and focuses on conservation-oriented forest management, collaborative and multi-stakeholder forests, forest management on public land, and forest ecosystem analysis. Resilient specializes in forestry projects that balance economic requirements with ecological and public use objectives.
+		p We work with forest owners on all aspects of implementing forest stewardship plans and timber sales. Services include stand exams, stream typing, cruising, harvest layout, DNR and county permitting, contract and compliance administration, We have extensive experience with thinning mature stands, wildlife habitat improvement projects, non-commercial vegetation treatments and seedling planting projects, and working with multiple stakeholders to communicate the benefits and trade-offs of forest management.
+		.services-block-slider.basic-slider.block-full
+			.card.post-card.services-post
+				a.post-link-img(href="./blog-detail.html")
+					img.card-img-top(src="./assets/img/images/services-post-img-01.jpg", alt="")
+				.card-body
+					h5.card-title
+						a(href="./blog-detail.html") Miller River
+					p.card-text Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et has minim elitr intellegat ntiopam.Mea aeterno eleifen
+					.card-footer
+						p.post-date 8/23/2021
+						a(href="./blog-detail.html").post-link.btn-more More
+			.card.post-card.services-post
+				a.post-link-img(href="./blog-detail.html")
+					img.card-img-top(src="./assets/img/images/services-post-img-02.jpg", alt="")
+				.card-body
+					h5.card-title 
+						a(href="./blog-detail.html") Other Small Private Land Owner Projects
+					p.card-text Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et has minim elitr intellegat ntiopam.Mea aeterno eleifen
+					.card-footer
+						p.post-date 8/23/2021
+						a(href="./blog-detail.html").post-link.btn-more More
+			.card.post-card.services-post
+				a.post-link-img(href="./blog-detail.html")
+					img.card-img-top(src="./assets/img/images/services-post-img-03.jpg", alt="")
+				.card-body
+					h5.card-title
+						a(href="./blog-detail.html") King’s Country
+					p.card-text Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et has minim elitr intellegat ntiopam.Mea aeterno eleifen
+					.card-footer
+						p.post-date 8/23/2021
+						a(href="./blog-detail.html").post-link.btn-more More
+			.card.post-card.services-post
+				a.post-link-img(href="./blog-detail.html")
+					img.card-img-top(src="./assets/img/images/services-post-img-02.jpg", alt="")
+				.card-body
+					h5.card-title
+						a(href="./blog-detail.html") Other Small Private Land Owner Projects
+					p.card-text Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et has minim elitr intellegat ntiopam.Mea aeterno eleifen
+					.card-footer
+						p.post-date 8/23/2021
+						a(href="./blog-detail.html").post-link.btn-more More
+		.section-button.text-center 
+			a.text-link-arrow(href="./blog.html") See all blog posts
