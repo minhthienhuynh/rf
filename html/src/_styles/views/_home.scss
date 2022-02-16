@@ -52,6 +52,21 @@
     max-width: calc(100% - 220px);
     width: 1014px;
     margin-left: 15px;
+    &.block-full {
+        max-width: 100%;
+        margin: 0 auto;
+        .slick-prev {
+            left: -20px;
+        }
+        .slick-next {
+            right: -20px;
+        }
+        .post-card {
+            &:nth-child(even) {
+                background-color: $gray06;
+            }
+        }
+    }
     .services-post {
         margin-right: 22px;
     }
