@@ -1,6 +1,7 @@
 // FOOTER & HEADER
 .header {
     background-color: $white;
+    position: relative;
     .container {
         height: 120px;
         display: flex;
@@ -12,9 +13,11 @@
 .global-nav {
     display: flex;
     justify-content: center;
-    li {
-        margin: 0 30px;
-        a {
+    align-items: center;
+    & > li {
+        padding: 0 30px;
+        & > a,
+        & > span {
             color: $gray01;
             position: relative;
             display: inline-block;
@@ -38,6 +41,47 @@
                 &:before {
                     opacity: 1;
                 }
+            }
+        }
+        .sub-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            z-index: 10;
+            background-color: $gray06;
+            padding: 40px 15px;
+            display: flex;
+            justify-content: center;
+            transition: all 0.2s;
+            opacity: 0;
+            visibility: hidden;
+            li {
+                max-width: 180px;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                line-height: 1.25em;
+                &:not(:last-child) {
+                    margin-right: 30px;
+                }
+                a {
+                    color: inherit;
+                    font-weight: 600;
+                    color: #000;
+                    margin-bottom: 8px;
+                    &:hover {
+                        color: $green;
+                    }
+                }
+            }
+        }
+        &:hover {
+            padding: 46px 30px;
+            .sub-menu {
+                opacity: 1;
+                visibility: visible;
             }
         }
     }
@@ -327,7 +371,7 @@
         padding-bottom: 80px;
     }
     .page-content {
-        padding-top: 90px;
+        
         .row {
             margin-left: -10px;
             margin-right: -10px;
@@ -344,6 +388,8 @@
         }
     }
 }
+
+
 
 .highlight {
     background-color: #FFEDAF;;
@@ -409,6 +455,7 @@ body.searching {
         .page-content {
             opacity: 0.2;
             transition: all 0.2s;
+            // padding-top: 90px;
         }
     }
 }
@@ -527,7 +574,10 @@ body.searching {
         line-height: 1.25em;
         color: $gray02;
         &:not(:last-child) {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+        }
+        a {
+            text-decoration: underline;
         }
     }
     .post-detail-title {
@@ -552,13 +602,19 @@ body.searching {
         @include DM-Serif;
         margin-bottom: 25px;
     }
+    h4 {
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
     hr {
         margin-top: 45px;
         margin-bottom: 45px;
     }
     ul {
+        margin-left: 15px;
         &:not(:last-child) {
-            margin-bottom: 35px;
+            margin-bottom: 25px;
         }
         li {
             padding-left: 15px;
@@ -573,7 +629,7 @@ body.searching {
                 background: $gray02;
                 position: absolute;
                 left: 0;
-                top: 0.45em;
+                top: 0.5em;
             }
             &:not(:last-child) {
                 margin-bottom: 0.3em;
@@ -613,7 +669,12 @@ body.searching {
 }
 
 .section-members {
+    .col-md-4 {
+        display: flex;
+        flex-direction: column;
+    }
     .member-card {
+        flex-grow: 1;
         margin-bottom: 30px;
         border-color: #C6C6C6;
         .card-body {

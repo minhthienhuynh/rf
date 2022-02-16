@@ -1,6 +1,7 @@
 extends _layouts/default
 block vars
 	- var title="Blog Detail"
+	- var menu_name = "blog"
 
 block main
 	.page-visual(style="background-image: url('./assets/img/images/visual-img-02.jpg');")
@@ -55,13 +56,8 @@ block main
 					li
 						a(href="#") Oly M&E
 		.page-content.post-detail
-			nav(aria-label="breadcrumb")
-				ol.breadcrumb
-					li.breadcrumb-item
-						a(href="./blog.html") Blog
-					li.breadcrumb-item.active(aria-current="page") Library
 			h2.post-detail-title King’s Country
-			p.post-detail-info Category: Stewardship | Tuesday, December 21, 2021
+			p.post-detail-info Tuesday, December 21, 2021
 			img(src="./assets/img/images/blog/img-01.jpg", alt="")
 			h3 King’s Country
 			p We work with forest owners on all aspects of implementing forest stewardship plans and timber sales. Services include stand exams, stream typing, cruising, harvest layout, DNR and county permitting, contract and compliance administration, We have extensive experience with thinning mature stands, wildlife habitat improvement projects, non-commercial vegetation treatments and seedling planting projects, and working with multiple stakeholders to communicate the benefits and trade-offs of forest management.
