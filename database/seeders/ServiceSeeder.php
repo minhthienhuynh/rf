@@ -2,14 +2,15 @@
 
 namespace Database\Seeders;
 
-use App\Http\Controllers\CareerController;
-use App\Models\Career;
+use App\Http\Controllers\ServiceController;
+use App\Models\Post;
+use App\Models\Service;
 
-class CareerSeeder extends AbstractSeeder
+class ServiceSeeder extends AbstractSeeder
 {
-    public function __construct(Career $model, CareerController $controller)
+    public function __construct(Service $model, ServiceController $controller)
     {
-        parent::__construct($model, $controller, 'voyager-documentation');
+        parent::__construct($model, $controller, 'voyager-ship');
     }
 
     protected function buildData()
@@ -74,7 +75,7 @@ class CareerSeeder extends AbstractSeeder
                             'forceUpdate'   => true,
                         ],
                         'validation'    => [
-                            'rule'          => 'unique:careers,slug',
+                            'rule'          => 'unique:services,slug',
                         ],
                     ],
                     'order'         => 3,
@@ -114,11 +115,11 @@ class CareerSeeder extends AbstractSeeder
             ],
             [
                 'attributes'    => [
-                    'field'         => 'link'
+                    'field'         => 'hero_picture'
                 ],
                 'values'        => [
-                    'type'          => 'text',
-                    'display_name'  => __('voyager::seeders.data_rows.link'),
+                    'type'          => 'image',
+                    'display_name'  => __('voyager::seeders.data_rows.hero_picture'),
                     'required'      => 0,
                     'browse'        => 0,
                     'read'          => 1,
@@ -130,11 +131,11 @@ class CareerSeeder extends AbstractSeeder
             ],
             [
                 'attributes'    => [
-                    'field'         => 'pdf'
+                    'field'         => 'slider'
                 ],
                 'values'        => [
-                    'type'          => 'file',
-                    'display_name'  => __('voyager::seeders.data_rows.pdf'),
+                    'type'          => 'multiple_images',
+                    'display_name'  => __('voyager::seeders.data_rows.slider'),
                     'required'      => 0,
                     'browse'        => 0,
                     'read'          => 1,
@@ -142,22 +143,6 @@ class CareerSeeder extends AbstractSeeder
                     'add'           => 1,
                     'delete'        => 1,
                     'order'         => 7,
-                ],
-            ],
-            [
-                'attributes'    => [
-                    'field'         => 'image'
-                ],
-                'values'        => [
-                    'type'          => 'image',
-                    'display_name'  => __('voyager::seeders.data_rows.image'),
-                    'required'      => 0,
-                    'browse'        => 0,
-                    'read'          => 1,
-                    'edit'          => 1,
-                    'add'           => 1,
-                    'delete'        => 1,
-                    'order'         => 8,
                 ],
             ],
             [
@@ -173,23 +158,34 @@ class CareerSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 9,
+                    'order'         => 8,
                 ]
             ],
             [
                 'attributes'    => [
-                    'field'         => 'expired_at',
+                    'field'         => 'service_belongstomany_post_relationship',
                 ],
                 'values'        => [
-                    'type'          => 'timestamp',
-                    'display_name'  => __('voyager::seeders.data_rows.expired_at'),
+                    'type'          => 'relationship',
+                    'display_name'  => __('voyager::seeders.data_rows.posts'),
                     'required'      => 0,
                     'browse'        => 1,
                     'read'          => 1,
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 10,
+                    'details'       => [
+                        'model'         => Post::class,
+                        'table'         => app(Post::class)->getTable(),
+                        'type'          => 'belongsToMany',
+                        'column'        => 'id',
+                        'key'           => 'id',
+                        'label'         => 'title',
+                        'pivot_table'   => 'post_service',
+                        'pivot'         => '1',
+                        'taggable'      => '0',
+                    ],
+                    'order'         => 9,
                 ]
             ],
             [
@@ -205,7 +201,7 @@ class CareerSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
-                    'order'         => 11,
+                    'order'         => 10,
                 ]
             ],
             [
@@ -221,7 +217,7 @@ class CareerSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
-                    'order'         => 12,
+                    'order'         => 11,
                 ]
             ],
         ];

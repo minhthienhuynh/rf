@@ -15,12 +15,12 @@ class CreatePostsTable extends Migration
     {
         // Create table for storing posts
         Schema::create('posts', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->foreignId('author_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('set null');
             $table->foreignId('category_id')->nullable()->constrained('categories')->onUpdate('cascade')->onDelete('set null');
             $table->string('title');
             $table->text('excerpt')->nullable();
-            $table->text('body');
+            $table->longText('body');
             $table->string('image')->nullable();
             $table->string('slug')->unique();
             $table->enum('status', ['PUBLISHED', 'DRAFT', 'PENDING'])->default('DRAFT');

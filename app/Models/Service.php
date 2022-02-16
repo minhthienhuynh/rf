@@ -4,19 +4,19 @@ namespace App\Models;
 
 use App\Models\Traits\Seoable;
 use Illuminate\Database\Eloquent\Model;
-use TCG\Voyager\Traits\Translatable;
 
-class Career extends Model
+class Service extends Model
 {
-    use Seoable, Translatable;
+    use Seoable;
 
     public static $mainFields = [
-        'main' => ['title', 'description', 'content', 'link'],
+        'main' => ['title', 'description', 'content'],
     ];
 
     public static $subFields = [
-        'details' => ['slug', 'published_at', 'expired_at'],
-        'media' => ['pdf', 'image'],
+        'details' => ['slug', 'published_at'],
+        'media' => ['hero_picture', 'slider'],
+        'relationships' => ['service_belongstomany_post_relationship'],
     ];
 
     /**
@@ -29,10 +29,8 @@ class Career extends Model
         'slug',
         'description',
         'content',
-        'link',
-        'pdf',
-        'image',
+        'hero_picture',
+        'slider',
         'published_at',
-        'expired_at',
     ];
 }
