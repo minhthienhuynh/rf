@@ -29,10 +29,6 @@
         var getID = $(this).attr('href');
         if ($(getID).length) {
             anchorLink(getID);
-            // CLOSE SP NAV
-            if ($('body').hasClass('open-nav')) {
-                $('#menu-toggle').trigger('click');
-            }
             return false;
         }
     });
@@ -47,7 +43,7 @@
     $(document).on('mousedown touchstart', function(e) {
       if ($(e.target).closest(".input-text-wrapper").length === 0) {
         if($('.search-input').val() != "" && $('body').hasClass('searching') && $('.search-input').val() != $('.search-input').attr('value')) {
-          $('.input-text-wrapper .close-btn').trigger("click");
+          $('.input-text-wrapper .close-btn').trigger('click');
         }
         $('body').removeClass('searching');
       }
