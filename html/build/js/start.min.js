@@ -5,6 +5,39 @@
  */
 
 (function( $ ) {
+  // ANCHOR LINK
+  function anchorLink(el) {
+    var p = $(el).offset();
+    var offsetPC = 0;
+    var offsetSP = 0;
+    if ($(window).width() > 750) {
+        $('html,body').animate({ scrollTop: p.top - offsetPC }, 800);
+    } else {
+        $('html,body').animate({ scrollTop: p.top - offsetSP }, 800);
+    }
+  }
+  $(window).bind('load', function() {
+    "use strict";
+    // ANCHOR FROM OTHER PAGE
+    var hash = location.hash;
+    if (hash && $(hash).length > 0) {
+        anchorLink(hash);
+    }
+
+    // ANCHOR IN PAGE
+    $('a[href^="#"]').click(function() {
+        var getID = $(this).attr('href');
+        if ($(getID).length) {
+            anchorLink(getID);
+            // CLOSE SP NAV
+            if ($('body').hasClass('open-nav')) {
+                $('#menu-toggle').trigger('click');
+            }
+            return false;
+        }
+    });
+  });
+  // =========== END - ANCHOR LINK ============
   
   // OnLoad Page
   $(document).ready(function($){
@@ -13,10 +46,10 @@
     });
     $(document).on('mousedown touchstart', function(e) {
       if ($(e.target).closest(".input-text-wrapper").length === 0) {
-        $('body').removeClass('searching');
-        if($('.search-input').val() != "") {
-          $('.search-input').val("");
+        if($('.search-input').val() != "" && $('body').hasClass('searching') && $('.search-input').val() != $('.search-input').attr('value')) {
+          $('.input-text-wrapper .close-btn').trigger("click");
         }
+        $('body').removeClass('searching');
       }
   });
   });
