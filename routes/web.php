@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,4 +21,9 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+
+    Route::middleware('admin.user')->name('voyager.')->group(function () {
+        Route::match(['get', 'post'], '/services/{service}/order-slider', [ServiceController::class, 'orderSlider'])
+            ->name('services.order-slider');
+    });
 });
