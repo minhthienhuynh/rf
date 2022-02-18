@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCareersTable extends Migration
+class CreateServicesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,15 @@ class CreateCareersTable extends Migration
      */
     public function up()
     {
-        Schema::create('careers', function (Blueprint $table) {
+        Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('description')->nullable();
             $table->longText('content');
-            $table->string('link')->nullable();
-            $table->string('pdf')->nullable();
-            $table->string('image')->nullable();
+            $table->string('hero_picture')->nullable();
+            $table->text('slider')->nullable();
             $table->dateTime('published_at')->nullable();
-            $table->dateTime('expired_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -36,6 +34,6 @@ class CreateCareersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('careers');
+        Schema::dropIfExists('services');
     }
 }

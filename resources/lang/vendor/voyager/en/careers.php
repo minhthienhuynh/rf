@@ -1,8 +1,7 @@
 <?php
 
 return [
-    'labels' => [
-        'datetime' => 'Datetime',
-        'media' => 'Media',
-    ]
+    'data_rows' => [
+        'link' => 'Link to the application form',
+    ],
 ];

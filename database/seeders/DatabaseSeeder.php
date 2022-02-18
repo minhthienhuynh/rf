@@ -19,11 +19,14 @@ class DatabaseSeeder extends Seeder
             MenusTableSeeder::class,
             MenuItemsTableSeeder::class,
             RolesTableSeeder::class,
-            UsersTableSeeder::class,
             PermissionsTableSeeder::class,
+            CategoriesTableSeeder::class,
+            UsersTableSeeder::class,
+            PostsTableSeeder::class,
             PermissionRoleTableSeeder::class,
             SettingsTableSeeder::class,
         ]);
         $this->call(CareerSeeder::class);
+        $this->call(ServiceSeeder::class);
     }
 }

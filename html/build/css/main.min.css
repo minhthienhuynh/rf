@@ -12152,6 +12152,7 @@ body.searching .page-2-column .page-content {
 .post-card {
   min-width: 290px;
   width: 100%;
+  background-color: #f8f8f8;
   border-color: #eee;
   border-radius: 6px;
   overflow: hidden;
