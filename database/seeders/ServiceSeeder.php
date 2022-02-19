@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Http\Controllers\ServiceController;
 use App\Models\Post;
 use App\Models\Service;
+use Illuminate\Support\Arr;
 
 class ServiceSeeder extends AbstractSeeder
 {
@@ -15,7 +16,46 @@ class ServiceSeeder extends AbstractSeeder
 
     protected function buildData()
     {
-        // TODO: Implement buildData() method.
+        if (app()->environment('local')) {
+            $data = [
+                [
+                    'title' => 'Stewardship',
+                    'slug' => 's1',
+                    'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'content' => '',
+                    'hero_picture' => url('/html/assets/img/images/services/img-01.jpg'),
+                    'published_at' => now(),
+                ],
+                [
+                    'title' => 'Planning & Adaptive Management',
+                    'slug' => 's2',
+                    'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'content' => '',
+                    'hero_picture' => url('/html/assets/img/images/services/img-02.jpg'),
+                    'published_at' => now(),
+                ],
+                [
+                    'title' => 'Science',
+                    'slug' => 's3',
+                    'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'content' => '',
+                    'hero_picture' => url('/html/assets/img/images/services/img-03.jpg'),
+                    'published_at' => now(),
+                ],
+                [
+                    'title' => 'Timber',
+                    'slug' => 's4',
+                    'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'content' => '',
+                    'hero_picture' => url('/html/assets/img/images/services/img-04.jpg'),
+                    'published_at' => now(),
+                ],
+            ];
+
+            foreach ($data as $datum) {
+                $this->getModel()::updateOrCreate(Arr::only($datum, 'slug'), Arr::except($datum, 'slug'));
+            }
+        }
     }
 
     protected function buildCRUD()
