@@ -152,7 +152,7 @@ class CareerSeeder extends AbstractSeeder
                     'type'          => 'image',
                     'display_name'  => __('voyager::seeders.data_rows.image'),
                     'required'      => 0,
-                    'browse'        => 0,
+                    'browse'        => 1,
                     'read'          => 1,
                     'edit'          => 1,
                     'add'           => 1,

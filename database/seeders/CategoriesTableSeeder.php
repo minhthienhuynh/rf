@@ -31,6 +31,13 @@ class CategoriesTableSeeder extends Seeder
                 'controller'            => '',
                 'generate_permissions'  => 1,
                 'description'           => '',
+                'details'               => [
+                    'order_column'          => 'order',
+                    'order_display_column'  => 'name',
+                    'order_direction'       => 'asc',
+                    'default_search_key'    => null,
+                    'scope'                 => null
+                ]
             ])->save();
         }
         //Data Rows

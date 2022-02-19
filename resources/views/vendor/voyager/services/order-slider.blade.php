@@ -20,7 +20,7 @@
                 <div class="panel-body" style="padding:30px;">
                     <div class="dd">
                         <ol class="dd-list">
-                            @foreach (@json_decode($service->slider) as $image)
+                            @foreach (@json_decode($service->slider) ?? [] as $image)
                             <li class="dd-item" data-id="{{ $image }}">
                                 <div class="dd-handle" style="height:inherit">
                                     <span>

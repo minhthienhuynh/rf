@@ -21,7 +21,7 @@ class CreateServicesTable extends Migration
             $table->longText('content');
             $table->string('hero_picture')->nullable();
             $table->text('slider')->nullable();
-            $table->dateTime('published_at')->nullable();
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -120,12 +120,12 @@ abstract class AbstractSeeder extends Seeder
         }
     }
 
-    protected function _buildMenu(string $title, int $order, array $data = [], array $trans = [])
+    protected function _buildMenu(string $title, int $order, array $parent = [], array $trans = [])
     {
         $menu = Voyager::model('Menu')->where('name', 'admin')->firstOrFail();
 
-        if ($data) {
-            $menuItemParent = $menu->items()->updateOrCreate(Arr::only($data, 'title'), Arr::except($data, 'title'));
+        if ($parent) {
+            $menuItemParent = $menu->items()->updateOrCreate(Arr::only($parent, 'title'), Arr::except($parent, 'title'));
         }
 
         $item = $menu->items()->updateOrCreate([
