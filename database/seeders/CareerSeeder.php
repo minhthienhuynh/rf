@@ -119,13 +119,18 @@ class CareerSeeder extends AbstractSeeder
                 'values'        => [
                     'type'          => 'text',
                     'display_name'  => __('voyager::seeders.data_rows.link'),
-                    'required'      => 0,
+                    'required'      => 1,
                     'browse'        => 0,
                     'read'          => 1,
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
                     'order'         => 6,
+                    'details'       => [
+                        'validation'    => [
+                            'rule'          => 'url',
+                        ],
+                    ],
                 ],
             ],
             [
@@ -135,7 +140,7 @@ class CareerSeeder extends AbstractSeeder
                 'values'        => [
                     'type'          => 'file',
                     'display_name'  => __('voyager::seeders.data_rows.pdf'),
-                    'required'      => 0,
+                    'required'      => 1,
                     'browse'        => 0,
                     'read'          => 1,
                     'edit'          => 1,
@@ -151,7 +156,7 @@ class CareerSeeder extends AbstractSeeder
                 'values'        => [
                     'type'          => 'image',
                     'display_name'  => __('voyager::seeders.data_rows.image'),
-                    'required'      => 0,
+                    'required'      => 1,
                     'browse'        => 1,
                     'read'          => 1,
                     'edit'          => 1,

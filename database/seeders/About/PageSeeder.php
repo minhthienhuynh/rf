@@ -16,7 +16,7 @@ class PageSeeder extends AbstractSeeder
 
     protected function buildData()
     {
-        if (app()->environment('dev')) {
+        if (app()->environment('local')) {
             $data = [
                 [
                     'title' => 'Our Mission / Vision',
@@ -147,7 +147,7 @@ class PageSeeder extends AbstractSeeder
                 'values'        => [
                     'type'          => 'image',
                     'display_name'  => __('voyager::seeders.data_rows.hero_picture'),
-                    'required'      => 0,
+                    'required'      => 1,
                     'browse'        => 1,
                     'read'          => 1,
                     'edit'          => 1,
