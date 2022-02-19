@@ -1,27 +1,33 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\About;
 
-use App\Http\Controllers\ServiceController;
-use App\Models\Post;
-use App\Models\Service;
+use App\Http\Controllers\MemberController;
+use App\Models\Member;
+use Database\Seeders\AbstractSeeder;
 
-class ServiceSeeder extends AbstractSeeder
+class MemberSeeder extends AbstractSeeder
 {
-    public function __construct(Service $model, ServiceController $controller)
+    public function __construct(Member $model, MemberController $controller)
     {
-        parent::__construct($model, $controller, 'voyager-ship');
+        parent::__construct($model, $controller, 'voyager-group');
     }
 
     protected function buildData()
     {
-        // TODO: Implement buildData() method.
+        //
     }
 
     protected function buildCRUD()
     {
         //Data Type
-        $dataType = $this->_buildDataType();
+        $dataType = $this->_buildDataType([
+            'order_column'          => 'order',
+            'order_display_column'  => 'full_name',
+            'order_direction'       => 'asc',
+            'default_search_key'    => null,
+            'scope'                 => null
+        ]);
 
         $dataRows = [
             [
@@ -37,48 +43,36 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
-                    'order'         => 1,
                 ],
             ],
             [
                 'attributes'    => [
-                    'field'         => 'title'
+                    'field'         => 'full_name'
                 ],
                 'values'        => [
                     'type'          => 'text',
-                    'display_name'  => __('voyager::seeders.data_rows.title'),
+                    'display_name'  => __('voyager::seeders.data_rows.full_name'),
                     'required'      => 1,
                     'browse'        => 1,
                     'read'          => 1,
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 2,
                 ],
             ],
             [
                 'attributes'    => [
-                    'field'         => 'slug'
+                    'field'         => 'position'
                 ],
                 'values'        => [
                     'type'          => 'text',
-                    'display_name'  => __('voyager::seeders.data_rows.slug'),
+                    'display_name'  => __('voyager::seeders.data_rows.position'),
                     'required'      => 1,
-                    'browse'        => 0,
+                    'browse'        => 1,
                     'read'          => 1,
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'details'       => [
-                        'slugify'       => [
-                            'origin'        => 'title',
-                            'forceUpdate'   => true,
-                        ],
-                        'validation'    => [
-                            'rule'          => 'unique:services,slug',
-                        ],
-                    ],
-                    'order'         => 3,
                 ],
             ],
             [
@@ -94,99 +88,45 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 4,
                 ],
             ],
             [
                 'attributes'    => [
-                    'field'         => 'content'
+                    'field'         => 'link'
                 ],
                 'values'        => [
-                    'type'          => 'rich_text_box',
-                    'display_name'  => __('voyager::seeders.data_rows.content'),
+                    'type'          => 'text',
+                    'display_name'  => __('voyager::members.data_rows.link'),
                     'required'      => 1,
-                    'browse'        => 0,
-                    'read'          => 1,
-                    'edit'          => 1,
-                    'add'           => 1,
-                    'delete'        => 1,
-                    'order'         => 5,
-                ],
-            ],
-            [
-                'attributes'    => [
-                    'field'         => 'hero_picture'
-                ],
-                'values'        => [
-                    'type'          => 'image',
-                    'display_name'  => __('voyager::seeders.data_rows.hero_picture'),
-                    'required'      => 1,
-                    'browse'        => 1,
-                    'read'          => 1,
-                    'edit'          => 1,
-                    'add'           => 1,
-                    'delete'        => 1,
-                    'order'         => 6,
-                ],
-            ],
-            [
-                'attributes'    => [
-                    'field'         => 'slider'
-                ],
-                'values'        => [
-                    'type'          => 'multiple_images',
-                    'display_name'  => __('voyager::seeders.data_rows.slider'),
-                    'required'      => 1,
-                    'browse'        => 0,
-                    'read'          => 1,
-                    'edit'          => 1,
-                    'add'           => 1,
-                    'delete'        => 1,
-                    'order'         => 7,
-                ],
-            ],
-            [
-                'attributes'    => [
-                    'field'         => 'published_at',
-                ],
-                'values'        => [
-                    'type'          => 'timestamp',
-                    'display_name'  => __('voyager::seeders.data_rows.published_at'),
-                    'required'      => 0,
-                    'browse'        => 1,
-                    'read'          => 1,
-                    'edit'          => 1,
-                    'add'           => 1,
-                    'delete'        => 1,
-                    'order'         => 8,
-                ]
-            ],
-            [
-                'attributes'    => [
-                    'field'         => 'service_belongstomany_post_relationship',
-                ],
-                'values'        => [
-                    'type'          => 'relationship',
-                    'display_name'  => __('voyager::seeders.data_rows.posts'),
-                    'required'      => 0,
                     'browse'        => 0,
                     'read'          => 1,
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
                     'details'       => [
-                        'model'         => Post::class,
-                        'table'         => app(Post::class)->getTable(),
-                        'type'          => 'belongsToMany',
-                        'column'        => 'id',
-                        'key'           => 'id',
-                        'label'         => 'title',
-                        'pivot_table'   => 'post_service',
-                        'pivot'         => '1',
-                        'taggable'      => '0',
+                        'validation'    => [
+                            'rule'          => 'url',
+                        ],
                     ],
-                    'order'         => 9,
-                ]
+                ],
+            ],
+            [
+                'attributes'    => [
+                    'field'         => 'avatar'
+                ],
+                'values'        => [
+                    'type'          => 'image',
+                    'display_name'  => __('voyager::seeders.data_rows.avatar'),
+                    'required'      => 1,
+                    'browse'        => 1,
+                    'read'          => 1,
+                    'edit'          => 1,
+                    'add'           => 1,
+                    'delete'        => 1,
+                    'details'       => [
+                        'desc'          => 'Please update an image (4x3), Not larger than 1000px',
+                    ],
+                ],
             ],
             [
                 'attributes'    => [
@@ -201,7 +141,6 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
-                    'order'         => 10,
                 ]
             ],
             [
@@ -217,7 +156,6 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
-                    'order'         => 11,
                 ]
             ],
         ];
@@ -227,7 +165,12 @@ class ServiceSeeder extends AbstractSeeder
 
     protected function buildMenu()
     {
-        $this->_buildMenu($this->getPluralName(), 4);
+        $this->_buildMenu($this->getPluralName(), 1, [
+            'title' => 'About',
+            'url' => '',
+            'icon_class' => 'voyager-info-circled',
+            'order' => 4,
+        ]);
     }
 
     protected function buildPermission()
