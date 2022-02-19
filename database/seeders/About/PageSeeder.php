@@ -1,21 +1,53 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\About;
 
-use App\Http\Controllers\ServiceController;
-use App\Models\Post;
-use App\Models\Service;
+use App\Http\Controllers\PageController;
+use App\Models\Page;
+use Database\Seeders\AbstractSeeder;
+use Illuminate\Support\Arr;
 
-class ServiceSeeder extends AbstractSeeder
+class PageSeeder extends AbstractSeeder
 {
-    public function __construct(Service $model, ServiceController $controller)
+    public function __construct(Page $model, PageController $controller)
     {
-        parent::__construct($model, $controller, 'voyager-ship');
+        parent::__construct($model, $controller, 'voyager-trees');
     }
 
     protected function buildData()
     {
-        // TODO: Implement buildData() method.
+        if (app()->environment('dev')) {
+            $data = [
+                [
+                    'title' => 'Our Mission / Vision',
+                    'slug' => 'vision',
+                    'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'content' => '',
+                    'hero_picture' => url('/html/assets/img/images/visual-img-03.jpg'),
+                    'published_at' => now(),
+                ],
+                [
+                    'title' => 'Diversity',
+                    'slug' => 'diversity',
+                    'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'content' => '',
+                    'hero_picture' => url('/html/assets/img/images/visual-img-03.jpg'),
+                    'published_at' => now(),
+                ],
+                [
+                    'title' => 'Our Members',
+                    'slug' => 'members',
+                    'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'content' => '',
+                    'hero_picture' => url('/html/assets/img/images/visual-img-03.jpg'),
+                    'published_at' => now(),
+                ],
+            ];
+
+            foreach ($data as $datum) {
+                $this->getModel()::updateOrCreate(Arr::only($datum, 'slug'), Arr::except($datum, 'slug'));
+            }
+        }
     }
 
     protected function buildCRUD()
@@ -37,7 +69,6 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
-                    'order'         => 1,
                 ],
             ],
             [
@@ -53,7 +84,6 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 2,
                 ],
             ],
             [
@@ -75,10 +105,9 @@ class ServiceSeeder extends AbstractSeeder
                             'forceUpdate'   => true,
                         ],
                         'validation'    => [
-                            'rule'          => 'unique:services,slug',
+                            'rule'          => 'unique:pages,slug',
                         ],
                     ],
-                    'order'         => 3,
                 ],
             ],
             [
@@ -94,7 +123,6 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 4,
                 ],
             ],
             [
@@ -110,7 +138,6 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 5,
                 ],
             ],
             [
@@ -126,23 +153,6 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 6,
-                ],
-            ],
-            [
-                'attributes'    => [
-                    'field'         => 'slider'
-                ],
-                'values'        => [
-                    'type'          => 'multiple_images',
-                    'display_name'  => __('voyager::seeders.data_rows.slider'),
-                    'required'      => 0,
-                    'browse'        => 0,
-                    'read'          => 1,
-                    'edit'          => 1,
-                    'add'           => 1,
-                    'delete'        => 1,
-                    'order'         => 7,
                 ],
             ],
             [
@@ -158,34 +168,6 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 8,
-                ]
-            ],
-            [
-                'attributes'    => [
-                    'field'         => 'service_belongstomany_post_relationship',
-                ],
-                'values'        => [
-                    'type'          => 'relationship',
-                    'display_name'  => __('voyager::seeders.data_rows.posts'),
-                    'required'      => 0,
-                    'browse'        => 0,
-                    'read'          => 1,
-                    'edit'          => 1,
-                    'add'           => 1,
-                    'delete'        => 1,
-                    'details'       => [
-                        'model'         => Post::class,
-                        'table'         => app(Post::class)->getTable(),
-                        'type'          => 'belongsToMany',
-                        'column'        => 'id',
-                        'key'           => 'id',
-                        'label'         => 'title',
-                        'pivot_table'   => 'post_service',
-                        'pivot'         => '1',
-                        'taggable'      => '0',
-                    ],
-                    'order'         => 9,
                 ]
             ],
             [
@@ -201,7 +183,6 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
-                    'order'         => 10,
                 ]
             ],
             [
@@ -217,7 +198,6 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
-                    'order'         => 11,
                 ]
             ],
         ];
@@ -227,7 +207,12 @@ class ServiceSeeder extends AbstractSeeder
 
     protected function buildMenu()
     {
-        $this->_buildMenu($this->getPluralName(), 4);
+        $this->_buildMenu($this->getPluralName(), 1, [
+            'title' => 'About',
+            'url' => '',
+            'icon_class' => 'voyager-info-circled',
+            'order' => 4,
+        ]);
     }
 
     protected function buildPermission()

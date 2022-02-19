@@ -22,8 +22,8 @@ class CreateCareersTable extends Migration
             $table->string('link')->nullable();
             $table->string('pdf')->nullable();
             $table->string('image')->nullable();
-            $table->dateTime('published_at')->nullable();
-            $table->dateTime('expired_at')->nullable();
+            $table->timestamp('published_at')->nullable();
+            $table->timestamp('expired_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
