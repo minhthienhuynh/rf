@@ -121,6 +121,11 @@ class PostsTableSeeder extends Seeder
                 'edit'         => 1,
                 'add'          => 1,
                 'delete'       => 1,
+                'details'       => [
+                    'validation'    => [
+                        'rule'          => 'required',
+                    ],
+                ],
                 'order'        => 6,
             ])->save();
         }

@@ -146,6 +146,11 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'details'       => [
+                        'validation'    => [
+                            'rule'          => 'required',
+                        ],
+                    ],
                 ],
             ],
             [
