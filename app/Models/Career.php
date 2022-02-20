@@ -11,11 +11,10 @@ class Career extends Model
     use Seoable, Translatable;
 
     public static $mainFields = [
-        'main' => ['title', 'description', 'content', 'link'],
+        'main' => ['title', 'slug', 'description', 'content', 'link', 'published_at', 'expired_at'],
     ];
 
     public static $subFields = [
-        'details' => ['slug', 'published_at', 'expired_at'],
         'media' => ['pdf', 'image'],
     ];
 

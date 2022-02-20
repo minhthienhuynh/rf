@@ -21,9 +21,7 @@ class UserMenuSeeder extends Seeder
     {
         $menu = Voyager::model('Menu')->firstOrCreate(['name' => 'user']);
         $menu->items()->delete();
-
         $menuItems = $this->getMenuItems();
-        dd($menuItems);
         $this->buildMenuItems($menu, $menuItems);
     }
 
@@ -42,13 +40,13 @@ class UserMenuSeeder extends Seeder
                 'title'    => 'SERVICES',
                 'url'      => '',
                 'route'    => null,
-                'children' => Service::whereNotNull('published_at')->where('published_at', '<=', now())->get(),
+                'children' => Service::getAll(),
             ],
             [
                 'title'    => 'ABOUT',
                 'url'      => '',
                 'route'    => null,
-                'children' => Page::whereNotNull('published_at')->where('published_at', '<=', now())->get(),
+                'children' => Page::getAll(),
             ],
             [
                 'title' => 'BLOG',
