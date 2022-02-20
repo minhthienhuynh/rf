@@ -22,7 +22,7 @@ class PageSeeder extends AbstractSeeder
                     'title' => 'Our Mission / Vision',
                     'slug' => 'vision',
                     'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
-                    'content' => '',
+                    'content' => '<p>content</p>',
                     'hero_picture' => url('/html/assets/img/images/visual-img-03.jpg'),
                     'published_at' => now(),
                 ],
@@ -30,7 +30,7 @@ class PageSeeder extends AbstractSeeder
                     'title' => 'Diversity',
                     'slug' => 'diversity',
                     'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
-                    'content' => '',
+                    'content' => '<p>content</p>',
                     'hero_picture' => url('/html/assets/img/images/visual-img-03.jpg'),
                     'published_at' => now(),
                 ],
@@ -38,7 +38,7 @@ class PageSeeder extends AbstractSeeder
                     'title' => 'Our Members',
                     'slug' => 'members',
                     'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
-                    'content' => '',
+                    'content' => '<p>content</p>',
                     'hero_picture' => url('/html/assets/img/images/visual-img-03.jpg'),
                     'published_at' => now(),
                 ],
@@ -84,6 +84,11 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'details'       => [
+                        'display'       => [
+                            'width'         => 6,
+                        ],
+                    ],
                 ],
             ],
             [
@@ -100,6 +105,9 @@ class PageSeeder extends AbstractSeeder
                     'add'           => 1,
                     'delete'        => 1,
                     'details'       => [
+                        'display'       => [
+                            'width'         => 6,
+                        ],
                         'slugify'       => [
                             'origin'        => 'title',
                             'forceUpdate'   => true,

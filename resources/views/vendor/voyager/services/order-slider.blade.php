@@ -24,7 +24,7 @@
                             <li class="dd-item" data-id="{{ $image }}">
                                 <div class="dd-handle" style="height:inherit">
                                     <span>
-                                        <img src="{{ Voyager::image($image) }}" style="height:100px">
+                                        <img src="{{ !filter_var($image, FILTER_VALIDATE_URL) ? Voyager::image($image) : $image }}" style="height:100px">
                                     </span>
                                 </div>
                             </li>

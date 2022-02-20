@@ -2,7 +2,9 @@
 
 namespace App\Models;
 
-class Category extends \TCG\Voyager\Models\Category
+use TCG\Voyager\Models\Category as Model;
+
+class Category extends Model
 {
     //
 }
