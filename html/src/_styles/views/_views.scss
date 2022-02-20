@@ -33,15 +33,6 @@
                 transition: all 0.1s;
                 opacity: 0;
             }
-            &:hover,
-            &.active {
-                font-weight: 600;
-                color: $green;
-                text-decoration: none;
-                &:before {
-                    opacity: 1;
-                }
-            }
         }
         .sub-menu {
             position: absolute;
@@ -71,17 +62,7 @@
                     font-weight: 600;
                     color: #000;
                     margin-bottom: 8px;
-                    &:hover {
-                        color: $green;
-                    }
                 }
-            }
-        }
-        &:hover {
-            padding: 46px 30px;
-            .sub-menu {
-                opacity: 1;
-                visibility: visible;
             }
         }
     }
@@ -226,10 +207,6 @@
     padding-right: 45px;
     padding-left: 22px;
     border-radius: 6px;
-    &:hover {
-        color: $white;
-        background-color: $green;
-    }
 }
 
 .text-link-arrow {
@@ -238,12 +215,6 @@
     padding-right: 22px;
     padding-bottom: 1px;
     background: url('../assets/img/icons/arrow-right-02.svg') right center / 14px no-repeat;
-    &:hover {
-        color: $green;
-        text-decoration: none;
-        padding-right: 25px;
-        background-image: url('../assets/img/icons/arrow-right-03.svg');
-    }
 }
 
 .content-section {
@@ -299,9 +270,6 @@
                     background-color: $green;
                 }
             }
-            &:hover {
-                opacity: 0.8;
-            }
         }
     }
 }
@@ -309,9 +277,6 @@
 .btn-more {
     color: $green;
     font-weight: 500;
-    &:hover {
-        color: $green;
-    }
 }
 
 .basic-slider {
@@ -339,9 +304,6 @@
         position: absolute;
         left: 0;
         top: 0;
-    }
-    &:hover {
-        opacity: 0.8;
     }
 }
 .slick-prev {
@@ -558,11 +520,6 @@ body.searching {
             opacity: 0.6;
             pointer-events: none;
         }
-        &:hover {
-            background-color: $gray04;
-            text-decoration: none;
-            color: $white;
-        }
     }
     span {
         pointer-events: none;
@@ -644,9 +601,6 @@ body.searching {
         display: inline-block;
         &:not(:last-child) {
             margin-right: 10px;
-        }
-        &:hover {
-            color: $green;
         }
     }
 }
@@ -731,9 +685,6 @@ body.searching {
             overflow: hidden;
             position: relative;
             transition: all 0.1s;
-            &:hover {
-                opacity: 0.85;
-            }
             &:before {
                 content: "";
                 width: 100%;
@@ -765,5 +716,4 @@ body.searching {
             right: -50px;
         }
     }
-
 }
