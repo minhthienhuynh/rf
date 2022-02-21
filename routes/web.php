@@ -15,7 +15,22 @@ use App\Http\Controllers\ServiceController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('frontside.home.index');
+});
+Route::get('/about', function () {
+    return view('frontside.about.index');
+});
+Route::get('/blog', function () {
+    return view('frontside.blog.index');
+});
+Route::get('/careers', function () {
+    return view('frontside.careers.index');
+});
+Route::get('/contact', function () {
+    return view('frontside.contact.index');
+});
+Route::get('/service', function () {
+    return view('frontside.service.index');
 });
 
 
