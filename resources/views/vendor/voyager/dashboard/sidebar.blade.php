@@ -6,7 +6,7 @@
                     <div class="logo-icon-container">
                         <?php $admin_logo_img = Voyager::setting('admin.icon_image', ''); ?>
                         @if($admin_logo_img == '')
-                            <img src="/admin/images/logo-icon-light.png" alt="Logo Icon">
+                            <img src="/assets/admin/images/logo-icon-light.png" alt="Logo Icon">
                         @else
                             <img src="{{ Voyager::image($admin_logo_img) }}" alt="Logo Icon">
                         @endif
