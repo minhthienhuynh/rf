@@ -11,8 +11,8 @@ block main
 				.input-text-wrapper
 					input(type="text" class="search-input form-control" placeholder="Search")
 					.close-btn
-			p.sidebar-ttl Category
-			.siderbar-block 
+			.siderbar-block.siderbar-block-category
+				p.sidebar-ttl Category
 				ul.category-list 
 					li
 						a.list-icon(href="#") All blogs (18) 
@@ -32,35 +32,36 @@ block main
 						.form-check
 							input(class="form-check-input" type="checkbox" value="" id="flexCheckDefault5")
 							label(class="form-check-label" for="flexCheckDefault5") Geospatial and Software (4)
-			p.sidebar-ttl Recent Blogs
-			.siderbar-block 
-				ul.category-list 
-					li
-						a(href="#") Weyerhaeuser
-					li
-						a(href="#") Orchard-Loner
-					li
-						a(href="#") Bluesource
-					li
-						a(href="#") Sean's PhD
-					li
-						a(href="#") Miles' PNW work
-					li
-						a(href="#") Allison’s work?
-					li
-						a(href="#") KC FLAT (soon?)
-					li
-						a(href="#") O-L lidar flight (soon?)
-					li
-						a(href="#") Twisp
-					li
-						a(href="#") Oly M&E
+			.recent-blog.pc
+				p.sidebar-ttl Recent Blogs
+				.siderbar-block 
+					ul.category-list 
+						li
+							a(href="#") Weyerhaeuser
+						li
+							a(href="#") Orchard-Loner
+						li
+							a(href="#") Bluesource
+						li
+							a(href="#") Sean's PhD
+						li
+							a(href="#") Miles' PNW work
+						li
+							a(href="#") Allison’s work?
+						li
+							a(href="#") KC FLAT (soon?)
+						li
+							a(href="#") O-L lidar flight (soon?)
+						li
+							a(href="#") Twisp
+						li
+							a(href="#") Oly M&E
 		.page-content 
 			h2.primary-title
 				span.section-sub-ttl ALL BLOGS
 				span.section-ttl Journeys to Nature
 			.row.archive-post-card
-				.col-md-4 
+				.col-sm-6.col-lg-4 
 					.card.post-card.services-post
 						a.post-link-img(href="./blog-detail.html")
 							img.card-img-top(src="./assets/img/images/services-post-img-01.jpg", alt="")
@@ -71,7 +72,7 @@ block main
 							.card-footer
 								p.post-date 8/23/2021
 								a(href="./blog-detail.html").post-link.btn-more More
-				.col-md-4 
+				.col-sm-6.col-lg-4 
 					.card.post-card.services-post
 						a.post-link-img(href="./blog-detail.html")
 							img.card-img-top(src="./assets/img/images/services-post-img-02.jpg", alt="")
@@ -82,7 +83,7 @@ block main
 							.card-footer
 								p.post-date 8/23/2021
 								a(href="./blog-detail.html").post-link.btn-more More
-				.col-md-4 
+				.col-sm-6.col-lg-4 
 					.card.post-card.services-post
 						a.post-link-img(href="./blog-detail.html")
 							img.card-img-top(src="./assets/img/images/services-post-img-03.jpg", alt="")
@@ -93,7 +94,7 @@ block main
 							.card-footer
 								p.post-date 8/23/2021
 								a(href="./blog-detail.html").post-link.btn-more More
-				.col-md-4 
+				.col-sm-6.col-lg-4 
 					.card.post-card.services-post
 						a.post-link-img(href="./blog-detail.html")
 							img.card-img-top(src="./assets/img/images/services-post-img-04.jpg", alt="")
@@ -104,7 +105,7 @@ block main
 							.card-footer
 								p.post-date 8/23/2021
 								a(href="./blog-detail.html").post-link.btn-more More
-				.col-md-4 
+				.col-sm-6.col-lg-4 
 					.card.post-card.services-post
 						a.post-link-img(href="./blog-detail.html")
 							img.card-img-top(src="./assets/img/images/services-post-img-05.jpg", alt="")
@@ -115,7 +116,7 @@ block main
 							.card-footer
 								p.post-date 8/23/2021
 								a(href="./blog-detail.html").post-link.btn-more More
-				.col-md-4 
+				.col-sm-6.col-lg-4 
 					.card.post-card.services-post
 						a.post-link-img(href="./blog-detail.html")
 							img.card-img-top(src="./assets/img/images/services-post-img-06.jpg", alt="")
@@ -126,7 +127,7 @@ block main
 							.card-footer
 								p.post-date 8/23/2021
 								a(href="./blog-detail.html").post-link.btn-more More
-				.col-md-4 
+				.col-sm-6.col-lg-4 
 					.card.post-card.services-post
 						a.post-link-img(href="./blog-detail.html")
 							img.card-img-top(src="./assets/img/images/services-post-img-07.jpg", alt="")
@@ -137,7 +138,7 @@ block main
 							.card-footer
 								p.post-date 8/23/2021
 								a(href="./blog-detail.html").post-link.btn-more More
-				.col-md-4 
+				.col-sm-6.col-lg-4 
 					.card.post-card.services-post
 						a.post-link-img(href="./blog-detail.html")
 							img.card-img-top(src="./assets/img/images/services-post-img-08.jpg", alt="")
@@ -148,7 +149,7 @@ block main
 							.card-footer
 								p.post-date 8/23/2021
 								a(href="./blog-detail.html").post-link.btn-more More
-				.col-md-4 
+				.col-sm-6.col-lg-4 
 					.card.post-card.services-post
 						a.post-link-img(href="./blog-detail.html")
 							img.card-img-top(src="./assets/img/images/services-post-img-09.jpg", alt="")
@@ -167,3 +168,27 @@ block main
 				span ...
 				a(href="#") 18
 				a(href="#").dir Next   
+			.recent-blog.sp.mt-5
+				p.sidebar-ttl Recent Blogs
+				.siderbar-block 
+					ul.category-list 
+						li
+							a(href="#") Weyerhaeuser
+						li
+							a(href="#") Orchard-Loner
+						li
+							a(href="#") Bluesource
+						li
+							a(href="#") Sean's PhD
+						li
+							a(href="#") Miles' PNW work
+						li
+							a(href="#") Allison’s work?
+						li
+							a(href="#") KC FLAT (soon?)
+						li
+							a(href="#") O-L lidar flight (soon?)
+						li
+							a(href="#") Twisp
+						li
+							a(href="#") Oly M&E

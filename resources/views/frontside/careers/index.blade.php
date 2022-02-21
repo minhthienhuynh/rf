@@ -13,56 +13,30 @@
                 small and large public and private landowners on a range of projects.</p>
             <hr class="my-5">
             <h3>All Jobs</h3>
+            @if ($data->count() > 0)
+                <div class="row list-jobs">
+                    @foreach ($data as $item) 
+                        <div class="col-md-3">
+                            <div class="card post-card job-post"><a class="post-link-img" href="{{ route('frontside.careers.detail', $item->slug) }}"><img
+                                        class="card-img-top" src="{{ Voyager::image($item->image) }}"
+                                        alt=""></a>
+                                <div class="card-body">
+                                    <h5 class="card-title"><a href="{{ route('frontside.careers.detail', $item->slug) }}">Project Manager</a></h5>
+                                    <p class="card-text">{{ $item->title }}</p>
+                                    <div class="card-footer"><a class="post-link btn-more"
+                                            href="{{ route('frontside.careers.detail', $item->slug) }}">More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            @else
             <div class="row list-jobs">
-                <div class="col-md-3">
-                    <div class="card post-card job-post"><a class="post-link-img" href="./job-detail.html"><img
-                                class="card-img-top" src="frontside/assets/img/images/career/img-01.jpg" alt=""></a>
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="./job-detail.html">Project Manager</a></h5>
-                            <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et has minim
-                                elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                            <div class="card-footer"><a class="post-link btn-more" href="./job-detail.html">More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card post-card job-post"><a class="post-link-img" href="./job-detail.html"><img
-                                class="card-img-top" src="frontside/assets/img/images/career/img-02.jpg" alt=""></a>
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="./job-detail.html">Senior Forestry Technician</a></h5>
-                            <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et has minim
-                                elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                            <div class="card-footer"><a class="post-link btn-more" href="./job-detail.html">More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card post-card job-post"><a class="post-link-img" href="./job-detail.html"><img
-                                class="card-img-top" src="frontside/assets/img/images/career/img-03.jpg" alt=""></a>
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="./job-detail.html">Forestry Technician</a></h5>
-                            <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et has minim
-                                elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                            <div class="card-footer"><a class="post-link btn-more" href="./job-detail.html">More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card post-card job-post"><a class="post-link-img" href="./job-detail.html"><img
-                                class="card-img-top" src="frontside/assets/img/images/career/img-04.jpg" alt=""></a>
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="./job-detail.html">Administrator</a></h5>
-                            <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et has minim
-                                elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                            <div class="card-footer"><a class="post-link btn-more" href="./job-detail.html">More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               <h5>Data is empty !</h5>
             </div>
+            @endif
+
             <hr class="my-5">
             <h3>Our Hiring Policy</h3>
             <p>Resilient Forestry is an equal opportunity employer that is committed to diversity and inclusion in the

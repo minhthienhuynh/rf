@@ -15,7 +15,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;family=Work+Sans:wght@300;400;500;600;700;900&amp;display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="frontside/css/main.min.css">
+    <link rel="stylesheet" href="{{ asset('frontside/css/main.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontside/css/custom.css')}}">
     <!--[if lt IE 9]> <script src="js/ie9fix.min.js"></script><![endif]-->
 </head>
 
@@ -28,10 +29,10 @@
     @include('layouts.includes.footer')
     <!-- END: footer-->
 
-    <script src="frontside/js/libs.min.js"></script>
-    <script src="frontside/js/plugins.min.js"></script>
-    <script src="frontside/js/start.min.js"></script>
-    <script src="frontside/ie9fix.min.js"></script>
+    <script src="{{ asset('frontside/js/libs.min.js')}}"></script>
+    <script src="{{ asset('frontside/js/plugins.min.js')}}"></script>
+    <script src="{{ asset('frontside/js/start.min.js')}}"></script>
+    <script src="{{ asset('frontside/ie9fix.min.js')}}"></script>
     <!-- END : scripts-->
 </body>
 

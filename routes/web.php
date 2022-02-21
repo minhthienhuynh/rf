@@ -14,18 +14,21 @@ use App\Http\Controllers\ServiceController;
 |
 */
 
+Route::middleware([])->namespace('App\Http\Controllers\Frontside')->group(function () {
+    Route::get('/careers', 'CareerController@index')->name('frontside.careers.index');
+    Route::get('/careers/{slug}', 'CareerController@detail')->name('frontside.careers.detail');
+
+    Route::get('/blog', 'PostController@index')->name('frontside.post.index');
+    Route::get('/blog/{slug}', 'PostController@detail')->name('frontside.post.detail');
+});
+
 Route::get('/', function () {
     return view('frontside.home.index');
 });
 Route::get('/about', function () {
     return view('frontside.about.index');
 });
-Route::get('/blog', function () {
-    return view('frontside.blog.index');
-});
-Route::get('/careers', function () {
-    return view('frontside.careers.index');
-});
+
 Route::get('/contact', function () {
     return view('frontside.contact.index');
 });

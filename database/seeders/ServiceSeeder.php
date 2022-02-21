@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Http\Controllers\ServiceController;
 use App\Models\Post;
 use App\Models\Service;
+use Illuminate\Support\Arr;
 
 class ServiceSeeder extends AbstractSeeder
 {
@@ -15,7 +16,70 @@ class ServiceSeeder extends AbstractSeeder
 
     protected function buildData()
     {
-        // TODO: Implement buildData() method.
+        if (app()->environment('local')) {
+            $data = [
+                [
+                    'title' => 'Stewardship',
+                    'slug' => 's1',
+                    'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'content' => '<p>content</p>',
+                    'hero_picture' => url('/html/assets/img/images/services/img-01.jpg'),
+                    'slider' => json_encode([
+                        url('/html/assets/img/images/services/thumbnail-01.jpg'),
+                        url('/html/assets/img/images/services/thumbnail-02.jpg'),
+                        url('/html/assets/img/images/services/thumbnail-03.jpg'),
+                        url('/html/assets/img/images/services/thumbnail-04.jpg'),
+                    ]),
+                    'published_at' => now(),
+                ],
+                [
+                    'title' => 'Planning & Adaptive Management',
+                    'slug' => 's2',
+                    'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'content' => '<p>content</p>',
+                    'hero_picture' => url('/html/assets/img/images/services/img-02.jpg'),
+                    'slider' => json_encode([
+                        url('/html/assets/img/images/services/thumbnail-01.jpg'),
+                        url('/html/assets/img/images/services/thumbnail-02.jpg'),
+                        url('/html/assets/img/images/services/thumbnail-03.jpg'),
+                        url('/html/assets/img/images/services/thumbnail-04.jpg'),
+                    ]),
+                    'published_at' => now(),
+                ],
+                [
+                    'title' => 'Science',
+                    'slug' => 's3',
+                    'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'content' => '<p>content</p>',
+                    'hero_picture' => url('/html/assets/img/images/services/img-03.jpg'),
+                    'slider' => json_encode([
+                        url('/html/assets/img/images/services/thumbnail-01.jpg'),
+                        url('/html/assets/img/images/services/thumbnail-02.jpg'),
+                        url('/html/assets/img/images/services/thumbnail-03.jpg'),
+                        url('/html/assets/img/images/services/thumbnail-04.jpg'),
+                    ]),
+                    'published_at' => now(),
+                ],
+                [
+                    'title' => 'Timber',
+                    'slug' => 's4',
+                    'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'content' => '<p>content</p>',
+                    'hero_picture' => url('/html/assets/img/images/services/img-04.jpg'),
+                    'slider' => json_encode([
+                        url('/html/assets/img/images/services/thumbnail-01.jpg'),
+                        url('/html/assets/img/images/services/thumbnail-02.jpg'),
+                        url('/html/assets/img/images/services/thumbnail-03.jpg'),
+                        url('/html/assets/img/images/services/thumbnail-04.jpg'),
+                    ]),
+                    'published_at' => now(),
+                ],
+            ];
+
+            foreach ($data as $datum) {
+                $this->getModel()::updateOrCreate(Arr::only($datum, 'slug'), Arr::except($datum, 'slug'));
+            }
+        }
     }
 
     protected function buildCRUD()
@@ -37,7 +101,6 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
-                    'order'         => 1,
                 ],
             ],
             [
@@ -53,7 +116,11 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 2,
+                    'details'       => [
+                        'display'       => [
+                            'width'         => 6,
+                        ],
+                    ],
                 ],
             ],
             [
@@ -70,6 +137,9 @@ class ServiceSeeder extends AbstractSeeder
                     'add'           => 1,
                     'delete'        => 1,
                     'details'       => [
+                        'display'       => [
+                            'width'         => 6,
+                        ],
                         'slugify'       => [
                             'origin'        => 'title',
                             'forceUpdate'   => true,
@@ -78,7 +148,6 @@ class ServiceSeeder extends AbstractSeeder
                             'rule'          => 'unique:services,slug',
                         ],
                     ],
-                    'order'         => 3,
                 ],
             ],
             [
@@ -94,7 +163,6 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 4,
                 ],
             ],
             [
@@ -110,7 +178,11 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 5,
+                    'details'       => [
+                        'validation'    => [
+                            'rule'          => 'required',
+                        ],
+                    ],
                 ],
             ],
             [
@@ -120,13 +192,12 @@ class ServiceSeeder extends AbstractSeeder
                 'values'        => [
                     'type'          => 'image',
                     'display_name'  => __('voyager::seeders.data_rows.hero_picture'),
-                    'required'      => 0,
-                    'browse'        => 0,
+                    'required'      => 1,
+                    'browse'        => 1,
                     'read'          => 1,
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 6,
                 ],
             ],
             [
@@ -136,13 +207,12 @@ class ServiceSeeder extends AbstractSeeder
                 'values'        => [
                     'type'          => 'multiple_images',
                     'display_name'  => __('voyager::seeders.data_rows.slider'),
-                    'required'      => 0,
+                    'required'      => 1,
                     'browse'        => 0,
                     'read'          => 1,
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 7,
                 ],
             ],
             [
@@ -158,7 +228,6 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 8,
                 ]
             ],
             [
@@ -169,7 +238,7 @@ class ServiceSeeder extends AbstractSeeder
                     'type'          => 'relationship',
                     'display_name'  => __('voyager::seeders.data_rows.posts'),
                     'required'      => 0,
-                    'browse'        => 1,
+                    'browse'        => 0,
                     'read'          => 1,
                     'edit'          => 1,
                     'add'           => 1,
@@ -185,7 +254,6 @@ class ServiceSeeder extends AbstractSeeder
                         'pivot'         => '1',
                         'taggable'      => '0',
                     ],
-                    'order'         => 9,
                 ]
             ],
             [
@@ -201,7 +269,6 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
-                    'order'         => 10,
                 ]
             ],
             [
@@ -217,7 +284,6 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
-                    'order'         => 11,
                 ]
             ],
         ];

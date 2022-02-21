@@ -17,7 +17,7 @@ class CreateCategoriesTable extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->foreignId('parent_id')->nullable()->constrained('categories')->onUpdate('cascade')->onDelete('set null');
-            $table->bigInteger('order')->default(1);
+            $table->unsignedBigInteger('order')->default(1);
             $table->string('name');
             $table->string('slug')->unique();
             $table->timestamps();

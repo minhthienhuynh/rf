@@ -5,6 +5,9 @@ header.header
       a(href="./")
         img(src="./assets/img/images/logo.png", alt="Resilient Forestry" width="150")
     .main-nav
+      .block-login.sp
+        .login-button 
+          a.btn.btn-light(href="./login.html") Login
       ul.global-nav
         li
           if menu_name == "home"
@@ -62,7 +65,12 @@ header.header
             a(href="#contact-section").active CONTACT
           else
             a(href="#contact-section") CONTACT
-    .account-buttons 
+    .account-buttons
       .login-button 
         a.btn.btn-light(href="./login.html") Login
+    #menu-toggle
+      span
+      span
+      span
+      span
 // END: header

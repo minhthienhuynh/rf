@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use App\Models\Traits\Seoable;
+use TCG\Voyager\Models\Post as Model;
 
-class Post extends \TCG\Voyager\Models\Post
+class Post extends Model
 {
     use Seoable;
 }

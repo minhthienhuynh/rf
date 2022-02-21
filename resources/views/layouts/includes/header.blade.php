@@ -1,6 +1,6 @@
 <header class="header">
     <div class="container large">
-        <div class="logo"><a href="./"><img src="frontside/assets/img/images/logo.png" alt="Resilient Forestry"
+        <div class="logo"><a href="./"><img src="{{ asset('frontside/assets/img/images/logo.png')}}" alt="Resilient Forestry"
                     width="150"></a></div>
         <div class="main-nav">
             <ul class="global-nav">

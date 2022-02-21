@@ -33,30 +33,14 @@
                 transition: all 0.1s;
                 opacity: 0;
             }
-            &:hover,
-            &.active {
-                font-weight: 600;
-                color: $green;
-                text-decoration: none;
-                &:before {
-                    opacity: 1;
-                }
-            }
         }
         .sub-menu {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
             width: 100vw;
-            z-index: 10;
             background-color: $gray06;
             padding: 40px 15px;
             display: flex;
             justify-content: center;
             transition: all 0.2s;
-            opacity: 0;
-            visibility: hidden;
             li {
                 max-width: 180px;
                 display: flex;
@@ -71,17 +55,7 @@
                     font-weight: 600;
                     color: #000;
                     margin-bottom: 8px;
-                    &:hover {
-                        color: $green;
-                    }
                 }
-            }
-        }
-        &:hover {
-            padding: 46px 30px;
-            .sub-menu {
-                opacity: 1;
-                visibility: visible;
             }
         }
     }
@@ -118,6 +92,7 @@
     address {
         color: $gray02;
         font-size: 14px;
+        margin-bottom: 0;
     }
     .f-logo {
         margin-bottom: 40px;
@@ -213,7 +188,7 @@
     .visual-desc {
         font-size: 24px;
         line-height: 1.16em;
-        font-weight: 600;
+        font-weight: 500;
         max-width: 855px;
         margin: 0 auto 2.5em;
     }
@@ -226,10 +201,6 @@
     padding-right: 45px;
     padding-left: 22px;
     border-radius: 6px;
-    &:hover {
-        color: $white;
-        background-color: $green;
-    }
 }
 
 .text-link-arrow {
@@ -238,12 +209,6 @@
     padding-right: 22px;
     padding-bottom: 1px;
     background: url('../assets/img/icons/arrow-right-02.svg') right center / 14px no-repeat;
-    &:hover {
-        color: $green;
-        text-decoration: none;
-        padding-right: 25px;
-        background-image: url('../assets/img/icons/arrow-right-03.svg');
-    }
 }
 
 .content-section {
@@ -299,9 +264,6 @@
                     background-color: $green;
                 }
             }
-            &:hover {
-                opacity: 0.8;
-            }
         }
     }
 }
@@ -309,9 +271,6 @@
 .btn-more {
     color: $green;
     font-weight: 500;
-    &:hover {
-        color: $green;
-    }
 }
 
 .basic-slider {
@@ -339,9 +298,6 @@
         position: absolute;
         left: 0;
         top: 0;
-    }
-    &:hover {
-        opacity: 0.8;
     }
 }
 .slick-prev {
@@ -558,11 +514,6 @@ body.searching {
             opacity: 0.6;
             pointer-events: none;
         }
-        &:hover {
-            background-color: $gray04;
-            text-decoration: none;
-            color: $white;
-        }
     }
     span {
         pointer-events: none;
@@ -595,6 +546,9 @@ body.searching {
     img {
         &:not(:last-child) {
             margin-bottom: 35px;
+        }
+        & + hr {
+            margin-top: 20px !important;
         }
     }
     h3 {
@@ -644,9 +598,6 @@ body.searching {
         display: inline-block;
         &:not(:last-child) {
             margin-right: 10px;
-        }
-        &:hover {
-            color: $green;
         }
     }
 }
@@ -719,6 +670,7 @@ body.searching {
     }
     .gallery-thumbnail {
         width: 424px;
+        max-width: 100%;
         margin: 0 auto;
         .gallery-thumbnail-item {
             margin: 0 8px;
@@ -731,8 +683,12 @@ body.searching {
             overflow: hidden;
             position: relative;
             transition: all 0.1s;
-            &:hover {
-                opacity: 0.85;
+            background-position: center;
+            background-size: cover;
+            img {
+                opacity: 0;
+                width: 100%;
+                height: 100%;
             }
             &:before {
                 content: "";
@@ -765,5 +721,13 @@ body.searching {
             right: -50px;
         }
     }
-
+}
+.list-jobs {
+    [class*="col-"] {
+        display: flex;
+        flex-direction: column;
+        .job-post {
+            flex-grow: 1;
+        }
+    }
 }

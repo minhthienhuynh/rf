@@ -21,17 +21,19 @@
     <div class="container">
         <div class="f-navigation">
             <div class="f-col-left">
-                <div class="f-logo"><a href="./index.html"><img src="frontside/assets/img/images/logo.png"
-                            alt="Resilient Forestry" width="150"></a></div>
+                <div class="f-logo"><a href="./index.html"><img
+                            src="{{ asset('frontside/assets/img/images/logo.png') }}" alt="Resilient Forestry"
+                            width="150"></a></div>
                 <ul class="list-social">
-                    <li><a href="#" target="_blank"> <img src="frontside/assets/img/icons/twitter.svg" alt="Twitter"
-                                width="18"></a></li>
-                    <li><a href="#" target="_blank"> <img src="frontside/assets/img/icons/linked.svg" alt="Linked In"
-                                width="17"></a></li>
-                    <li><a href="#" target="_blank"> <img src="frontside/assets/img/icons/facebook.svg" alt="Facebook"
-                                width="10"></a></li>
-                    <li><a class="instagram" href="#" target="_blank"><img src="frontside/assets/img/icons/instagram.svg"
-                                alt="Instagram" width="32"></a></li>
+                    <li><a href="#" target="_blank"> <img src="{{ asset('frontside/assets/img/icons/twitter.svg') }}"
+                                alt="Twitter" width="18"></a></li>
+                    <li><a href="#" target="_blank"> <img src="{{ asset('frontside/assets/img/icons/linked.svg') }}"
+                                alt="Linked In" width="17"></a></li>
+                    <li><a href="#" target="_blank"> <img src="{{ asset('frontside/assets/img/icons/facebook.svg') }}"
+                                alt="Facebook" width="10"></a></li>
+                    <li><a class="instagram" href="#" target="_blank"><img
+                                src="{{ asset('frontside/assets/img/icons/instagram.svg') }} " alt="Instagram"
+                                width="32"></a></li>
                 </ul>
             </div>
             <div class="f-col-right">

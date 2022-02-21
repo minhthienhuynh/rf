@@ -13,183 +13,70 @@
                 <p class="sidebar-ttl">Category</p>
                 <div class="siderbar-block">
                     <ul class="category-list">
-                        <li><a class="list-icon" href="#">All blogs (18) </a></li>
-                        <li>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
-                                <label class="form-check-label" for="flexCheckDefault1">Stewardship (4)</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
-                                <label class="form-check-label" for="flexCheckDefault2">Planning & Adaptive Management
-                                    (4)</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
-                                <label class="form-check-label" for="flexCheckDefault3">Science (3)</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault4">
-                                <label class="form-check-label" for="flexCheckDefault4">Timber (3)</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault5">
-                                <label class="form-check-label" for="flexCheckDefault5">Geospatial and Software (4)</label>
-                            </div>
-                        </li>
+                        <li><a class="list-icon" href="{{ route('frontside.post.index') }}">All blogs
+                                ({{ $data->lastPage() }}) </a></li>
+                        @if ($category->count() > 0)
+                            @foreach ($category as $catI)
+                                <li>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="{{ $catI->id }}"
+                                            id="flexCheckDefault_{{ $catI->id }}">
+                                        <label class="form-check-label"
+                                            for="flexCheckDefault_{{ $catI->id }}">{{ $catI->name }}
+                                            ({{ $catI->posts->count() }})
+                                        </label>
+                                    </div>
+                                </li>
+                            @endforeach
+                        @endif
                     </ul>
                 </div>
-                <p class="sidebar-ttl">Recent Blogs</p>
-                <div class="siderbar-block">
-                    <ul class="category-list">
-                        <li><a href="#">Weyerhaeuser</a></li>
-                        <li><a href="#">Orchard-Loner</a></li>
-                        <li><a href="#">Bluesource</a></li>
-                        <li><a href="#">Sean's PhD</a></li>
-                        <li><a href="#">Miles' PNW work</a></li>
-                        <li><a href="#">Allison’s work?</a></li>
-                        <li><a href="#">KC FLAT (soon?)</a></li>
-                        <li><a href="#">O-L lidar flight (soon?)</a></li>
-                        <li><a href="#">Twisp</a></li>
-                        <li><a href="#">Oly M&E</a></li>
-                    </ul>
-                </div>
+                @if ($recent->count() > 0)
+                    <p class="sidebar-ttl">Recent Blogs</p>
+                    <div class="siderbar-block">
+                        <ul class="category-list">
+                            @foreach ($recent as $recentI)
+                                <li>
+                                    <a
+                                        href="{{ route('frontside.post.detail', $recentI->slug) }}">{{ $recentI->title }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
             <div class="page-content">
                 <h2 class="primary-title"><span class="section-sub-ttl">ALL BLOGS</span><span
                         class="section-ttl">Journeys to Nature</span></h2>
                 <div class="row archive-post-card">
-                    <div class="col-md-4">
-                        <div class="card post-card services-post"><a class="post-link-img" href="./blog-detail.html"><img
-                                    class="card-img-top" src="frontside/assets/img/images/services-post-img-01.jpg" alt=""></a>
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="./blog-detail.html">Miller River</a></h5>
-                                <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et has
-                                    minim elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                                <div class="card-footer">
-                                    <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                        href="./blog-detail.html">More</a>
+                    @if ($data->count() > 0)
+                        @foreach ($data as $blog)
+                            <div class="col-md-4">
+                                <div class="card post-card services-post"><a class="post-link-img"
+                                        href="{{ route('frontside.post.detail', $blog->slug) }}"><img
+                                            class="card-img-top" src="{{ voyager::image($blog->image) }}"
+                                            alt="{{ $blog->title }}"></a>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><a
+                                                href="{{ route('frontside.post.detail', $blog->slug) }}">{{ $blog->title }}</a>
+                                        </h5>
+                                        <p class="card-text">{{ $blog->excerpt }}</p>
+                                        <div class="card-footer">
+                                            <p class="post-date">{{ $blog->created_at->format('m/d/Y') }}</p><a
+                                                class="post-link btn-more"
+                                                href="{{ route('frontside.post.detail', $blog->slug) }}">More</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card post-card services-post"><a class="post-link-img" href="./blog-detail.html"><img
-                                    class="card-img-top" src="frontside/assets/img/images/services-post-img-02.jpg" alt=""></a>
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="./blog-detail.html">Other Small Private Land Owner
-                                        Projects</a></h5>
-                                <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et has
-                                    minim elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                                <div class="card-footer">
-                                    <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                        href="./blog-detail.html">More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card post-card services-post"><a class="post-link-img" href="./blog-detail.html"><img
-                                    class="card-img-top" src="frontside/assets/img/images/services-post-img-03.jpg" alt=""></a>
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="./blog-detail.html">King’s Country</a></h5>
-                                <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et has
-                                    minim elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                                <div class="card-footer">
-                                    <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                        href="./blog-detail.html">More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card post-card services-post"><a class="post-link-img" href="./blog-detail.html"><img
-                                    class="card-img-top" src="frontside/assets/img/images/services-post-img-04.jpg" alt=""></a>
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="./blog-detail.html">Miller River</a></h5>
-                                <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et has
-                                    minim elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                                <div class="card-footer">
-                                    <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                        href="./blog-detail.html">More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card post-card services-post"><a class="post-link-img" href="./blog-detail.html"><img
-                                    class="card-img-top" src="frontside/assets/img/images/services-post-img-05.jpg" alt=""></a>
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="./blog-detail.html">Orchard-Loner</a></h5>
-                                <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et has
-                                    minim elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                                <div class="card-footer">
-                                    <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                        href="./blog-detail.html">More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card post-card services-post"><a class="post-link-img" href="./blog-detail.html"><img
-                                    class="card-img-top" src="frontside/assets/img/images/services-post-img-06.jpg" alt=""></a>
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="./blog-detail.html">Bluesource</a></h5>
-                                <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et has
-                                    minim elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                                <div class="card-footer">
-                                    <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                        href="./blog-detail.html">More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card post-card services-post"><a class="post-link-img" href="./blog-detail.html"><img
-                                    class="card-img-top" src="frontside/assets/img/images/services-post-img-07.jpg" alt=""></a>
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="./blog-detail.html">Sean's PhD</a></h5>
-                                <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et has
-                                    minim elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                                <div class="card-footer">
-                                    <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                        href="./blog-detail.html">More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card post-card services-post"><a class="post-link-img" href="./blog-detail.html"><img
-                                    class="card-img-top" src="frontside/assets/img/images/services-post-img-08.jpg" alt=""></a>
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="./blog-detail.html">Miles’ PNW Work</a></h5>
-                                <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et has
-                                    minim elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                                <div class="card-footer">
-                                    <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                        href="./blog-detail.html">More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="card post-card services-post"><a class="post-link-img" href="./blog-detail.html"><img
-                                    class="card-img-top" src="frontside/assets/img/images/services-post-img-09.jpg" alt=""></a>
-                            <div class="card-body">
-                                <h5 class="card-title"><a href="./blog-detail.html">Allison’s work?</a></h5>
-                                <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et has
-                                    minim elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                                <div class="card-footer">
-                                    <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                        href="./blog-detail.html">More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                        @endforeach
+                    @else
+                        <h5>Data is empty</h5>
+                    @endif
                 </div>
-                <div class="pagination"> <a class="dir disabled" href="#">Prev</a><a class="current"
-                        href="#">1</a><a href="#">2</a><a href="#">3</a><span>...</span><a href="#">18</a><a
-                        class="dir" href="#">Next </a></div>
+                <div class="pagination">
+                    {{ $data->links('layouts.includes.bootstrap-4') }}
+                </div>
             </div>
         </div>
     </section>
