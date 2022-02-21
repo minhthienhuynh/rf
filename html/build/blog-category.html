@@ -20,6 +20,9 @@
       <div class="container large"> 
         <div class="logo"><a href="./"><img src="./assets/img/images/logo.png" alt="Resilient Forestry" width="150"></a></div>
         <div class="main-nav">
+          <div class="block-login sp">
+            <div class="login-button"> <a class="btn btn-light" href="./login.html">Login</a></div>
+          </div>
           <ul class="global-nav">
             <li><a href="./">HOME</a>
             </li>
@@ -47,9 +50,10 @@
             </li>
           </ul>
         </div>
-        <div class="account-buttons"> 
+        <div class="account-buttons">
           <div class="login-button"> <a class="btn btn-light" href="./login.html">Login</a></div>
         </div>
+        <div id="menu-toggle"><span></span><span></span><span></span><span></span></div>
       </div>
     </header>
     <!-- END: header-->
@@ -63,8 +67,8 @@
               <div class="close-btn"></div>
             </div>
           </div>
-          <p class="sidebar-ttl">Category</p>
-          <div class="siderbar-block"> 
+          <div class="siderbar-block siderbar-block-category">
+            <p class="sidebar-ttl">Category</p>
             <ul class="category-list"> 
               <li><a class="list-icon" href="#">All blogs (18) </a></li>
               <li>
@@ -91,26 +95,28 @@
               </li>
             </ul>
           </div>
-          <p class="sidebar-ttl">Recent Blogs</p>
-          <div class="siderbar-block"> 
-            <ul class="category-list"> 
-              <li><a href="#">Weyerhaeuser</a></li>
-              <li><a href="#">Orchard-Loner</a></li>
-              <li><a href="#">Bluesource</a></li>
-              <li><a href="#">Sean's PhD</a></li>
-              <li><a href="#">Miles' PNW work</a></li>
-              <li><a href="#">Allison’s work?</a></li>
-              <li><a href="#">KC FLAT (soon?)</a></li>
-              <li><a href="#">O-L lidar flight (soon?)</a></li>
-              <li><a href="#">Twisp</a></li>
-              <li><a href="#">Oly M&E</a></li>
-            </ul>
+          <div class="recent-blog pc">
+            <p class="sidebar-ttl">Recent Blogs</p>
+            <div class="siderbar-block"> 
+              <ul class="category-list"> 
+                <li><a href="#">Weyerhaeuser</a></li>
+                <li><a href="#">Orchard-Loner</a></li>
+                <li><a href="#">Bluesource</a></li>
+                <li><a href="#">Sean's PhD</a></li>
+                <li><a href="#">Miles' PNW work</a></li>
+                <li><a href="#">Allison’s work?</a></li>
+                <li><a href="#">KC FLAT (soon?)</a></li>
+                <li><a href="#">O-L lidar flight (soon?)</a></li>
+                <li><a href="#">Twisp</a></li>
+                <li><a href="#">Oly M&E</a></li>
+              </ul>
+            </div>
           </div>
         </div>
         <div class="page-content"> 
           <h2 class="primary-title"><span class="section-sub-ttl">ALL BLOGS</span><span class="section-ttl">Journeys to Nature</span></h2>
           <div class="row archive-post-card">
-            <div class="col-md-4"> 
+            <div class="col-sm-6 col-lg-4">
               <div class="card post-card services-post"><a class="post-link-img" href="./blog-detail.html"><img class="card-img-top" src="./assets/img/images/services-post-img-01.jpg" alt=""></a>
                 <div class="card-body">
                   <h5 class="card-title"><a href="./blog-detail.html"> Miller River</a></h5>
@@ -121,7 +127,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4"> 
+            <div class="col-sm-6 col-lg-4">
               <div class="card post-card services-post"><a class="post-link-img" href="./blog-detail.html"><img class="card-img-top" src="./assets/img/images/services-post-img-02.jpg" alt=""></a>
                 <div class="card-body">
                   <h5 class="card-title"><a href="./blog-detail.html"> Other Small Private Land Owner Projects</a></h5>
@@ -132,7 +138,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4"> 
+            <div class="col-sm-6 col-lg-4">
               <div class="card post-card services-post"><a class="post-link-img" href="./blog-detail.html"><img class="card-img-top" src="./assets/img/images/services-post-img-03.jpg" alt=""></a>
                 <div class="card-body">
                   <h5 class="card-title"><a href="./blog-detail.html"> King’s Country</a></h5>
@@ -142,6 +148,23 @@
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="recent-blog sp mt-5">
+            <p class="sidebar-ttl">Recent Blogs</p>
+            <div class="siderbar-block"> 
+              <ul class="category-list"> 
+                <li><a href="#">Weyerhaeuser</a></li>
+                <li><a href="#">Orchard-Loner</a></li>
+                <li><a href="#">Bluesource</a></li>
+                <li><a href="#">Sean's PhD</a></li>
+                <li><a href="#">Miles' PNW work</a></li>
+                <li><a href="#">Allison’s work?</a></li>
+                <li><a href="#">KC FLAT (soon?)</a></li>
+                <li><a href="#">O-L lidar flight (soon?)</a></li>
+                <li><a href="#">Twisp</a></li>
+                <li><a href="#">Oly M&E</a></li>
+              </ul>
             </div>
           </div>
         </div>
@@ -171,6 +194,7 @@
         <div class="f-navigation"> 
           <div class="f-col-left">
             <div class="f-logo"><a href="./index.html"><img src="./assets/img/images/logo.png" alt="Resilient Forestry" width="150"></a></div>
+            <p class="text-center sp">Resilient Forestry has a unique skill set in monitoring changes in forests over time for compliance or research objectives. </p>
             <ul class="list-social">
               <li><a href="#" target="_blank"> <img src="./assets/img/icons/twitter.svg" alt="Twitter" width="18"></a></li>
               <li><a href="#" target="_blank"> <img src="./assets/img/icons/linked.svg" alt="Linked In" width="17"></a></li>
