@@ -670,6 +670,7 @@ body.searching {
     }
     .gallery-thumbnail {
         width: 424px;
+        max-width: 100%;
         margin: 0 auto;
         .gallery-thumbnail-item {
             margin: 0 8px;
@@ -682,6 +683,13 @@ body.searching {
             overflow: hidden;
             position: relative;
             transition: all 0.1s;
+            background-position: center;
+            background-size: cover;
+            img {
+                opacity: 0;
+                width: 100%;
+                height: 100%;
+            }
             &:before {
                 content: "";
                 width: 100%;
@@ -711,6 +719,15 @@ body.searching {
         }
         .slick-next {
             right: -50px;
+        }
+    }
+}
+.list-jobs {
+    [class*="col-"] {
+        display: flex;
+        flex-direction: column;
+        .job-post {
+            flex-grow: 1;
         }
     }
 }

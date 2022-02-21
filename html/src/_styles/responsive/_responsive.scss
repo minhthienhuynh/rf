@@ -220,6 +220,14 @@
             height: 50px;
         }
     }
+    .services-block-slider.block-full {
+        .slick-prev {
+            left: 0;
+        }
+        .slick-next {
+            right: 0;
+        }
+    }
 }
 
 // Medium devices (tablets, less than 992px)
@@ -282,6 +290,11 @@
             margin-bottom: 30px;
         }
     }
+    .row.list-jobs {
+        .job-post {
+            margin-bottom: 30px;
+        }
+    }
 }
 
 // Small devices (landscape phones, less than 768px)
@@ -309,7 +322,7 @@
         position: fixed;
         z-index: 50;
         top: 20px;
-        right: 20px;
+        right: 15px;
         margin-left: auto;
         span {
             display: block;
@@ -555,6 +568,24 @@
             font-size: 30px;
         }
     }
+    .post-detail-footer {
+        a {
+            margin-bottom: 10px;
+        }
+    }
+    .services-block-slider {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+        .post-card {
+            width: calc(50% - 10px);
+            margin-right: 20px;
+            margin-bottom: 20px;
+            &:nth-child(even) {
+                margin-right: 0;
+            }
+        }
+    }
     .footer {
         padding-bottom: 50px;
         .f-navigation {
@@ -621,6 +652,25 @@
     .content-section {
         & + .content-section {
             padding-top: 0;
+        }
+    }
+    .block-gallery {
+        .gallery-main {
+            margin-bottom: 20px;
+        }
+        .gallery-thumbnail {
+            padding: 0 30px;
+            width: 100%;
+            .gallery-thumbnail-item {
+                height: 20vw;
+                margin: 0 2px;
+            }
+            .slick-prev {
+                left: 0;
+            }
+            .slick-next {
+                right: 0;
+            }
         }
     }
 }
@@ -708,6 +758,23 @@
     .page-content {
         .primary-title {
             font-size: 26px;
+        }
+    }
+    .quote {
+        padding-left: 20px;
+        p {
+            font-size: 16px;
+        }
+    }
+    .breadcrumb {
+        li {
+            font-size: 14px;
+        }
+    }
+    .services-block-slider {
+        .post-card {
+            width: 100%;
+            margin-right: 0;
         }
     }
 }
