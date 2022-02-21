@@ -21,4 +21,9 @@ return [
         'media' => 'Media',
         'relationships' => 'Relationships',
     ],
+    'settings' => [
+        'admin' => [
+            'description_value' => 'Admin for Laravel',
+        ],
+    ],
 ];
