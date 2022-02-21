@@ -35,19 +35,12 @@
             }
         }
         .sub-menu {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
             width: 100vw;
-            z-index: 10;
             background-color: $gray06;
             padding: 40px 15px;
             display: flex;
             justify-content: center;
             transition: all 0.2s;
-            opacity: 0;
-            visibility: hidden;
             li {
                 max-width: 180px;
                 display: flex;
@@ -99,6 +92,7 @@
     address {
         color: $gray02;
         font-size: 14px;
+        margin-bottom: 0;
     }
     .f-logo {
         margin-bottom: 40px;
@@ -194,7 +188,7 @@
     .visual-desc {
         font-size: 24px;
         line-height: 1.16em;
-        font-weight: 600;
+        font-weight: 500;
         max-width: 855px;
         margin: 0 auto 2.5em;
     }
@@ -552,6 +546,9 @@ body.searching {
     img {
         &:not(:last-child) {
             margin-bottom: 35px;
+        }
+        & + hr {
+            margin-top: 20px !important;
         }
     }
     h3 {
