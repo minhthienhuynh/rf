@@ -39,10 +39,7 @@ class Service extends Model
      */
     public static function getAll()
     {
-        return self::whereNotNull('published_at')
-        ->where('published_at', '<=', now())
-        ->orderBy('published_at', 'desc')
-        ->get();
+        return self::orderBy('order')->get();
     }
 
     /**
