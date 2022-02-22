@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('content')
     <section class="main">
-        <div class="page-visual" style="background-image: url('{{ asset('/assets/img/images/visual-img-02.jpg') }}');">
+        <div class="page-visual" style="background-image: url('{{ asset('frontside/assets/img/images/visual-img-02.jpg') }}');">
         </div>
         <div class="page-2-column">
             <div class="left-sidebar">

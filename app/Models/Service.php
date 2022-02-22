@@ -39,10 +39,7 @@ class Service extends Model
      */
     public static function getAll()
     {
-        return self::whereNotNull('published_at')
-        ->where('published_at', '<=', now())
-        ->orderBy('published_at', 'desc')
-        ->get();
+        return self::orderBy('order')->get();
     }
 
     /**
@@ -63,5 +60,10 @@ class Service extends Model
         static::deleted(function (self $model) use ($menuService) {
             $menuService->deleteMenuItem($model->title, 'SERVICES');
         });
+    }
+
+    public function blogs()
+    {
+        return $this->belongsToMany(Post::class, 'post_service');
     }
 }

@@ -20,6 +20,8 @@ Route::middleware([])->namespace('App\Http\Controllers\Frontside')->group(functi
 
     Route::get('/blog', 'PostController@index')->name('frontside.post.index');
     Route::get('/blog/{slug}', 'PostController@detail')->name('frontside.post.detail');
+    Route::get('/service/{slug}', 'ServiceController@detail')->name('frontside.service.detail');
+    Route::get('/about/{slug}', 'PageController@detail')->name('frontside.page.detail');
 });
 
 Route::get('/', function () {
@@ -32,10 +34,6 @@ Route::get('/about', function () {
 Route::get('/contact', function () {
     return view('frontside.contact.index');
 });
-Route::get('/service', function () {
-    return view('frontside.service.index');
-});
-
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
