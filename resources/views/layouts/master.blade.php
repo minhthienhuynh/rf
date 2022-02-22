@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="{{ asset('frontside/css/main.min.css')}}">
     <link rel="stylesheet" href="{{ asset('frontside/css/custom.css')}}">
     <!--[if lt IE 9]> <script src="js/ie9fix.min.js"></script><![endif]-->
+    @stack('styles')
 </head>
 
 <body>
@@ -32,7 +33,8 @@
     <script src="{{ asset('frontside/js/libs.min.js')}}"></script>
     <script src="{{ asset('frontside/js/plugins.min.js')}}"></script>
     <script src="{{ asset('frontside/js/start.min.js')}}"></script>
-    <script src="{{ asset('frontside/ie9fix.min.js')}}"></script>
+    <script src="{{ asset('frontside/js/ie9fix.min.js')}}"></script>
+    @stack('scripts')
     <!-- END : scripts-->
 </body>
 

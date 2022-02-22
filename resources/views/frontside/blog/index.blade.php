@@ -14,12 +14,16 @@
                 <div class="siderbar-block">
                     <ul class="category-list">
                         <li><a class="list-icon" href="{{ route('frontside.post.index') }}">All blogs
-                                ({{ $data->lastPage() }}) </a></li>
+                                ({{ $countItem }}) </a></li>
                         @if ($category->count() > 0)
                             @foreach ($category as $catI)
+                                @php
+                                    $checked = request()->category_id;
+                                    $arrayC = explode(',', $checked);
+                                @endphp
                                 <li>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="{{ $catI->id }}"
+                                        <input class="form-check-input" type="checkbox" {{ in_array($catI->id, $arrayC) ? 'checked' : '' }}  value="{{ $catI->id }}"
                                             id="flexCheckDefault_{{ $catI->id }}">
                                         <label class="form-check-label"
                                             for="flexCheckDefault_{{ $catI->id }}">{{ $catI->name }}
@@ -81,3 +85,17 @@
         </div>
     </section>
 @endsection
+
+@push('scripts')
+    <script>
+        $('.form-check-input').on('change', () => {
+            var arr = [];
+            var route = '{{ route("frontside.post.index") }}'
+            $('input.form-check-input:checkbox:checked').each(function () {
+                arr.push($(this).val());
+            });
+            window.location.href = route+ "?category_id=" + arr.toString()
+        })    
+    </script>   
+@endpush
+

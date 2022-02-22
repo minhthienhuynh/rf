@@ -9,17 +9,33 @@ class PostController extends Controller
 {
     public function index()
     {
-        
-        $data = Post::orderByDesc('id')->where('status', 'PUBLISHED')->paginate(9);
+        $listCateId = [];
+        $cates = request()->category_id;
+        if($cates) {
+            $listCateId = explode(',',  $cates);
+        }
+
+        $query = Post::orderByDesc('id')->where('status', 'PUBLISHED');
+        $countItem = $query->get()->count();
+
+        if(count($listCateId) > 0) {
+            $query = $query->whereIn('category_id', $listCateId);
+        }
+
+        $data = $query->paginate(9);
         $recent = Post::take(10)->orderByDesc('id')->get();
         $category = Category::orderByDesc('order')->get();
 
-        return view('frontside.blog.index', compact('data', 'recent', 'category'));
+        return view('frontside.blog.index', compact('data', 'recent', 'category', 'countItem'));
     }
 
     public function detail($slug)
     {
-        $data = Post::where('slug', $slug)->first();
-        return view('frontside.blog.detail', compact('data'));
+        $data = Post::where('slug', $slug)->where('status', 'PUBLISHED')->first();
+        $recent = Post::take(10)->orderByDesc('id')->get();
+        $category = Category::orderByDesc('order')->get();
+        $query = Post::orderByDesc('id')->where('status', 'PUBLISHED');
+        $countItem = $query->get()->count();
+        return view('frontside.blog.detail', compact('data', 'recent', 'category', 'countItem'));
     }
 }
