@@ -17,218 +17,50 @@
                         class="section-ttl">
                         Services of forest inventories and<br>management planning</span></h3>
                 <ul class="nav nav-tabs tab-title-only" id="tab-services" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="stewardship-tab" data-bs-toggle="tab"
-                            data-bs-target="#stewardship" type="button" role="tab" aria-controls="stewardship"
-                            aria-selected="true">Stewardship</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="planning-tab" data-bs-toggle="tab" data-bs-target="#planning"
-                            type="button" role="tab" aria-controls="planning" aria-selected="true">Planning & Adaptive
-                            Management</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="science-tab" data-bs-toggle="tab" data-bs-target="#science"
-                            type="button" role="tab" aria-controls="science" aria-selected="true">Science</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="timber-tab" data-bs-toggle="tab" data-bs-target="#timber"
-                            type="button" role="tab" aria-controls="timber" aria-selected="true">Timber</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="geospatial-tab" data-bs-toggle="tab" data-bs-target="#geospatial"
-                            type="button" role="tab" aria-controls="geospatial" aria-selected="true">Geospatial and
-                            Software</button>
-                    </li>
+                    @foreach ($dataService as $key => $service)
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link {{ $key == 0 ? 'active' : '' }}" id="{{ $service->slug }}-tab"
+                                data-bs-toggle="tab" data-bs-target="#{{ $service->slug }}" type="button" role="tab"
+                                aria-controls="{{ $service->slug }}" aria-selected="true">{{ $service->title }}</button>
+                        </li>
+                    @endforeach
                 </ul>
                 <div class="tab-content" id="tab-services-content">
-                    <div class="tab-pane fade show active" id="stewardship" role="tabpanel"
-                        aria-labelledby="stewardship-tab">
-                        <div class="services-content">
-                            <div class="services-block-intro">
-                                <h4 class="services-intro-ttl">STEWARDSHIP</h4>
-                                <p>We combine field forestry capabilities with landscape-scale analyses and
-                                    multi-stakeholder decision making for publicly-owned lands, private forest owners,
-                                    and non-profits. Services include forest inventories and management planning, sale
-                                    layout and harvest administration.</p>
-                                <div class="block-button"><a class="text-link-arrow" href="./services.html">See
-                                        More</a></div>
-                            </div>
-                            <div class="services-block-slider basic-slider">
-                                <div class="card post-card services-post"><a class="post-link-img"
-                                        href="./blog-detail.html"><img class="card-img-top"
-                                            src="frontside/assets/img/images/services-post-img-01.jpg" alt=""></a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><a href="./blog-detail.html">Miller River</a></h5>
-                                        <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren
-                                            Et has minim elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                                        <div class="card-footer">
-                                            <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                                href="./blog-detail.html">More</a>
-                                        </div>
+                    @foreach ($dataService as $index => $item)
+                        <div class="tab-pane fade show {{ $index == 0 ? 'active' : '' }}" id="{{ $item->slug }}"
+                            role="tabpanel" aria-labelledby="{{ $item->slug }}-tab">
+                            <div class="services-content">
+                                <div class="services-block-intro">
+                                    <h4 class="services-intro-ttl">{{ $item->title }}</h4>
+                                    <p>{{ $item->description }}</p>
+                                    <div class="block-button">
+                                        <a class="text-link-arrow"
+                                            href="{{ route('services.show', $item->slug) }}">See More</a>
                                     </div>
                                 </div>
-                                <div class="card post-card services-post"><a class="post-link-img"
-                                        href="./blog-detail.html"><img class="card-img-top"
-                                            src="frontside/assets/img/images/services-post-img-02.jpg" alt=""></a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"> <a href="./blog-detail.html">Other Small Private
-                                                Land Owner Projects</a></h5>
-                                        <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren
-                                            Et has minim elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                                        <div class="card-footer">
-                                            <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                                href="./blog-detail.html">More</a>
+                                <div class="services-block-slider basic-slider">
+                                    @foreach ($item->blogs as $item)
+                                        <div class="card post-card services-post"><a class="post-link-img"
+                                                href="{{ route('frontside.post.detail', $item->slug) }}"><img
+                                                    class="card-img-top" src="{{ voyager::image($item->image) }}"
+                                                    alt=""></a>
+                                            <div class="card-body">
+                                                <h5 class="card-title"><a
+                                                        href="{{ route('frontside.post.detail', $item->slug) }}">{{ $item->title }}</a>
+                                                </h5>
+                                                <p class="card-text">{{ $item->excerpt }}</p>
+                                                <div class="card-footer">
+                                                    <p class="post-date">{{ $item->created_at->format('m/d/Y') }}</p>
+                                                    <a class="post-link btn-more"
+                                                        href="{{ route('frontside.post.detail', $item->slug) }}">More</a>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="card post-card services-post"><a class="post-link-img"
-                                        href="./blog-detail.html"><img class="card-img-top"
-                                            src="frontside/assets/img/images/services-post-img-03.jpg" alt=""></a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><a href="./blog-detail.html">King’s Country</a></h5>
-                                        <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren
-                                            Et has minim elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                                        <div class="card-footer">
-                                            <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                                href="./blog-detail.html">More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card post-card services-post"><a class="post-link-img"
-                                        href="./blog-detail.html"><img class="card-img-top"
-                                            src="frontside/assets/img/images/services-post-img-02.jpg" alt=""></a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><a href="./blog-detail.html">Other Small Private
-                                                Land Owner Projects</a></h5>
-                                        <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no
-                                            suscipitquaeren Et has minim elitr intellegat ntiopam.Mea aeterno eleifen
-                                        </p>
-                                        <div class="card-footer">
-                                            <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                                href="./blog-detail.html">More</a>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="tab-pane fade" id="planning" role="tabpanel" aria-labelledby="stewardship-tab">
-                        <div class="services-content">
-                            <div class="services-block-intro">
-                                <h4 class="services-intro-ttl">Planning & Adaptive Management</h4>
-                                <p>We combine field forestry capabilities with landscape-scale analyses and
-                                    multi-stakeholder decision making for publicly-owned lands, private forest owners,
-                                    and non-profits. Services include forest inventories and management planning, sale
-                                    layout and harvest administration.</p>
-                                <div class="block-button"><a class="text-link-arrow" href="./blog-category.html">See
-                                        More</a></div>
-                            </div>
-                            <div class="services-block-slider basic-slider">
-                                <div class="card post-card services-post"><a class="post-link-img"
-                                        href="./blog-detail.html"><img class="card-img-top"
-                                            src="frontside/assets/img/images/services-post-img-01.jpg" alt=""></a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><a href="./blog-detail.html">Miller River</a></h5>
-                                        <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no
-                                            suscipitquaeren Et has minim elitr intellegat ntiopam.Mea aeterno eleifen
-                                        </p>
-                                        <div class="card-footer">
-                                            <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                                href="./blog-detail.html">More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="science" role="tabpanel" aria-labelledby="stewardship-tab">
-                        <div class="services-content">
-                            <div class="services-block-intro">
-                                <h4 class="services-intro-ttl">Science</h4>
-                                <p>We combine field forestry capabilities with landscape-scale analyses and
-                                    multi-stakeholder decision making for publicly-owned lands, private forest owners,
-                                    and non-profits. Services include forest inventories and management planning, sale
-                                    layout and harvest administration.</p>
-                                <div class="block-button"><a class="text-link-arrow" href="./blog-category.html">See
-                                        More</a></div>
-                            </div>
-                            <div class="services-block-slider basic-slider">
-                                <div class="card post-card services-post"><a class="post-link-img"
-                                        href="./blog-detail.html"><img class="card-img-top"
-                                            src="frontside/assets/img/images/services-post-img-01.jpg" alt=""></a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><a href="./blog-detail.html">Miller River</a></h5>
-                                        <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no
-                                            suscipitquaeren Et has minim elitr intellegat ntiopam.Mea aeterno eleifen
-                                        </p>
-                                        <div class="card-footer">
-                                            <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                                href="./blog-detail.html">More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="timber" role="tabpanel" aria-labelledby="stewardship-tab">
-                        <div class="services-content">
-                            <div class="services-block-intro">
-                                <h4 class="services-intro-ttl">Timber</h4>
-                                <p>We combine field forestry capabilities with landscape-scale analyses and
-                                    multi-stakeholder decision making for publicly-owned lands, private forest owners,
-                                    and non-profits. Services include forest inventories and management planning, sale
-                                    layout and harvest administration.</p>
-                                <div class="block-button"><a class="text-link-arrow" href="./blog-category.html">See
-                                        More</a></div>
-                            </div>
-                            <div class="services-block-slider basic-slider">
-                                <div class="card post-card services-post"><a class="post-link-img"
-                                        href="./blog-detail.html"><img class="card-img-top"
-                                            src="frontside/assets/img/images/services-post-img-01.jpg" alt=""></a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><a href="./blog-detail.html">Miller River</a></h5>
-                                        <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no
-                                            suscipitquaeren Et has minim elitr intellegat ntiopam.Mea aeterno eleifen
-                                        </p>
-                                        <div class="card-footer">
-                                            <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                                href="./blog-detail.html">More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="geospatial" role="tabpanel" aria-labelledby="stewardship-tab">
-                        <div class="services-content">
-                            <div class="services-block-intro">
-                                <h4 class="services-intro-ttl">Geospatial and Software</h4>
-                                <p>We combine field forestry capabilities with landscape-scale analyses and
-                                    multi-stakeholder decision making for publicly-owned lands, private forest owners,
-                                    and non-profits. Services include forest inventories and management planning, sale
-                                    layout and harvest administration.</p>
-                                <div class="block-button"><a class="text-link-arrow" href="./blog-category.html">See
-                                        More</a></div>
-                            </div>
-                            <div class="services-block-slider basic-slider">
-                                <div class="card post-card services-post"><a class="post-link-img"
-                                        href="./blog-detail.html"><img class="card-img-top"
-                                            src="frontside/assets/img/images/services-post-img-01.jpg" alt=""></a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><a href="./blog-detail.html">Miller River</a></h5>
-                                        <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no
-                                            suscipitquaeren Et has minim elitr intellegat ntiopam.Mea aeterno eleifen
-                                        </p>
-                                        <div class="card-footer">
-                                            <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                                href="./blog-detail.html">More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -237,42 +69,19 @@
                 <h3 class="primary-title text-center"><span class="section-sub-ttl">ABOUT US</span><span
                         class="section-ttl">Exceptional Solution For Forestry Project</span></h3>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="aboutus-card">
-                            <div class="card-img"> <img src="frontside/assets/img/images/about-img-01.jpg"
-                                    width="100%" alt=""></div>
-                            <div class="card-content">
-                                <h4 class="card-ttl text-center">MISSION/ VISION</h4>
-                                <p class="card-txt">Et has minim elitr intellegat. Meaning aeterno eleife
-                                    antiopam ad, nam no suscipiuaeren. Et has minim elitrele intellegat mea aeterno
-                                    eleifemination antiopam ad, nam no suscipituition.</p>
-                            </div><a class="card-link" href="./vision.html"> </a>
+                    @foreach ($dataPage as $page)
+                        <div class="col-md-4">
+                            <div class="aboutus-card">
+                                <div class="card-img"> <img src="{{ voyager::image($page->hero_picture) }}"
+                                        width="100%" alt="{{ $page->title }}"></div>
+                                <div class="card-content">
+                                    <h4 class="card-ttl text-center">{{ $page->title }}</h4>
+                                    <p class="card-txt">{{ $page->description }}</p>
+                                </div><a class="card-link" href="{{ route('pages.show', $page->slug) }}">
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="aboutus-card">
-                            <div class="card-img"> <img src="frontside/assets/img/images/about-img-02.jpg"
-                                    width="100%" alt=""></div>
-                            <div class="card-content">
-                                <h4 class="card-ttl text-center">DIVERSITY</h4>
-                                <p class="card-txt">Et has minim elitr intellegat. Meaning aeterno eleife
-                                    antiopam ad, nam no suscipiuaeren. Et has minim elitrele intellegat mea aeterno
-                                    eleifemination antiopam ad, nam no suscipituition.</p>
-                            </div><a class="card-link" href="./diversity.html"> </a>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="aboutus-card">
-                            <div class="card-img"> <img src="frontside/assets/img/images/about-img-03.jpg"
-                                    width="100%" alt=""></div>
-                            <div class="card-content">
-                                <h4 class="card-ttl text-center">MEMBERS</h4>
-                                <p class="card-txt">Et has minim elitr intellegat. Meaning aeterno eleife
-                                    antiopam ad, nam no suscipiuaeren. Et has minim elitrele intellegat mea aeterno
-                                    eleifemination antiopam ad, nam no suscipituition.</p>
-                            </div><a class="card-link" href="./members.html"> </a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -282,70 +91,27 @@
                         class="section-ttl">Our Latest Blogs</span></h3>
                 <div class="latest-blog-section">
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="card post-card services-post"><a class="post-link-img"
-                                    href="./blog-detail.html"><img class="card-img-top"
-                                        src="frontside/assets/img/images/blog-img-01.jpg" alt=""></a>
-                                <div class="card-body">
-                                    <h5 class="card-title"><a href="./blog-detail.html">Weyerhaeuser</a></h5>
-                                    <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et
-                                        has minim elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                                    <div class="card-footer">
-                                        <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                            href="./blog-detail.html">More</a>
+                        @foreach ($dataBlog as $blog)
+                            <div class="col-md-3">
+                                <div class="card post-card services-post"><a class="post-link-img"
+                                        href="{{ route('frontside.post.detail', $blog->slug) }}"><img class="card-img-top"
+                                            src="{{ voyager::image($blog->image) }}" alt="{{ $blog->title }}"></a>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><a href="{{ route('frontside.post.detail', $blog->slug) }}">{{ $blog->title }}</a></h5>
+                                        <p class="card-text">{{ $blog->description }}</p>
+                                        <div class="card-footer">
+                                            <p class="post-date">{{ $blog->created_at->format('m/d/Y') }}</p><a class="post-link btn-more"
+                                                href="{{ route('frontside.post.detail', $blog->slug) }}">More</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card post-card services-post"><a class="post-link-img"
-                                    href="./blog-detail.html"><img class="card-img-top"
-                                        src="frontside/assets/img/images/blog-img-02.jpg" alt=""></a>
-                                <div class="card-body">
-                                    <h5 class="card-title"><a href="./blog-detail.html">Orchard-Loner</a></h5>
-                                    <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et
-                                        has minim elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                                    <div class="card-footer">
-                                        <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                            href="./blog-detail.html">More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card post-card services-post"><a class="post-link-img"
-                                    href="./blog-detail.html"><img class="card-img-top"
-                                        src="frontside/assets/img/images/blog-img-03.jpg" alt=""></a>
-                                <div class="card-body">
-                                    <h5 class="card-title"><a href="./blog-detail.html">Bluesource</a></h5>
-                                    <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et
-                                        has minim elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                                    <div class="card-footer">
-                                        <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                            href="./blog-detail.html">More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="card post-card services-post"><a class="post-link-img"
-                                    href="./blog-detail.html"><img class="card-img-top"
-                                        src="frontside/assets/img/images/blog-img-04.jpg" alt=""></a>
-                                <div class="card-body">
-                                    <h5 class="card-title"><a href="./blog-detail.html">Sean's PhD</a></h5>
-                                    <p class="card-text">Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren Et
-                                        has minim elitr intellegat ntiopam.Mea aeterno eleifen</p>
-                                    <div class="card-footer">
-                                        <p class="post-date">8/23/2021</p><a class="post-link btn-more"
-                                            href="./blog-detail.html">More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
-                <div class="section-button text-center"> <a class="text-link-arrow" href="#">See All
-                        Blogs</a></div>
+                <div class="section-button text-center"> 
+                    <a class="text-link-arrow" href="{{ route('frontside.post.index') }}">See All Blogs</a>
+                </div>
             </div>
         </div>
         <div class="content-section section-clients">

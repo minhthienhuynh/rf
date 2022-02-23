@@ -4,7 +4,8 @@
                     width="150"></a></div>
         <div class="main-nav">
             <ul class="global-nav">
-                <li><a class="active" href="/">HOME</a>
+                {{ menu('user', 'layouts.includes.menu-custom') }}
+                {{-- <li><a class="active" href="/">HOME</a>
                 </li>
                 <li><a href="javascript:void(0)">SERVICES</a>
                     <ul class="sub-menu">
@@ -43,7 +44,7 @@
                 <li><a href="./careers.html">CAREERS</a>
                 </li>
                 <li><a href="#contact-section">CONTACT</a>
-                </li>
+                </li> --}}
             </ul>
         </div>
         <div class="account-buttons">
