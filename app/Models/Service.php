@@ -61,4 +61,9 @@ class Service extends Model
             $menuService->deleteMenuItem($model->title, 'SERVICES');
         });
     }
+
+    public function blogs()
+    {
+        return $this->belongsToMany(Post::class, 'post_service');
+    }
 }

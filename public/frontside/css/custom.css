@@ -1,0 +1,5 @@
+.pagination li.current, .pagination span.current {
+    background-color: #1A9288;
+    color: #FFFFFF;
+    pointer-events: none;
+}

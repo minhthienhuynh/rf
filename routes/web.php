@@ -14,10 +14,23 @@ use App\Http\Controllers\ServiceController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::middleware([])->namespace('App\Http\Controllers\Frontside')->group(function () {
+    Route::get('/', 'HomeController@index')->name('frontside.home.index');
+    Route::get('/careers', 'CareerController@index')->name('frontside.careers.index');
+    Route::get('/careers/{slug}', 'CareerController@detail')->name('frontside.careers.detail');
+
+    Route::get('/blog', 'PostController@index')->name('frontside.post.index');
+    Route::get('/blog/{slug}', 'PostController@detail')->name('frontside.post.detail');
+    Route::get('/service/{slug}', 'ServiceController@detail')->name('services.show');
+    Route::get('/about/{slug}', 'PageController@detail')->name('pages.show');
+});
+Route::get('/about', function () {
+    return view('frontside.about.index');
 });
 
+Route::get('/contact', function () {
+    return view('frontside.contact.index');
+});
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
