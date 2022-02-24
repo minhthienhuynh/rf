@@ -110,7 +110,7 @@
                     </div>
                 </div>
                 <div class="section-button text-center"> 
-                    <a class="text-link-arrow" href="{{ route('frontside.post.index') }}">See All Blogs</a>
+                    <a class="text-link-arrow" href="{{ route('blogs.index') }}">See All Blogs</a>
                 </div>
             </div>
         </div>

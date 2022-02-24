@@ -13,7 +13,7 @@
                 <p class="sidebar-ttl">Category</p>
                 <div class="siderbar-block">
                     <ul class="category-list">
-                        <li><a class="list-icon" href="{{ route('frontside.post.index') }}">All blogs
+                        <li><a class="list-icon" href="{{ route('blogs.index') }}">All blogs
                                 ({{ $countItem }}) </a></li>
                         @if ($category->count() > 0)
                             @foreach ($category as $catI)
@@ -90,7 +90,7 @@
     <script>
         $('.form-check-input').on('change', () => {
             var arr = [];
-            var route = '{{ route("frontside.post.index") }}'
+            var route = '{{ route("blogs.index") }}'
             $('input.form-check-input:checkbox:checked').each(function () {
                 arr.push($(this).val());
             });
