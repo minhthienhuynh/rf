@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomepageSettingController;
 use App\Http\Controllers\ServiceController;
 
 /*
@@ -38,5 +39,12 @@ Route::group(['prefix' => 'admin'], function () {
     Route::middleware('admin.user')->name('voyager.')->group(function () {
         Route::match(['get', 'post'], '/services/{service}/order-slider', [ServiceController::class, 'orderSlider'])
             ->name('services.order-slider');
+
+        Route::controller(HomepageSettingController::class)
+            ->prefix('homepage-settings')
+            ->name('homepage-settings.')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+        });
     });
 });
