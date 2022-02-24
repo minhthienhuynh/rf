@@ -38,13 +38,13 @@ class UserMenuSeeder extends Seeder
             ],
             [
                 'title'    => 'SERVICES',
-                'url'      => '',
+                'url'      => '#',
                 'route'    => null,
                 'children' => Service::getAll(),
             ],
             [
                 'title'    => 'ABOUT',
-                'url'      => '',
+                'url'      => '#',
                 'route'    => null,
                 'children' => Page::getAll(),
             ],
