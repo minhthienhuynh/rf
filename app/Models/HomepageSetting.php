@@ -20,4 +20,13 @@ class HomepageSetting extends Model
         'order',
         'group',
     ];
+
+    /**
+     * The model's default values for attributes.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'value' => '',
+    ];
 }

@@ -220,10 +220,9 @@
     </div>
 
     <div class="page-content settings container-fluid">
-        <form action="{{ route('voyager.settings.update') }}" method="POST" enctype="multipart/form-data">
-            {{ method_field("PUT") }}
+        <form action="{{ route('voyager.homepage-settings.update') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
-            <input type="hidden" name="homepage_setting_tab" class="setting_tab" value="{{ session('homepage_setting_tab') }}" />
+            <input type="hidden" name="homepage_setting_tab" class="homepage_setting_tab" value="{{ session('homepage_setting_tab') }}" />
             <div class="panel">
 
                 <div class="page-content settings container-fluid">
@@ -241,44 +240,30 @@
                             @foreach($settings as $setting)
                             <div class="panel-heading">
                                 <h3 class="panel-title">
-                                    {{ $setting->display_name }} @if(config('voyager.show_dev_tips'))<code>setting('{{ $setting->key }}')</code>@endif
+                                    {{ $setting->display_name }} @if(config('voyager.show_dev_tips'))<code>homepage_setting('{{ $setting->key }}')</code>@endif
                                 </h3>
-                                <div class="panel-actions">
-                                    <a href="{{ route('voyager.settings.move_up', $setting->id) }}">
-                                        <i class="sort-icons voyager-sort-asc"></i>
-                                    </a>
-                                    <a href="{{ route('voyager.settings.move_down', $setting->id) }}">
-                                        <i class="sort-icons voyager-sort-desc"></i>
-                                    </a>
-                                    @can('delete', Voyager::model('Setting'))
-                                    <i class="voyager-trash"
-                                       data-id="{{ $setting->id }}"
-                                       data-display-key="{{ $setting->key }}"
-                                       data-display-name="{{ $setting->display_name }}"></i>
-                                    @endcan
-                                </div>
                             </div>
 
                             <div class="panel-body no-padding-left-right">
                                 <div class="col-md-12 no-padding-left-right">
-                                    @if ($setting->type == "text")
+                                    @if ($setting->type == \App\Models\Setting::TYPE_TEXT)
                                         <input type="text" class="form-control" name="{{ $setting->key }}" value="{{ $setting->value }}">
-                                    @elseif($setting->type == "text_area")
+                                    @elseif($setting->type == \App\Models\Setting::TYPE_TEXT_AREA)
                                         <textarea class="form-control" name="{{ $setting->key }}">{{ $setting->value ?? '' }}</textarea>
-                                    @elseif($setting->type == "rich_text_box")
+                                    @elseif($setting->type == \App\Models\Setting::TYPE_RICH_TEXT_BOX)
                                         <textarea class="form-control richTextBox" name="{{ $setting->key }}">{{ $setting->value ?? '' }}</textarea>
-                                    @elseif($setting->type == "code_editor")
+                                    @elseif($setting->type == \App\Models\Setting::TYPE_CODE_EDITOR)
                                         <?php $options = json_decode($setting->details); ?>
                                         <div id="{{ $setting->key }}" data-theme="{{ @$options->theme }}" data-language="{{ @$options->language }}" class="ace_editor min_height_400" name="{{ $setting->key }}">{{ $setting->value ?? '' }}</div>
                                         <textarea name="{{ $setting->key }}" id="{{ $setting->key }}_textarea" class="hidden">{{ $setting->value ?? '' }}</textarea>
-                                    @elseif($setting->type == "image" || $setting->type == "file")
+                                    @elseif($setting->type == \App\Models\Setting::TYPE_IMAGE || $setting->type == \App\Models\Setting::TYPE_FILE)
                                         @if(isset( $setting->value ) && !empty( $setting->value ) && Storage::disk(config('voyager.storage.disk'))->exists($setting->value))
                                             <div class="img_settings_container">
                                                 <a href="{{ route('voyager.settings.delete_value', $setting->id) }}" class="voyager-x delete_value"></a>
                                                 <img src="{{ Storage::disk(config('voyager.storage.disk'))->url($setting->value) }}" style="width:200px; height:auto; padding:2px; border:1px solid #ddd; margin-bottom:10px;">
                                             </div>
                                             <div class="clearfix"></div>
-                                        @elseif($setting->type == "file" && isset( $setting->value ))
+                                        @elseif($setting->type == \App\Models\Setting::TYPE_FILE && isset( $setting->value ))
                                             @if(json_decode($setting->value) !== null)
                                                 @foreach(json_decode($setting->value) as $file)
                                                   <div class="fileType">
@@ -291,7 +276,7 @@
                                             @endif
                                         @endif
                                         <input type="file" name="{{ $setting->key }}">
-                                    @elseif($setting->type == "select_dropdown")
+                                    @elseif($setting->type == \App\Models\Setting::TYPE_SELECT_DROPDOWN)
                                         <?php $options = json_decode($setting->details); ?>
                                         <?php $selected_value = (isset($setting->value) && !empty($setting->value)) ? $setting->value : NULL; ?>
                                         <select class="form-control" name="{{ $setting->key }}">
@@ -303,7 +288,7 @@
                                             @endif
                                         </select>
 
-                                    @elseif($setting->type == "radio_btn")
+                                    @elseif($setting->type == \App\Models\Setting::TYPE_RADIO_BTN)
                                         <?php $options = json_decode($setting->details); ?>
                                         <?php $selected_value = (isset($setting->value) && !empty($setting->value)) ? $setting->value : NULL; ?>
                                         <?php $default = (isset($options->default)) ? $options->default : NULL; ?>
@@ -319,7 +304,7 @@
                                                 @endforeach
                                             @endif
                                         </ul>
-                                    @elseif($setting->type == "checkbox")
+                                    @elseif($setting->type == \App\Models\Setting::TYPE_CHECKBOX)
                                         <?php $options = json_decode($setting->details); ?>
                                         <?php $checked = (isset($setting->value) && $setting->value == 1) ? true : false; ?>
                                         @if (isset($options->on) && isset($options->off))
@@ -327,15 +312,10 @@
                                         @else
                                             <input type="checkbox" name="{{ $setting->key }}" @if($checked) checked @endif class="toggleswitch">
                                         @endif
+                                    @elseif($setting->type == \App\Models\Setting::TYPE_ITEMS)
+                                        <a href="{{ $setting->value }}">Go to list</a>
                                     @endif
                                 </div>
-                                {{--<div class="col-md-2 no-padding-left-right">
-                                    <select class="form-control group_select" name="{{ $setting->key }}_group">
-                                        @foreach($homepageSettings as $group => $settings)
-                                        <option value="{{ $group }}" {!! $setting->group == $group ? 'selected' : '' !!}>{{ $group }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>--}}
                             </div>
                             @if(!$loop->last)
                                 <hr>
@@ -404,7 +384,7 @@
             $('.toggleswitch').bootstrapToggle();
 
             $('[data-toggle="tab"]').click(function() {
-                $(".setting_tab").val($(this).html());
+                $(".homepage_setting_tab").val($(this).html());
             });
 
             $('.delete_value').click(function(e) {

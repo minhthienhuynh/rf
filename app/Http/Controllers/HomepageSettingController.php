@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\HomepageSetting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
-class HomepageSettingController extends Controller
+class HomepageSettingController extends \TCG\Voyager\Http\Controllers\Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,23 +24,43 @@ class HomepageSettingController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
-    }
+        // Check permission
+        $this->authorize('edit', app(HomepageSetting::class));
 
-    /**
-     * Move the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function move(Request $request, $id)
-    {
-        //
+        $settings = HomepageSetting::all();
+
+        foreach ($settings as $setting) {
+            $content = $this->getContentBasedOnType($request, 'homepage-settings', (object) [
+                'type'    => $setting->type,
+                'field'   => str_replace('.', '_', $setting->key),
+                'group'   => $setting->group,
+            ], $setting->details);
+
+            if ($setting->type == 'image' && $content == null) {
+                continue;
+            }
+
+            if ($setting->type == 'file' && $content == null) {
+                continue;
+            }
+
+            $key = preg_replace('/^'.Str::slug($setting->group).'./i', '', $setting->key);
+
+            $setting->key = implode('.', [Str::slug($setting->group), $key]);
+            $setting->value = @$content ?? '';
+            $setting->save();
+        }
+
+        $request->session()->flash('homepage_setting_tab', $request->get('homepage_setting_tab'));
+
+        return back()->with([
+            'message'    => __('voyager::settings.successfully_saved'),
+            'alert-type' => 'success',
+        ]);
     }
 }

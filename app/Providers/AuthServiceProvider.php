@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\HomepageSetting;
+use App\Policies\HomepageSettingPolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -13,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        HomepageSetting::class  => HomepageSettingPolicy::class,
     ];
 
     /**

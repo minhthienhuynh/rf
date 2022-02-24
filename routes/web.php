@@ -45,6 +45,7 @@ Route::group(['prefix' => 'admin'], function () {
             ->name('homepage-settings.')
             ->group(function () {
                 Route::get('/', 'index')->name('index');
+                Route::post('/', 'update')->name('update');
         });
     });
 });

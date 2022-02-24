@@ -5,7 +5,7 @@ namespace App\Services;
 use App\Models\MenuItem;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\DB;
+use TCG\Voyager\Facades\Voyager;
 
 class MenuService
 {
@@ -15,8 +15,8 @@ class MenuService
      */
     public function updateMenuItems(string $itemTitle, Collection $children)
     {
-        /** @var MenuItem $menuItem */
-        $menuItem = MenuItem::where('title', $itemTitle)->first();
+        $menu = Voyager::model('Menu')->where('name', 'user')->first();
+        $menuItem = $menu->items()->where('title', $itemTitle)->first();
         $menuItem->children()->delete();
 
         foreach ($children as $key => $item) {
@@ -38,7 +38,10 @@ class MenuService
      */
     public function deleteMenuItem(string $title, string $parent = null)
     {
+        $menu = Voyager::model('Menu')->where('name', 'user')->first();
+
         $item = MenuItem::where('title', $title)
+            ->where('menu_id', $menu->id)
             ->when(!blank($parent), function (Builder $query) use ($parent) {
                 $query->whereHas('parent', function (Builder $query) use ($parent) {
                     $query->where('title', $parent);

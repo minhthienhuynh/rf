@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Database\Seeders\About\MemberSeeder;
 use Database\Seeders\About\PageSeeder;
+use Database\Seeders\Homepage\ClientSeeder;
+use Database\Seeders\Homepage\HomepageSettingSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -33,5 +35,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ServiceSeeder::class);
         $this->call(PageSeeder::class);
         $this->call(MemberSeeder::class);
+        $this->call(ClientSeeder::class);
+        $this->call(HomepageSettingSeeder::class);
     }
 }
