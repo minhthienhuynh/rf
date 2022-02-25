@@ -53,7 +53,16 @@ class PageSeeder extends AbstractSeeder
     protected function buildCRUD()
     {
         //Data Type
-        $dataType = $this->_buildDataType();
+        // $dataType = $this->_buildDataType();
+
+        //Data Type
+        $dataType = $this->_buildDataType([
+            'order_column'         => 'order',
+            'order_display_column' => 'title',
+            'order_direction'      => 'asc',
+            'default_search_key'   => null,
+            'scope'                => null
+        ]);
 
         $dataRows = [
             [

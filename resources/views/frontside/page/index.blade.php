@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@include('layouts.includes.seo', ['model'=> $data, 'type'=>''])
 @section('content')
     <section class="main">
         <div class="page-visual" style="background-image: url('{{ voyager::image($data->hero_picture) }}');"></div>
