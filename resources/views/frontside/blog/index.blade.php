@@ -6,7 +6,9 @@
             <div class="left-sidebar">
                 <div class="searchbox">
                     <div class="input-text-wrapper">
-                        <input class="search-input form-control" type="text" placeholder="Search">
+                        <input class="search-input form-control blog-key-search"
+                            value="{{ request()->q }}"
+                            type="text" placeholder="Search">
                         <div class="close-btn"></div>
                     </div>
                 </div>
@@ -89,13 +91,26 @@
 @push('scripts')
     <script>
         $('.form-check-input').on('change', () => {
-            var arr = [];
-            var route = '{{ route("blogs.index") }}'
+            let q = '{{ request()->q }}'
+            let arr = [];
+            let route = '{{ route("blogs.index") }}'
             $('input.form-check-input:checkbox:checked').each(function () {
                 arr.push($(this).val());
             });
-            window.location.href = route+ "?category_id=" + arr.toString()
+            window.location.href = route + "?category_id=" + arr.toString() + "&q=" + q
         })    
+
+        $('.blog-key-search').on('input', function() {
+            let q = $(this).val()
+            let route = '{{ route("blogs.index") }}'
+
+            $(document).on('keypress', function(e) {
+                if (e.which == 13) {
+                    window.location.href = route + "?q=" + q
+                }
+            });
+        })
+        
     </script>   
 @endpush
 

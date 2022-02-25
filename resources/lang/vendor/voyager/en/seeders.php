@@ -9,6 +9,7 @@ return [
         'hero_picture' => 'Hero Picture',
         'image' => 'Image',
         'link' => 'Link',
+        'logo' => 'Logo',
         'pdf' => 'Pdf',
         'position' => 'Position',
         'posts' => 'Posts',

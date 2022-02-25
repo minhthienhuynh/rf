@@ -43,6 +43,14 @@ class Service extends Model
     }
 
     /**
+     * The posts that belong to the service.
+     */
+    public function posts()
+    {
+        return $this->belongsToMany(Post::class);
+    }
+
+    /**
      * The "booted" method of the model.
      *
      * @return void

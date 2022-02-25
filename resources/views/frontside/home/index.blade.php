@@ -4,16 +4,14 @@
         <!-- END: PAGE - HOME PAGE-->
         <div class="main-visual" style="background-image: url('frontside/assets/img/images/visual-img-01.jpg');">
             <div class="container large">
-                <h2 class="text-center">
-                    Conservation, Forestry, and <br>Management in a Changing Landscape</h2>
-                <p class="visual-desc text-center">Resilient Forestry has a unique skill set in monitoring changes in
-                    forests over time for compliance or research objectives. </p>
-                <div class="visual-button text-center"><a class="btn btn-contact" href="#">Contact Us</a></div>
+                <h2 class="text-center">{{ homepage_setting('banner.title') }}</h2>
+                <p class="visual-desc text-center">{{ homepage_setting('banner.desc') }}</p>
+                <div class="visual-button text-center"><a class="btn btn-contact" href="">Contact Us</a></div>
             </div>
         </div>
         <div class="content-section section-services">
             <div class="container large">
-                <h3 class="primary-title text-center"><span class="section-sub-ttl">OUR services</span><span
+                <h3 class="primary-title text-center"><span class="section-sub-ttl">{{ homepage_setting('service.title') }}</span><span
                         class="section-ttl">
                         Services of forest inventories and<br>management planning</span></h3>
                 <ul class="nav nav-tabs tab-title-only" id="tab-services" role="tablist">
@@ -66,7 +64,7 @@
         </div>
         <div class="content-section section-aboutus">
             <div class="container large">
-                <h3 class="primary-title text-center"><span class="section-sub-ttl">ABOUT US</span><span
+                <h3 class="primary-title text-center"><span class="section-sub-ttl">{{ homepage_setting('about.title') }}</span><span
                         class="section-ttl">Exceptional Solution For Forestry Project</span></h3>
                 <div class="row">
                     @foreach ($dataPage as $page)
@@ -87,7 +85,7 @@
         </div>
         <div class="content-section section-blog">
             <div class="container large">
-                <h3 class="primary-title text-center"><span class="section-sub-ttl">BLOG</span><span
+                <h3 class="primary-title text-center"><span class="section-sub-ttl">{{ voyager:: }}</span><span
                         class="section-ttl">Our Latest Blogs</span></h3>
                 <div class="latest-blog-section">
                     <div class="row">
@@ -116,7 +114,7 @@
         </div>
         <div class="content-section section-clients">
             <div class="container large">
-                <h3 class="primary-title text-center"><span class="section-sub-ttl">CLIENTS</span><span
+                <h3 class="primary-title text-center"><span class="section-sub-ttl">{{ voayger:: }}</span><span
                         class="section-ttl">Trusted By</span></h3>
                 <ul class="list-clients">
                     <li><img src="frontside/assets/img/images/clients/client-01.svg" widht="157" alt=""></li>

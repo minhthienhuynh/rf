@@ -5,15 +5,15 @@
             <div class="section-info">
                 <dl>
                     <dt>Email</dt>
-                    <dd>contact@resilientforestry.com</dd>
+                    <dd>{{ voyager::setting('site.email') }}</dd>
                 </dl>
                 <dl>
                     <dt>Address</dt>
-                    <dd>3614 California Ave SW, PMB 160 Seattle, WA, 98116</dd>
+                    <dd>{{ voyager::setting('site.address') }}</dd>
                 </dl>
                 <dl>
                     <dt>Phone</dt>
-                    <dd>206-730-6154</dd>
+                    <dd>{{ voyager::setting('site.phone') }}</dd>
                 </dl>
             </div>
         </div>
