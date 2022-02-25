@@ -53,9 +53,6 @@ class PageSeeder extends AbstractSeeder
     protected function buildCRUD()
     {
         //Data Type
-        // $dataType = $this->_buildDataType();
-
-        //Data Type
         $dataType = $this->_buildDataType([
             'order_column'         => 'order',
             'order_display_column' => 'title',
@@ -119,7 +116,6 @@ class PageSeeder extends AbstractSeeder
                         ],
                         'slugify'       => [
                             'origin'        => 'title',
-                            'forceUpdate'   => true,
                         ],
                         'validation'    => [
                             'rule'          => 'unique:pages,slug',

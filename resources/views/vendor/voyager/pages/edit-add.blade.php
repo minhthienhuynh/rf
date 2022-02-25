@@ -88,6 +88,7 @@
                             <div class="panel-body">
                                 @foreach($dataTypeRows as $row)
                                     @if(in_array($row->field, $fields))
+                                        @php($row->readonly = $dataTypeContent->slug == 'members' && $row->field == 'slug' ? 'readonly' : '')
                                         @include('voyager::bread.partials.field')
                                     @endif
                                 @endforeach

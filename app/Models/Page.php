@@ -37,7 +37,7 @@ class Page extends Model
      */
     public static function getAll()
     {
-        return self::get();
+        return self::orderBy('order')->get();
     }
 
     /**
