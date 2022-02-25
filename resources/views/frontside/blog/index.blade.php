@@ -3,9 +3,7 @@
 
 @if(request()->q && $result == 0)
 <section class="main">
-    <div class="page-visual" style="background-image: url('{{ asset("
-    
-        frontside/assets/img/images/visual-img-02.jpg")}}');"></div>
+    <div class="page-visual" style="background-image: url('{{ asset("frontside/assets/img/images/visual-img-02.jpg")}}');"></div>
     <div class="page-2-column search-content">
         <div class="searchbox">
             <div class="input-text-wrapper">
