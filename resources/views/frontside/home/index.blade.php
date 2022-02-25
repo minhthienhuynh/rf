@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@include('layouts.includes.seo', ['model'=> '', 'type'=>'home'])
 @section('content')
     <section class="main">
         <!-- END: PAGE - HOME PAGE-->

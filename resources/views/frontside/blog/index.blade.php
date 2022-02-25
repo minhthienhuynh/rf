@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@include('layouts.includes.seo', ['model'=> '', 'type'=>'blog'])
 @section('content')
 
 @if(request()->q && $result == 0)
@@ -21,8 +22,7 @@
 </section>
 @else
 <section class="main">
-    <div class="page-visual" style="background-image: url('{{ asset("
-        frontside/assets/img/images/visual-img-02.jpg")}}');"></div>
+    <div class="page-visual" style="background-image: url('{{ asset("frontside/assets/img/images/visual-img-02.jpg")}}');"></div>
     <div class="page-2-column">
         <div class="left-sidebar">
             <div class="searchbox">
@@ -40,8 +40,8 @@
                     @if ($category->count() > 0)
                     @foreach ($category as $catI)
                     @php
-                    $checked = request()->category_id;
-                    $arrayC = explode(',', $checked);
+                        $checked = request()->category_id;
+                        $arrayC = explode(',', $checked);
                     @endphp
                     <li>
                         <div class="form-check">

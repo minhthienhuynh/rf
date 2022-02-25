@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@include('layouts.includes.seo', ['model'=> '', 'type'=>'career'])
 @section('content')
     <section class="main">
         <div class="page-visual" style="background-image: url('frontside/assets/img/images/visual-img-04.jpg');"></div>
@@ -19,7 +20,7 @@
                         <div class="col-md-3">
                             <div class="card post-card job-post"><a class="post-link-img" href="{{ route('frontside.careers.detail', $item->slug) }}"><img
                                         class="card-img-top" src="{{ Voyager::image($item->image) }}"
-                                        alt="">{{ $item->title }}</a>
+                                        alt=""></a>
                                 <div class="card-body">
                                     <h5 class="card-title"><a href="{{ route('frontside.careers.detail', $item->slug) }}">{{ $item->title }}</a></h5>
                                     <p class="card-text">{{ $item->description }}</p>
