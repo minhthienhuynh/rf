@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\HomepageSetting;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class HomepageSettingController extends \TCG\Voyager\Http\Controllers\Controller
 {
@@ -41,18 +40,12 @@ class HomepageSettingController extends \TCG\Voyager\Http\Controllers\Controller
                 'group'   => $setting->group,
             ], $setting->details);
 
-            if ($setting->type == 'image' && $content == null) {
+            if (($setting->type == 'image' || $setting->type == 'file') && $content == null) {
                 continue;
             }
 
-            if ($setting->type == 'file' && $content == null) {
-                continue;
-            }
-
-            $key = preg_replace('/^'.Str::slug($setting->group).'./i', '', $setting->key);
-
-            $setting->key = implode('.', [Str::slug($setting->group), $key]);
             $setting->value = @$content ?? '';
+
             $setting->save();
         }
 
