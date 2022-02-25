@@ -46,7 +46,7 @@
                 <span>{{ $item->title }}</span>
             </a>
             @if($level > 1)
-                <span class="sub-menu-desc">{{ $item->description }}</span>
+                <span class="sub-menu-desc">{{ Str::limit($item->description, 55) }}</span>
             @endif
             @if(!$originalItem->children->isEmpty())
                 @include('layouts.includes.menu-custom', ['items' => $originalItem->children, 'options' => $options, 'level' => $level+1])
