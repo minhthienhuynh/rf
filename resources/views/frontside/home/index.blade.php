@@ -3,7 +3,7 @@
 @section('content')
     <section class="main">
         <!-- END: PAGE - HOME PAGE-->
-        <div class="main-visual" style="background-image: url('frontside/assets/img/images/visual-img-01.jpg');">
+        <div class="main-visual" style="background-image: url('{{ voyager::image(homepage_setting('banner.image')) }}');">
             <div class="container large">
                 <h2 class="text-center">{{ homepage_setting('banner.title') }}</h2>
                 <p class="visual-desc text-center">{{ homepage_setting('banner.desc') }}</p>

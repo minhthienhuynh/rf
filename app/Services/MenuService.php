@@ -21,12 +21,13 @@ class MenuService
 
         foreach ($children as $key => $item) {
             $menuItem->children()->create([
-                'menu_id'    => $menuItem->menu->id,
-                'title'      => $item->title,
-                'url'        => '',
-                'route'      => "{$item->getTable()}.show",
-                'parameters' => json_encode(['slug' => $item->slug]),
-                'order'      => $key + 1,
+                'menu_id'     => $menuItem->menu->id,
+                'title'       => $item->title,
+                'description' => $item->description,
+                'url'         => '',
+                'route'       => "{$item->getTable()}.show",
+                'parameters'  => json_encode(['slug' => $item->slug]),
+                'order'       => $key + 1,
             ]);
         }
     }

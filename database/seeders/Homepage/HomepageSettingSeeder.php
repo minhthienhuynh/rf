@@ -139,7 +139,7 @@ class HomepageSettingSeeder extends AbstractSeeder
                     [
                         'key'          => 'client.items',
                         'display_name' => 'Client list',
-                        'value'        => route('voyager.clients.index'),
+                        'value'        => url('/admin/clients'),
                         'details'      => null,
                         'type'         => Setting::TYPE_ITEMS,
                         'order'        => 3,
