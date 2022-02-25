@@ -51,7 +51,7 @@ class HomepageSettingSeeder extends AbstractSeeder
                     ],
                     [
                         'key'          => 'banner.button_url',
-                        'display_name' => 'Image',
+                        'display_name' => 'Button URL',
                         'details'      => null,
                         'type'         => Setting::TYPE_TEXT,
                         'order'        => 5,
@@ -90,7 +90,7 @@ class HomepageSettingSeeder extends AbstractSeeder
                         'order'        => 1,
                     ],
                     [
-                        'key'          => 'service.subtitle',
+                        'key'          => 'about.subtitle',
                         'display_name' => 'Subtitle',
                         'details'      => null,
                         'type'         => Setting::TYPE_TEXT,
@@ -110,7 +110,7 @@ class HomepageSettingSeeder extends AbstractSeeder
                         'order'        => 1,
                     ],
                     [
-                        'key'          => 'service.subtitle',
+                        'key'          => 'blog.subtitle',
                         'display_name' => 'Subtitle',
                         'details'      => null,
                         'type'         => Setting::TYPE_TEXT,
