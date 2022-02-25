@@ -22,8 +22,8 @@
         <div class="f-navigation">
             <div class="f-col-left">
                 <div class="f-logo">
-                    <a href="./index.html">
-                        <img src="{{ asset('frontside/assets/img/images/logo.png') }}" alt="Resilient Forestry" width="150">
+                    <a href="/">
+                        <img src="{{ voyager::image(voyager::setting('site.logo')) }}" alt="Resilient Forestry" width="150">
                     </a>
                 </div>
                 <ul class="list-social">
