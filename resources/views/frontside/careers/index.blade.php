@@ -19,10 +19,10 @@
                         <div class="col-md-3">
                             <div class="card post-card job-post"><a class="post-link-img" href="{{ route('frontside.careers.detail', $item->slug) }}"><img
                                         class="card-img-top" src="{{ Voyager::image($item->image) }}"
-                                        alt=""></a>
+                                        alt="">{{ $item->title }}</a>
                                 <div class="card-body">
-                                    <h5 class="card-title"><a href="{{ route('frontside.careers.detail', $item->slug) }}">Project Manager</a></h5>
-                                    <p class="card-text">{{ $item->title }}</p>
+                                    <h5 class="card-title"><a href="{{ route('frontside.careers.detail', $item->slug) }}">{{ $item->title }}</a></h5>
+                                    <p class="card-text">{{ $item->description }}</p>
                                     <div class="card-footer"><a class="post-link btn-more"
                                             href="{{ route('frontside.careers.detail', $item->slug) }}">More</a>
                                     </div>

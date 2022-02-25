@@ -113,30 +113,18 @@
                 </div>
             </div>
         </div>
+        @if($dataClient->count() > 0)
         <div class="content-section section-clients">
             <div class="container large">
                 <h3 class="primary-title text-center"><span class="section-sub-ttl">{{ homepage_setting('client.subtitle') }}</span><span
                         class="section-ttl">{{ homepage_setting('client.subtitle') }}</span></h3>
                 <ul class="list-clients">
-                    <li><img src="frontside/assets/img/images/clients/client-01.svg" widht="157" alt=""></li>
-                    <li><img src="frontside/assets/img/images/clients/client-02.svg" widht="157" alt=""></li>
-                    <li><img src="frontside/assets/img/images/clients/client-03.svg" widht="157" alt=""></li>
-                    <li><img src="frontside/assets/img/images/clients/client-04.svg" widht="157" alt=""></li>
-                    <li><img src="frontside/assets/img/images/clients/client-05.svg" widht="157" alt=""></li>
-                    <li><img src="frontside/assets/img/images/clients/client-06.svg" widht="157" alt=""></li>
-                    <li><img src="frontside/assets/img/images/clients/client-07.svg" widht="157" alt=""></li>
-                    <li><img src="frontside/assets/img/images/clients/client-08.svg" widht="157" alt=""></li>
-                    <li><img src="frontside/assets/img/images/clients/client-09.svg" widht="157" alt=""></li>
-                    <li><img src="frontside/assets/img/images/clients/client-10.svg" widht="157" alt=""></li>
-                    <li><img src="frontside/assets/img/images/clients/client-11.svg" widht="157" alt=""></li>
-                    <li><img src="frontside/assets/img/images/clients/client-12.svg" widht="157" alt=""></li>
-                    <li><img src="frontside/assets/img/images/clients/client-13.svg" widht="157" alt=""></li>
-                    <li><img src="frontside/assets/img/images/clients/client-14.svg" widht="157" alt=""></li>
-                    <li><img src="frontside/assets/img/images/clients/client-15.svg" widht="157" alt=""></li>
-                    <li><img src="frontside/assets/img/images/clients/client-16.svg" widht="157" alt=""></li>
-                    <li><img src="frontside/assets/img/images/clients/client-17.svg" widht="157" alt=""></li>
+                    @foreach ($dataClient as $client)
+                        <li><img src="{{ voyager::image($client->logo) }}" width="157" alt="clients"></li>
+                    @endforeach
                 </ul>
             </div>
         </div>
+        @endif
     </section>
 @endsection
