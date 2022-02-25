@@ -43,7 +43,7 @@
                 
             @endif
             <div class="section-button text-center"> <a class="text-link-arrow"
-                    href="{{ route('frontside.post.index') }}">See all blog posts</a>
+                    href="{{ route('blogs.index') }}">See all blog posts</a>
             </div>
         </div>
     </section>

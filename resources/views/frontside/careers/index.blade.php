@@ -32,9 +32,9 @@
                     @endforeach
                 </div>
             @else
-            <div class="row list-jobs">
-               <h5>Data is empty !</h5>
-            </div>
+                <div class="list-jobs">
+                    <h5>Data is empty !</h5>
+                </div>
             @endif
 
             <hr class="my-5">

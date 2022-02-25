@@ -60,6 +60,42 @@ class SettingsTableSeeder extends Seeder
             ])->save();
         }
 
+        $setting = $this->findSetting('site.email');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Email',
+                'value'        => 'contact@resilientforestry.com',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 4,
+                'group'        => 'Site',
+            ])->save();
+        }
+
+        $setting = $this->findSetting('site.address');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Address',
+                'value'        => '3614 California Ave SW, PMB 160 Seattle, WA, 98116',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 4,
+                'group'        => 'Site',
+            ])->save();
+        }
+
+        $setting = $this->findSetting('site.phone');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => 'Phone',
+                'value'        => '206-730-6154',
+                'details'      => '',
+                'type'         => 'text',
+                'order'        => 4,
+                'group'        => 'Site',
+            ])->save();
+        }
+
         $setting = $this->findSetting('admin.bg_image');
         if (!$setting->exists) {
             $setting->fill([

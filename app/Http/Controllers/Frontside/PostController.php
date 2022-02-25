@@ -22,11 +22,17 @@ class PostController extends Controller
             $query = $query->whereIn('category_id', $listCateId);
         }
 
+        if(request()->q) {
+            $query = $query->where('title', 'LIKE', '%' . request()->q . '%');
+        }
+
+        $result = $query->get()->count();
+
         $data = $query->paginate(9);
         $recent = Post::take(10)->orderByDesc('id')->get();
         $category = Category::orderByDesc('order')->get();
 
-        return view('frontside.blog.index', compact('data', 'recent', 'category', 'countItem'));
+        return view('frontside.blog.index', compact('data', 'recent', 'category', 'countItem', 'result'));
     }
 
     public function detail($slug)

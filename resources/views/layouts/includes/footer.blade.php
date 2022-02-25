@@ -5,15 +5,15 @@
             <div class="section-info">
                 <dl>
                     <dt>Email</dt>
-                    <dd>contact@resilientforestry.com</dd>
+                    <dd>{{ voyager::setting('site.email') }}</dd>
                 </dl>
                 <dl>
                     <dt>Address</dt>
-                    <dd>3614 California Ave SW, PMB 160 Seattle, WA, 98116</dd>
+                    <dd>{{ voyager::setting('site.address') }}</dd>
                 </dl>
                 <dl>
                     <dt>Phone</dt>
-                    <dd>206-730-6154</dd>
+                    <dd>{{ voyager::setting('site.phone') }}</dd>
                 </dl>
             </div>
         </div>
@@ -21,19 +21,32 @@
     <div class="container">
         <div class="f-navigation">
             <div class="f-col-left">
-                <div class="f-logo"><a href="./index.html"><img
-                            src="{{ asset('frontside/assets/img/images/logo.png') }}" alt="Resilient Forestry"
-                            width="150"></a></div>
+                <div class="f-logo">
+                    <a href="/">
+                        <img src="{{ voyager::image(voyager::setting('site.logo')) }}" alt="Resilient Forestry" width="150">
+                    </a>
+                </div>
                 <ul class="list-social">
-                    <li><a href="#" target="_blank"> <img src="{{ asset('frontside/assets/img/icons/twitter.svg') }}"
-                                alt="Twitter" width="18"></a></li>
-                    <li><a href="#" target="_blank"> <img src="{{ asset('frontside/assets/img/icons/linked.svg') }}"
-                                alt="Linked In" width="17"></a></li>
-                    <li><a href="#" target="_blank"> <img src="{{ asset('frontside/assets/img/icons/facebook.svg') }}"
-                                alt="Facebook" width="10"></a></li>
-                    <li><a class="instagram" href="#" target="_blank"><img
-                                src="{{ asset('frontside/assets/img/icons/instagram.svg') }} " alt="Instagram"
-                                width="32"></a></li>
+                    @if(voyager::setting('site.social_link_tw'))
+                    <li>
+                        <a href="{{ voyager::setting('site.social_link_tw') }}" target="_blank"> <img src="{{ asset('frontside/assets/img/icons/twitter.svg') }}" alt="Twitter" width="18"></a>
+                    </li>
+                    @endif
+                    @if(voyager::setting('site.social_link_lk'))
+                    <li>
+                        <a href="{{ voyager::setting('site.social_link_lk') }}" target="_blank"> <img src="{{ asset('frontside/assets/img/icons/linked.svg') }}" alt="Linked In" width="17"></a>
+                    </li>
+                    @endif
+                    @if(voyager::setting('site.social_link_fb'))
+                    <li>
+                        <a href="{{ voyager::setting('site.social_link_fb') }}" target="_blank"> <img src="{{ asset('frontside/assets/img/icons/facebook.svg') }}"alt="Facebook" width="10"></a>
+                    </li>
+                    @endif
+                    @if(voyager::setting('site.social_link_ig') )
+                    <li>
+                        <a class="instagram" href="{{ voyager::setting('site.social_link_ig') }}" target="_blank"><img src="{{ asset('frontside/assets/img/icons/instagram.svg') }} " alt="Instagram" width="32"></a>
+                    </li>
+                    @endif
                 </ul>
             </div>
             <div class="f-col-right">

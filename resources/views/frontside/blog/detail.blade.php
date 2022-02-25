@@ -14,7 +14,7 @@
                 <div class="siderbar-block siderbar-block-category">
                     <p class="sidebar-ttl">Category</p>
                     <ul class="category-list">
-                        <li><a class="list-icon" href="{{ route('frontside.post.index') }}">All blogs
+                        <li><a class="list-icon" href="{{ route('blogs.index') }}">All blogs
                                 ({{ $countItem }}) </a></li>
                         @if ($category->count() > 0)
                             @foreach ($category as $catI)
@@ -52,7 +52,9 @@
                 <p class="post-detail-info">{{ $data->created_at->format('F d, Y') }}</p><img
                     src="{{ voyager::image($data->image) }}" alt="{{ $data->title }}">
                 <h3>{{ $data->title }}</h3>
-                {!! $data->body !!}
+                <div class="content-wrapper">
+                    {!! $data->body !!}
+                </div>
                 {{-- <div class="block-tags"> <a class="tag" href="./blog.html">#Blog</a><a class="tag"
                         href="./blog-category.html">#Stewardship</a></div> --}}
                 <div class="recent-blog sp mt-5">
@@ -77,7 +79,7 @@
     <script>
         $('.form-check-input').on('change', () => {
             var arr = [];
-            var route = '{{ route("frontside.post.index") }}'
+            var route = '{{ route("blogs.index") }}'
             $('input.form-check-input:checkbox:checked').each(function () {
                 arr.push($(this).val());
             });

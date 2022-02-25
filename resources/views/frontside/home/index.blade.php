@@ -4,18 +4,17 @@
         <!-- END: PAGE - HOME PAGE-->
         <div class="main-visual" style="background-image: url('frontside/assets/img/images/visual-img-01.jpg');">
             <div class="container large">
-                <h2 class="text-center">
-                    Conservation, Forestry, and <br>Management in a Changing Landscape</h2>
-                <p class="visual-desc text-center">Resilient Forestry has a unique skill set in monitoring changes in
-                    forests over time for compliance or research objectives. </p>
-                <div class="visual-button text-center"><a class="btn btn-contact" href="#">Contact Us</a></div>
+                <h2 class="text-center">{{ homepage_setting('banner.title') }}</h2>
+                <p class="visual-desc text-center">{{ homepage_setting('banner.desc') }}</p>
+                <div class="visual-button text-center">
+                    <a class="btn btn-contact" href="{{ homepage_setting('banner.button_url')}}">{{ homepage_setting('banner.button_title') }}</a>
+                </div>
             </div>
         </div>
         <div class="content-section section-services">
             <div class="container large">
-                <h3 class="primary-title text-center"><span class="section-sub-ttl">OUR services</span><span
-                        class="section-ttl">
-                        Services of forest inventories and<br>management planning</span></h3>
+                <h3 class="primary-title text-center"><span class="section-sub-ttl">{{ homepage_setting('service.subtitle') }}</span><span
+                        class="section-ttl">{{ homepage_setting('service.title') }}</h3>
                 <ul class="nav nav-tabs tab-title-only" id="tab-services" role="tablist">
                     @foreach ($dataService as $key => $service)
                         <li class="nav-item" role="presentation">
@@ -66,8 +65,8 @@
         </div>
         <div class="content-section section-aboutus">
             <div class="container large">
-                <h3 class="primary-title text-center"><span class="section-sub-ttl">ABOUT US</span><span
-                        class="section-ttl">Exceptional Solution For Forestry Project</span></h3>
+                <h3 class="primary-title text-center"><span class="section-sub-ttl">{{ homepage_setting('about.subtitle') }}</span><span
+                        class="section-ttl">{{homepage_setting('about.title') }}</span></h3>
                 <div class="row">
                     @foreach ($dataPage as $page)
                         <div class="col-md-4">
@@ -87,8 +86,8 @@
         </div>
         <div class="content-section section-blog">
             <div class="container large">
-                <h3 class="primary-title text-center"><span class="section-sub-ttl">BLOG</span><span
-                        class="section-ttl">Our Latest Blogs</span></h3>
+                <h3 class="primary-title text-center"><span class="section-sub-ttl">{{ homepage_setting('blog.subtitle') }}</span><span
+                        class="section-ttl">{{ homepage_setting('blog.title') }}</span></h3>
                 <div class="latest-blog-section">
                     <div class="row">
                         @foreach ($dataBlog as $blog)
@@ -110,14 +109,14 @@
                     </div>
                 </div>
                 <div class="section-button text-center"> 
-                    <a class="text-link-arrow" href="{{ route('frontside.post.index') }}">See All Blogs</a>
+                    <a class="text-link-arrow" href="{{ route('blogs.index') }}">See All Blogs</a>
                 </div>
             </div>
         </div>
         <div class="content-section section-clients">
             <div class="container large">
-                <h3 class="primary-title text-center"><span class="section-sub-ttl">CLIENTS</span><span
-                        class="section-ttl">Trusted By</span></h3>
+                <h3 class="primary-title text-center"><span class="section-sub-ttl">{{ homepage_setting('client.subtitle') }}</span><span
+                        class="section-ttl">{{ homepage_setting('client.subtitle') }}</span></h3>
                 <ul class="list-clients">
                     <li><img src="frontside/assets/img/images/clients/client-01.svg" widht="157" alt=""></li>
                     <li><img src="frontside/assets/img/images/clients/client-02.svg" widht="157" alt=""></li>
