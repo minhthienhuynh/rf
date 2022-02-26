@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomepageSettingController;
-use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\Admin\HomepageSettingController;
+use App\Http\Controllers\Admin\ServiceController;
 
 /*
 |--------------------------------------------------------------------------

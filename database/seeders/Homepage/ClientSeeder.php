@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\Homepage;
 
-use App\Http\Controllers\ClientController;
+use App\Http\Controllers\Admin\ClientController;
 use App\Models\Client;
 use Database\Seeders\AbstractSeeder;
 

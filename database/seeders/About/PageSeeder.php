@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\About;
 
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\Admin\PageController;
 use App\Models\Page;
 use Database\Seeders\AbstractSeeder;
 use Illuminate\Support\Arr;
@@ -16,6 +16,8 @@ class PageSeeder extends AbstractSeeder
 
     protected function buildData()
     {
+        $data = [];
+
         if (app()->environment('local')) {
             $data = [
                 [
@@ -34,19 +36,20 @@ class PageSeeder extends AbstractSeeder
                     'hero_picture' => url('/html/assets/img/images/visual-img-03.jpg'),
                     'published_at' => now(),
                 ],
-                [
-                    'title' => 'Our Members',
-                    'slug' => 'members',
-                    'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
-                    'content' => '<p>content</p>',
-                    'hero_picture' => url('/html/assets/img/images/visual-img-03.jpg'),
-                    'published_at' => now(),
-                ],
+            ];
+        }
+
+        $data[] = [
+                'title' => 'Our Members',
+                'slug' => 'members',
+                'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                'content' => '<p>content</p>',
+                'hero_picture' => url('/html/assets/img/images/visual-img-03.jpg'),
+                'published_at' => now(),
             ];
 
-            foreach ($data as $datum) {
-                $this->getModel()::updateOrCreate(Arr::only($datum, 'slug'), Arr::except($datum, 'slug'));
-            }
+        foreach ($data as $datum) {
+            $this->getModel()::firstOrCreate(Arr::only($datum, 'slug'), Arr::except($datum, 'slug'));
         }
     }
 
@@ -229,7 +232,7 @@ class PageSeeder extends AbstractSeeder
             'title' => 'About',
             'url' => '',
             'icon_class' => 'voyager-info-circled',
-            'order' => 4,
+            'order' => 6,
         ]);
     }
 

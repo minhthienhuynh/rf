@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Http\Controllers\CareerController;
+use App\Http\Controllers\Admin\CareerController;
 use App\Models\Career;
 
 class CareerSeeder extends AbstractSeeder
@@ -237,7 +237,7 @@ class CareerSeeder extends AbstractSeeder
 
     protected function buildMenu()
     {
-        $this->_buildMenu($this->getPluralName(), 4);
+        $this->_buildMenu($this->getPluralName(), 8);
     }
 
     protected function buildPermission()

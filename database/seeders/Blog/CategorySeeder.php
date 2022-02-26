@@ -1,21 +1,37 @@
 <?php
 
-namespace Database\Seeders\About;
+namespace Database\Seeders\Blog;
 
-use App\Http\Controllers\Admin\MemberController;
-use App\Models\Member;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Models\Category;
 use Database\Seeders\AbstractSeeder;
+use Illuminate\Support\Arr;
 
-class MemberSeeder extends AbstractSeeder
+class CategorySeeder extends AbstractSeeder
 {
-    public function __construct(Member $model, MemberController $controller)
+    public function __construct(Category $model, CategoryController $controller)
     {
-        parent::__construct($model, $controller, 'voyager-group');
+        parent::__construct($model, $controller, 'voyager-categories');
     }
 
     protected function buildData()
     {
-        //
+        if (app()->environment('local')) {
+            $data = [
+                [
+                    'name' => 'Category 1',
+                    'slug' => 'category-1',
+                ],
+                [
+                    'name' => 'Category 2',
+                    'slug' => 'category-2',
+                ],
+            ];
+
+            foreach ($data as $datum) {
+                $this->getModel()::updateOrCreate(Arr::only($datum, 'slug'), Arr::except($datum, 'slug'));
+            }
+        }
     }
 
     protected function buildCRUD()
@@ -23,7 +39,7 @@ class MemberSeeder extends AbstractSeeder
         //Data Type
         $dataType = $this->_buildDataType([
             'order_column'          => 'order',
-            'order_display_column'  => 'full_name',
+            'order_display_column'  => 'name',
             'order_direction'       => 'asc',
             'default_search_key'    => null,
             'scope'                 => null
@@ -47,84 +63,91 @@ class MemberSeeder extends AbstractSeeder
             ],
             [
                 'attributes'    => [
-                    'field'         => 'full_name'
+                    'field'         => 'parent_id',
                 ],
                 'values'        => [
-                    'type'          => 'text',
-                    'display_name'  => __('voyager::seeders.data_rows.full_name'),
-                    'required'      => 1,
-                    'browse'        => 1,
-                    'read'          => 1,
-                    'edit'          => 1,
-                    'add'           => 1,
-                    'delete'        => 1,
-                ],
-            ],
-            [
-                'attributes'    => [
-                    'field'         => 'position'
-                ],
-                'values'        => [
-                    'type'          => 'text',
-                    'display_name'  => __('voyager::seeders.data_rows.position'),
-                    'required'      => 1,
-                    'browse'        => 1,
-                    'read'          => 1,
-                    'edit'          => 1,
-                    'add'           => 1,
-                    'delete'        => 1,
-                ],
-            ],
-            [
-                'attributes'    => [
-                    'field'         => 'description'
-                ],
-                'values'        => [
-                    'type'          => 'text_area',
-                    'display_name'  => __('voyager::seeders.data_rows.description'),
-                    'required'      => 1,
-                    'browse'        => 0,
-                    'read'          => 1,
-                    'edit'          => 1,
-                    'add'           => 1,
-                    'delete'        => 1,
-                ],
-            ],
-            [
-                'attributes'    => [
-                    'field'         => 'link'
-                ],
-                'values'        => [
-                    'type'          => 'text',
-                    'display_name'  => __('voyager::members.data_rows.link'),
-                    'required'      => 1,
+                    'type'          => 'select_dropdown',
+                    'display_name'  => __('voyager::seeders.data_rows.parent'),
+                    'required'      => 0,
                     'browse'        => 0,
                     'read'          => 1,
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
                     'details'       => [
-                        'validation'    => [
-                            'rule'          => 'url',
+                        'default'       => '',
+                        'null'          => '',
+                        'options'       => [
+                            ''              => '-- None --',
+                        ],
+                        'relationship'  => [
+                            'key'           => 'id',
+                            'label'         => 'name',
                         ],
                     ],
                 ],
             ],
             [
                 'attributes'    => [
-                    'field'         => 'avatar'
+                    'field'         => 'name'
                 ],
                 'values'        => [
-                    'type'          => 'image',
-                    'display_name'  => __('voyager::seeders.data_rows.avatar'),
+                    'type'          => 'text',
+                    'display_name'  => __('voyager::seeders.data_rows.name'),
                     'required'      => 1,
                     'browse'        => 1,
                     'read'          => 1,
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                ],
+            ],
+            [
+                'attributes'    => [
+                    'field'         => 'slug'
+                ],
+                'values'        => [
+                    'type'          => 'text',
+                    'display_name'  => __('voyager::seeders.data_rows.slug'),
+                    'required'      => 1,
+                    'browse'        => 0,
+                    'read'          => 1,
+                    'edit'          => 1,
+                    'add'           => 1,
+                    'delete'        => 1,
                     'details'       => [
-                        'desc'          => 'Please update an image (4x3), Not larger than 1000px',
+                        'slugify'       => [
+                            'origin'        => 'name',
+                        ],
+                        'validation'    => [
+                            'rule'          => 'unique:categories,slug',
+                        ],
+                    ],
+                ],
+            ],
+            [
+                'attributes'    => [
+                    'field'         => 'category_belongsto_category_relationship',
+                ],
+                'values'        => [
+                    'type'          => 'relationship',
+                    'display_name'  => __('voyager::seeders.data_rows.parent'),
+                    'required'      => 0,
+                    'browse'        => 1,
+                    'read'          => 1,
+                    'edit'          => 1,
+                    'add'           => 1,
+                    'delete'        => 1,
+                    'details'       => [
+                        'model'         => get_class($this->getModel()),
+                        'table'         => $this->getModel()->getTable(),
+                        'type'          => 'belongsTo',
+                        'column'        => 'parent_id',
+                        'key'           => 'id',
+                        'label'         => 'name',
+                        'pivot_table'   => '',
+                        'pivot'         => '0',
+                        'taggable'      => null,
                     ],
                 ],
             ],
@@ -166,10 +189,10 @@ class MemberSeeder extends AbstractSeeder
     protected function buildMenu()
     {
         $this->_buildMenu($this->getPluralName(), 1, [
-            'title' => 'About',
+            'title' => 'Blog',
             'url' => '',
-            'icon_class' => 'voyager-info-circled',
-            'order' => 6,
+            'icon_class' => 'voyager-news',
+            'order' => 7,
         ]);
     }
 

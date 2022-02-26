@@ -2,6 +2,7 @@
 
 return [
     'data_rows' => [
+        'categories' => 'Categories',
         'content' => 'Content',
         'description' => 'Description',
         'expired_at' => 'Expired At',
