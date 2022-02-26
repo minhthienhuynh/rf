@@ -2,10 +2,14 @@
 @include('layouts.includes.seo', ['model'=> $data, 'type'=>''])
 @section('content')
     <section class="main">
+        @if($slug != "term-and-conditions")
         <div class="page-visual" style="background-image: url('{{ voyager::image($data->hero_picture) }}');"></div>
-        <div class="container post-detail">
+        @endif
+        <div class="container post-detail {{ $slug == "term-and-conditions" ? 'padding-topnn' : ''}}">
             <h2 class="primary-title text-center">
-                <span class="section-sub-ttl">ABOUT US</span>
+                @if($slug != "term-and-conditions")
+                    <span class="section-sub-ttl">ABOUT US</span>
+                @endif
                 <span class="section-ttl">{{ $data->title }}</span>
             </h2>
             @if ($slug == 'members')
@@ -25,7 +29,9 @@
                     @endforeach
                 </div>
             @else
+            <div class="content-wrapper">
                 {!! $data->content !!}
+            </div>
             @endif
         </div>
     </section>

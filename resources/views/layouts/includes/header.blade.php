@@ -12,5 +12,6 @@
                 <div class="login-button"> <a class="btn btn-light" target="_blank" href="{{ voyager::setting('site.header_login_link') }}">Login</a></div>
             </div>
         @endif
+        <div id="menu-toggle"><span></span><span></span><span></span><span></span></div>
     </div>
 </header>

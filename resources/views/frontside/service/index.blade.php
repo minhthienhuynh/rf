@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@include('layouts.includes.seo', ['model'=> $data, 'type'=>''])
 @section('content')
     <section class="main">
         <div class="page-visual" style="background-image: url('{{ voyager::image($data->hero_picture) }}');"></div>
@@ -23,7 +24,10 @@
                     </div>
                 </div>
             @endif
-            {!! $data->content !!}
+            <div class="content-wrapper">
+                {!! $data->content !!}
+            </div>
+            <p></p>
             @if ($data->blogs->count() > 0)
                 <div class="services-block-slider basic-slider block-full">
                     @foreach ($data->blogs as $blog)
