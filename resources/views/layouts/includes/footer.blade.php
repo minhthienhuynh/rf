@@ -68,7 +68,7 @@
                 </ul>
                 <ul class="f-nav">
                     <li class="f-nav-ttl"><a href="#">Help</a></li>
-                    <li><a href="#">Term and Conditions</a></li>
+                    <li><a href="{{ route('pages.show', 'term-and-conditions') }}">Term and Conditions</a></li>
                 </ul>
             </div>
         </div>
