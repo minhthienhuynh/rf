@@ -5,7 +5,18 @@ namespace App\Models;
 use App\Models\Traits\Seoable;
 use App\Services\MenuService;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
+/**
+ * @property integer $id
+ * @property string  $title
+ * @property string  $slug
+ * @property string  $description
+ * @property string  $content
+ * @property string  $hero_picture
+ * @property string  $slider
+ * @property Carbon  $published_at
+ */
 class Service extends Model
 {
     use Seoable;
@@ -60,8 +71,9 @@ class Service extends Model
         $menuService = new MenuService();
 
         static::saved(function (self $model) use ($menuService) {
-            if ($model->isDirty(['title', 'slug', 'published_at'])) {
-                $menuService->updateMenuItems('SERVICES', self::getAll());
+            if ($model->isDirty(['title', 'slug'])) {
+                $menuService->updateHeaderMenuItems('SERVICES', self::getAll());
+                $menuService->updateFooterMenuItems('Services', self::getAll());
             }
         });
 

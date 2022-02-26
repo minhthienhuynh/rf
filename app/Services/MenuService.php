@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Models\MenuItem;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use TCG\Voyager\Facades\Voyager;
+use TCG\Voyager\Models\MenuItem;
 
 class MenuService
 {
@@ -13,10 +13,30 @@ class MenuService
      * @param  string      $itemTitle
      * @param  Collection  $children
      */
-    public function updateMenuItems(string $itemTitle, Collection $children)
+    public function updateHeaderMenuItems(string $itemTitle, Collection $children)
     {
         $menu = Voyager::model('Menu')->where('name', 'user')->first();
         $menuItem = $menu->items()->where('title', $itemTitle)->first();
+
+        if ($menuItem) {
+            $this->reSyncUserMenu($menuItem, $children);
+        }
+    }
+    /**
+     * @param  string      $itemTitle
+     * @param  Collection  $children
+     */
+    public function updateFooterMenuItems(string $itemTitle, Collection $children)
+    {
+        $menu = Voyager::model('Menu')->where('name', 'user_footer')->first();
+        $menuItem = $menu->items()->where('title', $itemTitle)->first();
+
+        if ($menuItem) {
+            $this->reSyncUserMenu($menuItem, $children);
+        }
+    }
+
+    private function reSyncUserMenu(MenuItem $menuItem, Collection $children) {
         $menuItem->children()->delete();
 
         foreach ($children as $key => $item) {

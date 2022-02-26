@@ -8,6 +8,8 @@ use Database\Seeders\Blog\CategorySeeder;
 use Database\Seeders\Blog\PostSeeder;
 use Database\Seeders\Homepage\ClientSeeder;
 use Database\Seeders\Homepage\HomepageSettingSeeder;
+use Database\Seeders\Menu\UserFooterMenuSeeder;
+use Database\Seeders\Menu\UserHeaderMenuSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -30,11 +32,11 @@ class DatabaseSeeder extends Seeder
             PermissionRoleTableSeeder::class,
             SettingsTableSeeder::class,
         ]);
-        $this->call(UserMenuSeeder::class);
         $this->call(ServiceSeeder::class);
         $this->call([PageSeeder::class, MemberSeeder::class,]);
         $this->call([CategorySeeder::class, PostSeeder::class,]);
         $this->call(CareerSeeder::class);
         $this->call([HomepageSettingSeeder::class, ClientSeeder::class]);
+        $this->call([UserHeaderMenuSeeder::class, UserFooterMenuSeeder::class]);
     }
 }

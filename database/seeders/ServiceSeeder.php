@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Models\Post;
 use App\Models\Service;
-use Illuminate\Support\Arr;
 
 class ServiceSeeder extends AbstractSeeder
 {
@@ -30,7 +29,6 @@ class ServiceSeeder extends AbstractSeeder
                         url('/html/assets/img/images/services/thumbnail-03.jpg'),
                         url('/html/assets/img/images/services/thumbnail-04.jpg'),
                     ]),
-                    'published_at' => now(),
                 ],
                 [
                     'title' => 'Planning & Adaptive Management',
@@ -44,7 +42,6 @@ class ServiceSeeder extends AbstractSeeder
                         url('/html/assets/img/images/services/thumbnail-03.jpg'),
                         url('/html/assets/img/images/services/thumbnail-04.jpg'),
                     ]),
-                    'published_at' => now(),
                 ],
                 [
                     'title' => 'Science',
@@ -58,7 +55,6 @@ class ServiceSeeder extends AbstractSeeder
                         url('/html/assets/img/images/services/thumbnail-03.jpg'),
                         url('/html/assets/img/images/services/thumbnail-04.jpg'),
                     ]),
-                    'published_at' => now(),
                 ],
                 [
                     'title' => 'Timber',
@@ -72,12 +68,24 @@ class ServiceSeeder extends AbstractSeeder
                         url('/html/assets/img/images/services/thumbnail-03.jpg'),
                         url('/html/assets/img/images/services/thumbnail-04.jpg'),
                     ]),
-                    'published_at' => now(),
                 ],
             ];
 
             foreach ($data as $datum) {
-                $this->getModel()::updateOrCreate(Arr::only($datum, 'slug'), Arr::except($datum, 'slug'));
+                $model = Service::where('slug', $datum['slug'])->first();
+
+                if (!$model) {
+                    $model = new Service();
+                }
+
+                $model->title = $datum['title'];
+                $model->slug = $datum['slug'];
+                $model->description = $datum['description'];
+                $model->content = $datum['content'];
+                $model->hero_picture = $datum['hero_picture'];
+                $model->slider = $datum['slider'];
+
+                $model->saveQuietly();
             }
         }
     }

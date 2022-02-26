@@ -49,7 +49,20 @@ class PageSeeder extends AbstractSeeder
             ];
 
         foreach ($data as $datum) {
-            $this->getModel()::firstOrCreate(Arr::only($datum, 'slug'), Arr::except($datum, 'slug'));
+            $model = Page::where('slug', $datum['slug'])->first();
+
+            if (!$model) {
+                $model = new Page();
+            }
+
+            $model->title = $datum['title'];
+            $model->slug = $datum['slug'];
+            $model->description = $datum['description'];
+            $model->content = $datum['content'];
+            $model->hero_picture = $datum['hero_picture'];
+            $model->show_in_about = true;
+
+            $model->saveQuietly();
         }
     }
 
@@ -93,11 +106,8 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'details'       => [
-                        'display'       => [
-                            'width'         => 6,
-                        ],
-                    ],
+                    'details'       => [],
+                    'order'         => 1,
                 ],
             ],
             [
@@ -114,9 +124,6 @@ class PageSeeder extends AbstractSeeder
                     'add'           => 1,
                     'delete'        => 1,
                     'details'       => [
-                        'display'       => [
-                            'width'         => 6,
-                        ],
                         'slugify'       => [
                             'origin'        => 'title',
                         ],
@@ -124,6 +131,7 @@ class PageSeeder extends AbstractSeeder
                             'rule'          => 'unique:pages,slug',
                         ],
                     ],
+                    'order'         => 1,
                 ],
             ],
             [
@@ -140,6 +148,7 @@ class PageSeeder extends AbstractSeeder
                     'add'           => 1,
                     'delete'        => 1,
                 ],
+                'order'         => 2,
             ],
             [
                 'attributes'    => [
@@ -159,6 +168,7 @@ class PageSeeder extends AbstractSeeder
                             'rule'          => 'required',
                         ],
                     ],
+                    'order'         => 3,
                 ],
             ],
             [
@@ -174,6 +184,23 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 2,
+                ],
+            ],
+            [
+                'attributes'    => [
+                    'field'         => 'show_in_about'
+                ],
+                'values'        => [
+                    'type'          => 'checkbox',
+                    'display_name'  => __('voyager::pages.data_rows.show_in_about'),
+                    'required'      => 0,
+                    'browse'        => 0,
+                    'read'          => 1,
+                    'edit'          => 1,
+                    'add'           => 1,
+                    'delete'        => 1,
+                    'order'         => 3,
                 ],
             ],
             [
@@ -189,6 +216,7 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 4,
                 ]
             ],
             [
