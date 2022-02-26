@@ -16,6 +16,7 @@ return [
         'posts' => 'Posts',
         'published_at' => 'Published At',
         'roles' => 'Roles',
+        'services' => 'Services',
         'slider' => 'Slider',
     ],
     'labels' => [

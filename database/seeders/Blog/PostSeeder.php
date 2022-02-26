@@ -5,6 +5,7 @@ namespace Database\Seeders\Blog;
 use App\Http\Controllers\Admin\PostController;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Service;
 use Database\Seeders\AbstractSeeder;
 use Illuminate\Support\Arr;
 
@@ -116,11 +117,7 @@ class PostSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'details'       => [
-                        'display'       => [
-                            'width'         => 6,
-                        ],
-                    ],
+                    'details'       => [],
                 ],
             ],
             [
@@ -137,9 +134,6 @@ class PostSeeder extends AbstractSeeder
                     'add'           => 1,
                     'delete'        => 1,
                     'details'       => [
-                        'display'       => [
-                            'width'         => 6,
-                        ],
                         'slugify'       => [
                             'origin'        => 'title',
                             'forceUpdate'   => true,
@@ -259,6 +253,32 @@ class PostSeeder extends AbstractSeeder
                         'key'           => 'id',
                         'label'         => 'name',
                         'pivot_table'   => 'category_post',
+                        'pivot'         => '1',
+                        'taggable'      => '0',
+                    ],
+                ]
+            ],
+            [
+                'attributes'    => [
+                    'field'         => 'post_belongstomany_service_relationship',
+                ],
+                'values'        => [
+                    'type'          => 'relationship',
+                    'display_name'  => __('voyager::seeders.data_rows.services'),
+                    'required'      => 0,
+                    'browse'        => 0,
+                    'read'          => 1,
+                    'edit'          => 1,
+                    'add'           => 1,
+                    'delete'        => 1,
+                    'details'       => [
+                        'model'         => Service::class,
+                        'table'         => app(Service::class)->getTable(),
+                        'type'          => 'belongsToMany',
+                        'column'        => 'id',
+                        'key'           => 'id',
+                        'label'         => 'title',
+                        'pivot_table'   => 'post_service',
                         'pivot'         => '1',
                         'taggable'      => '0',
                     ],
