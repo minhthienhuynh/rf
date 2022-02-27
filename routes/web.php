@@ -21,6 +21,7 @@ Route::middleware([])->namespace('App\Http\Controllers\Frontside')->group(functi
     Route::get('/careers/{slug}', 'CareerController@detail')->name('frontside.careers.detail');
 
     Route::get('/blog', 'PostController@index')->name('blogs.index');
+    Route::get('/blog/search', 'PostController@search')->name('blogs.search');
     Route::get('/blog/{slug}', 'PostController@detail')->name('frontside.post.detail');
     Route::get('/service/{slug}', 'ServiceController@detail')->name('services.show');
     Route::get('/about/{slug}', 'PageController@detail')->name('pages.show');

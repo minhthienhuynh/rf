@@ -130,7 +130,7 @@
 
         $('.blog-key-search').on('input', function() {
             let q = $(this).val()
-            let route = '{{ route("blogs.index") }}'
+            let route = '{{ route("blogs.search") }}'
 
             $(document).on('keypress', function(e) {
                 if (e.which == 13) {
