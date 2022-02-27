@@ -20,15 +20,13 @@ class PostController extends Controller
         $countItem = $query->get()->count();
 
         if(count($listCateId) > 0) {
-            $query = $query->whereIn('category_id', $listCateId);
-        }
-
-        if(request()->q) {
-            $query = $query->where('title', 'LIKE', '%' . request()->q . '%');
+            $query = $query->whereHas('categories', function($q) use ($listCateId) {
+                    $q->whereIn('id', $listCateId);
+            });
         }
 
         $result = $query->get()->count();
-
+        
         $data = $query->paginate(9);
         $recent = Post::take(10)->orderByDesc('id')->get();
         $category = Category::orderByDesc('order')->get();
