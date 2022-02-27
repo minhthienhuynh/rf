@@ -91,6 +91,7 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
+                    'order'         => 1,
                 ],
             ],
             [
@@ -107,7 +108,7 @@ class PageSeeder extends AbstractSeeder
                     'add'           => 1,
                     'delete'        => 1,
                     'details'       => [],
-                    'order'         => 1,
+                    'order'         => 2,
                 ],
             ],
             [
@@ -131,7 +132,7 @@ class PageSeeder extends AbstractSeeder
                             'rule'          => 'unique:pages,slug',
                         ],
                     ],
-                    'order'         => 1,
+                    'order'         => 3,
                 ],
             ],
             [
@@ -147,8 +148,8 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 4,
                 ],
-                'order'         => 2,
             ],
             [
                 'attributes'    => [
@@ -168,7 +169,7 @@ class PageSeeder extends AbstractSeeder
                             'rule'          => 'required',
                         ],
                     ],
-                    'order'         => 3,
+                    'order'         => 5,
                 ],
             ],
             [
@@ -184,7 +185,7 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 2,
+                    'order'         => 6,
                 ],
             ],
             [
@@ -200,7 +201,7 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 3,
+                    'order'         => 7,
                 ],
             ],
             [
@@ -216,7 +217,7 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 4,
+                    'order'         => 8,
                 ]
             ],
             [
@@ -232,6 +233,7 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
+                    'order'         => 9,
                 ]
             ],
             [
@@ -247,6 +249,7 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
+                    'order'         => 10,
                 ]
             ],
         ];

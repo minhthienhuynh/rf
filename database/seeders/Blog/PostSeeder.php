@@ -63,7 +63,8 @@ class PostSeeder extends AbstractSeeder
             ];
 
             foreach ($data as $datum) {
-                $this->getModel()::updateOrCreate(Arr::only($datum, 'slug'), Arr::except($datum, 'slug'));
+                $this->getModel()::updateOrCreate(Arr::only($datum, 'slug'), Arr::except($datum, 'slug'))
+                    ->categories()->sync([1, 2]);
             }
         }
     }
@@ -87,6 +88,7 @@ class PostSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
+                    'order'         => 1,
                 ],
             ],
             [
@@ -102,6 +104,7 @@ class PostSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
+                    'order'         => 11,
                 ],
             ],
             [
@@ -118,6 +121,7 @@ class PostSeeder extends AbstractSeeder
                     'add'           => 1,
                     'delete'        => 1,
                     'details'       => [],
+                    'order'         => 2,
                 ],
             ],
             [
@@ -142,6 +146,7 @@ class PostSeeder extends AbstractSeeder
                             'rule'          => 'unique:services,slug',
                         ],
                     ],
+                    'order'         => 3,
                 ],
             ],
             [
@@ -157,6 +162,7 @@ class PostSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 4,
                 ],
             ],
             [
@@ -177,6 +183,7 @@ class PostSeeder extends AbstractSeeder
                             'rule'          => 'required',
                         ],
                     ],
+                    'order'         => 5,
                 ],
             ],
             [
@@ -192,6 +199,7 @@ class PostSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 6,
                 ],
             ],
             [
@@ -206,7 +214,7 @@ class PostSeeder extends AbstractSeeder
                     'read'          => 1,
                     'edit'          => 1,
                     'add'           => 1,
-                    'delete'        => 1,
+                    'delete'        => 6,
                     'details'      => [
                         'default' => 'DRAFT',
                         'options' => [
@@ -215,6 +223,7 @@ class PostSeeder extends AbstractSeeder
                             'PENDING'   => 'pending',
                         ],
                     ],
+                    'order'         => 7,
                 ],
             ],
             [
@@ -230,6 +239,7 @@ class PostSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 8,
                 ]
             ],
             [
@@ -256,6 +266,7 @@ class PostSeeder extends AbstractSeeder
                         'pivot'         => '1',
                         'taggable'      => '0',
                     ],
+                    'order'         => 9,
                 ]
             ],
             [
@@ -282,6 +293,7 @@ class PostSeeder extends AbstractSeeder
                         'pivot'         => '1',
                         'taggable'      => '0',
                     ],
+                    'order'         => 10,
                 ]
             ],
             [
@@ -297,6 +309,7 @@ class PostSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
+                    'order'         => 12,
                 ]
             ],
             [
@@ -312,6 +325,7 @@ class PostSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
+                    'order'         => 13,
                 ]
             ],
         ];

@@ -115,6 +115,7 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
+                    'order'         => 1,
                 ],
             ],
             [
@@ -135,6 +136,7 @@ class ServiceSeeder extends AbstractSeeder
                             'width'         => 6,
                         ],
                     ],
+                    'order'         => 2,
                 ],
             ],
             [
@@ -162,6 +164,7 @@ class ServiceSeeder extends AbstractSeeder
                             'rule'          => 'unique:services,slug',
                         ],
                     ],
+                    'order'         => 3,
                 ],
             ],
             [
@@ -177,6 +180,7 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 4,
                 ],
             ],
             [
@@ -197,6 +201,7 @@ class ServiceSeeder extends AbstractSeeder
                             'rule'          => 'required',
                         ],
                     ],
+                    'order'         => 5,
                 ],
             ],
             [
@@ -212,6 +217,7 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 6,
                 ],
             ],
             [
@@ -227,22 +233,8 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 7,
                 ],
-            ],
-            [
-                'attributes'    => [
-                    'field'         => 'published_at',
-                ],
-                'values'        => [
-                    'type'          => 'timestamp',
-                    'display_name'  => __('voyager::seeders.data_rows.published_at'),
-                    'required'      => 0,
-                    'browse'        => 1,
-                    'read'          => 1,
-                    'edit'          => 1,
-                    'add'           => 1,
-                    'delete'        => 1,
-                ]
             ],
             [
                 'attributes'    => [
@@ -268,6 +260,23 @@ class ServiceSeeder extends AbstractSeeder
                         'pivot'         => '1',
                         'taggable'      => '0',
                     ],
+                    'order'         => 8,
+                ]
+            ],
+            [
+                'attributes'    => [
+                    'field'         => 'published_at',
+                ],
+                'values'        => [
+                    'type'          => 'timestamp',
+                    'display_name'  => __('voyager::seeders.data_rows.published_at'),
+                    'required'      => 0,
+                    'browse'        => 1,
+                    'read'          => 1,
+                    'edit'          => 1,
+                    'add'           => 1,
+                    'delete'        => 1,
+                    'order'         => 9,
                 ]
             ],
             [
@@ -283,6 +292,7 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
+                    'order'         => 10,
                 ]
             ],
             [
@@ -298,6 +308,7 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
+                    'order'         => 11,
                 ]
             ],
         ];

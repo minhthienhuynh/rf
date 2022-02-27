@@ -15,6 +15,7 @@ class Post extends Model
 
     public static $subFields = [
         'details' => ['slug', 'status', 'featured', 'post_belongstomany_category_relationship', 'post_belongstomany_service_relationship'],
+        'media' => ['image'],
     ];
 
     /**
