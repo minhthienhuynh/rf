@@ -43,7 +43,7 @@ class MenuService
             $menuItem->children()->create([
                 'menu_id'     => $menuItem->menu->id,
                 'title'       => $item->title,
-                'description' => $item->description,
+                'description' => $item->menu_description,
                 'url'         => '',
                 'route'       => "{$item->getTable()}.show",
                 'parameters'  => json_encode(['slug' => $item->slug]),

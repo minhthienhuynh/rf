@@ -11,6 +11,7 @@ return [
         'image' => 'Image',
         'link' => 'Link',
         'logo' => 'Logo',
+        'menu_description' => 'Menu Description',
         'pdf' => 'Pdf',
         'position' => 'Position',
         'posts' => 'Posts',

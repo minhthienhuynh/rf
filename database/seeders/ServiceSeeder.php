@@ -20,7 +20,8 @@ class ServiceSeeder extends AbstractSeeder
                 [
                     'title' => 'Stewardship',
                     'slug' => 's1',
-                    'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'menu_description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'description' => 'description',
                     'content' => '<p>content</p>',
                     'hero_picture' => url('/html/assets/img/images/services/img-01.jpg'),
                     'slider' => json_encode([
@@ -33,7 +34,8 @@ class ServiceSeeder extends AbstractSeeder
                 [
                     'title' => 'Planning & Adaptive Management',
                     'slug' => 's2',
-                    'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'menu_description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'description' => 'description',
                     'content' => '<p>content</p>',
                     'hero_picture' => url('/html/assets/img/images/services/img-02.jpg'),
                     'slider' => json_encode([
@@ -46,7 +48,8 @@ class ServiceSeeder extends AbstractSeeder
                 [
                     'title' => 'Science',
                     'slug' => 's3',
-                    'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'menu_description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'description' => 'description',
                     'content' => '<p>content</p>',
                     'hero_picture' => url('/html/assets/img/images/services/img-03.jpg'),
                     'slider' => json_encode([
@@ -59,7 +62,8 @@ class ServiceSeeder extends AbstractSeeder
                 [
                     'title' => 'Timber',
                     'slug' => 's4',
-                    'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'menu_description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'description' => 'description',
                     'content' => '<p>content</p>',
                     'hero_picture' => url('/html/assets/img/images/services/img-04.jpg'),
                     'slider' => json_encode([
@@ -80,6 +84,7 @@ class ServiceSeeder extends AbstractSeeder
 
                 $model->title = $datum['title'];
                 $model->slug = $datum['slug'];
+                $model->menu_description = $datum['menu_description'];
                 $model->description = $datum['description'];
                 $model->content = $datum['content'];
                 $model->hero_picture = $datum['hero_picture'];
@@ -169,6 +174,22 @@ class ServiceSeeder extends AbstractSeeder
             ],
             [
                 'attributes'    => [
+                    'field'         => 'menu_description'
+                ],
+                'values'        => [
+                    'type'          => 'text_area',
+                    'display_name'  => __('voyager::seeders.data_rows.menu_description'),
+                    'required'      => 1,
+                    'browse'        => 1,
+                    'read'          => 1,
+                    'edit'          => 1,
+                    'add'           => 1,
+                    'delete'        => 1,
+                    'order'         => 4,
+                ],
+            ],
+            [
+                'attributes'    => [
                     'field'         => 'description'
                 ],
                 'values'        => [
@@ -180,7 +201,7 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 4,
+                    'order'         => 5,
                 ],
             ],
             [
@@ -201,7 +222,7 @@ class ServiceSeeder extends AbstractSeeder
                             'rule'          => 'required',
                         ],
                     ],
-                    'order'         => 5,
+                    'order'         => 6,
                 ],
             ],
             [
@@ -217,7 +238,7 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 6,
+                    'order'         => 7,
                 ],
             ],
             [
@@ -233,7 +254,7 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 7,
+                    'order'         => 8,
                 ],
             ],
             [
@@ -260,7 +281,7 @@ class ServiceSeeder extends AbstractSeeder
                         'pivot'         => '1',
                         'taggable'      => '0',
                     ],
-                    'order'         => 8,
+                    'order'         => 9,
                 ]
             ],
             [
@@ -276,7 +297,7 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 9,
+                    'order'         => 10,
                 ]
             ],
             [
@@ -292,7 +313,7 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
-                    'order'         => 10,
+                    'order'         => 11,
                 ]
             ],
             [
@@ -308,7 +329,7 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
-                    'order'         => 11,
+                    'order'         => 12,
                 ]
             ],
         ];

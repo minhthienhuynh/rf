@@ -11,6 +11,7 @@ use Illuminate\Support\Carbon;
  * @property integer $id
  * @property string  $title
  * @property string  $slug
+ * @property string  $menu_description
  * @property string  $description
  * @property string  $content
  * @property string  $hero_picture
@@ -22,7 +23,7 @@ class Page extends Model
     use Seoable;
 
     public static $mainFields = [
-        'main' => ['title', 'description', 'content'],
+        'main' => ['title', 'menu_description', 'description', 'content'],
     ];
 
     public static $subFields = [
@@ -37,6 +38,7 @@ class Page extends Model
     protected $fillable = [
         'title',
         'slug',
+        'menu_description',
         'description',
         'content',
         'hero_picture',

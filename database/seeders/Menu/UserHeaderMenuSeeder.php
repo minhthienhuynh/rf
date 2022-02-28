@@ -73,7 +73,7 @@ class UserHeaderMenuSeeder extends Seeder
                 foreach ($item['children'] as $k => $v) {
                     $children[] = [
                         'title'       => $v->title,
-                        'description' => $v->description,
+                        'description' => $v->menu_description,
                         'url'         => '',
                         'route'       => "{$v->getTable()}.show",
                         'parameters'  => json_encode(['slug' => $v->slug]),

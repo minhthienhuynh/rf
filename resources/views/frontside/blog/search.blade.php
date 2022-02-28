@@ -96,5 +96,9 @@
                 $(this).html(text);
             });
         }
+
+        $('.close-btn').on('click', function () {
+            window.location.href = '{{ route('blogs.index') }}';
+        });
     </script>
 @endpush
