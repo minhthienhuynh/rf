@@ -12,9 +12,10 @@ class HomeController extends Controller
 
     public function index()
     {
+        $slugGr = ['our-mission-and-vision', 'diversity', 'people'];
         $dataService = Service::orderBy('order')->get();
-        $dataBlog = Post::orderByDesc('id')->where('status', 'PUBLISHED')->limit(4)->get();
-        $dataPage = Page::orderByDesc('id')->get();
+        $dataBlog = Post::orderByDesc('id')->where('status', 'PUBLISHED')->where('featured', 1)->limit(4)->get();
+        $dataPage = Page::orderBy('order')->whereIn('slug', $slugGr)->get();
         $dataClient = Client::orderBy('order')->get();
         return view('frontside.home.index', compact('dataService', 'dataBlog', 'dataPage', 'dataClient'));
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Menu;
 
 use App\Models\Page;
 use App\Models\Service;
@@ -10,7 +10,7 @@ use TCG\Voyager\Facades\Voyager;
 use TCG\Voyager\Models\Menu;
 use TCG\Voyager\Models\MenuItem;
 
-class UserMenuSeeder extends Seeder
+class UserFooterMenuSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,8 +19,7 @@ class UserMenuSeeder extends Seeder
      */
     public function run()
     {
-        $menu = Voyager::model('Menu')->firstOrCreate(['name' => 'user']);
-        $menu->items()->delete();
+        $menu = Voyager::model('Menu')->firstOrCreate(['name' => 'user_footer']);
         $menuItems = $this->getMenuItems();
         $this->buildMenuItems($menu, $menuItems);
     }
@@ -32,36 +31,20 @@ class UserMenuSeeder extends Seeder
     {
         $menuItems = [
             [
-                'title' => 'HOME',
-                'url'   => '',
-                'route' => 'home',
+                'title'    => 'Company',
+                'url'      => '#',
+                'route'    => null,
             ],
             [
-                'title'    => 'SERVICES',
+                'title'    => 'Services',
                 'url'      => '#',
                 'route'    => null,
                 'children' => Service::getAll(),
             ],
             [
-                'title'    => 'ABOUT',
+                'title'    => 'Help',
                 'url'      => '#',
                 'route'    => null,
-                'children' => Page::getAll(),
-            ],
-            [
-                'title' => 'BLOG',
-                'url'   => '',
-                'route' => 'blogs.index',
-            ],
-            [
-                'title' => 'CAREERS',
-                'url'   => '',
-                'route' => 'careers.index',
-            ],
-            [
-                'title' => 'CONTACT',
-                'url'   => '#contact-section',
-                'route' => null,
             ],
         ];
 
@@ -73,11 +56,12 @@ class UserMenuSeeder extends Seeder
 
                 foreach ($item['children'] as $k => $v) {
                     $children[] = [
-                        'title'      => $v->title,
-                        'url'        => '',
-                        'route'      => "{$v->getTable()}.show",
-                        'parameters' => json_encode(['slug' => $v->slug]),
-                        'order'      => $k + 1,
+                        'title'       => $v->title,
+                        'description' => $v->description,
+                        'url'         => '',
+                        'route'       => "{$v->getTable()}.show",
+                        'parameters'  => json_encode(['slug' => $v->slug]),
+                        'order'       => $k + 1,
                     ];
                 }
 
@@ -102,7 +86,7 @@ class UserMenuSeeder extends Seeder
             }
 
             /** @var MenuItem $menuItem */
-            $menuItem = $menu->items()->create(Arr::except($item, 'children'));
+            $menuItem = $menu->items()->firstOrCreate(Arr::only($item, 'title'), Arr::except($item, ['title', 'children']));
 
             if (isset($item['children'])) {
                 $this->buildMenuItems($menu, $item['children'], $menuItem);

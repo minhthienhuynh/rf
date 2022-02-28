@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@include('layouts.includes.seo', ['model'=> $data, 'type'=>''])
 @section('content')
     <section class="main">
         <div class="page-visual" style="background-image: url('{{ asset('frontside/assets/img/images/visual-img-02.jpg') }}');">
@@ -51,12 +52,9 @@
                 <h2 class="post-detail-title">{{ $data->title }}</h2>
                 <p class="post-detail-info">{{ $data->created_at->format('F d, Y') }}</p><img
                     src="{{ voyager::image($data->image) }}" alt="{{ $data->title }}">
-                <h3>{{ $data->title }}</h3>
                 <div class="content-wrapper">
                     {!! $data->body !!}
                 </div>
-                {{-- <div class="block-tags"> <a class="tag" href="./blog.html">#Blog</a><a class="tag"
-                        href="./blog-category.html">#Stewardship</a></div> --}}
                 <div class="recent-blog sp mt-5">
                     <p class="sidebar-ttl">Recent Blogs</p>
                     <div class="siderbar-block">

@@ -2,10 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\Admin\ServiceController;
 use App\Models\Post;
 use App\Models\Service;
-use Illuminate\Support\Arr;
 
 class ServiceSeeder extends AbstractSeeder
 {
@@ -30,7 +29,6 @@ class ServiceSeeder extends AbstractSeeder
                         url('/html/assets/img/images/services/thumbnail-03.jpg'),
                         url('/html/assets/img/images/services/thumbnail-04.jpg'),
                     ]),
-                    'published_at' => now(),
                 ],
                 [
                     'title' => 'Planning & Adaptive Management',
@@ -44,7 +42,6 @@ class ServiceSeeder extends AbstractSeeder
                         url('/html/assets/img/images/services/thumbnail-03.jpg'),
                         url('/html/assets/img/images/services/thumbnail-04.jpg'),
                     ]),
-                    'published_at' => now(),
                 ],
                 [
                     'title' => 'Science',
@@ -58,7 +55,6 @@ class ServiceSeeder extends AbstractSeeder
                         url('/html/assets/img/images/services/thumbnail-03.jpg'),
                         url('/html/assets/img/images/services/thumbnail-04.jpg'),
                     ]),
-                    'published_at' => now(),
                 ],
                 [
                     'title' => 'Timber',
@@ -72,12 +68,24 @@ class ServiceSeeder extends AbstractSeeder
                         url('/html/assets/img/images/services/thumbnail-03.jpg'),
                         url('/html/assets/img/images/services/thumbnail-04.jpg'),
                     ]),
-                    'published_at' => now(),
                 ],
             ];
 
             foreach ($data as $datum) {
-                $this->getModel()::updateOrCreate(Arr::only($datum, 'slug'), Arr::except($datum, 'slug'));
+                $model = Service::where('slug', $datum['slug'])->first();
+
+                if (!$model) {
+                    $model = new Service();
+                }
+
+                $model->title = $datum['title'];
+                $model->slug = $datum['slug'];
+                $model->description = $datum['description'];
+                $model->content = $datum['content'];
+                $model->hero_picture = $datum['hero_picture'];
+                $model->slider = $datum['slider'];
+
+                $model->saveQuietly();
             }
         }
     }
@@ -107,6 +115,7 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
+                    'order'         => 1,
                 ],
             ],
             [
@@ -127,6 +136,7 @@ class ServiceSeeder extends AbstractSeeder
                             'width'         => 6,
                         ],
                     ],
+                    'order'         => 2,
                 ],
             ],
             [
@@ -154,6 +164,7 @@ class ServiceSeeder extends AbstractSeeder
                             'rule'          => 'unique:services,slug',
                         ],
                     ],
+                    'order'         => 3,
                 ],
             ],
             [
@@ -169,6 +180,7 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 4,
                 ],
             ],
             [
@@ -189,6 +201,7 @@ class ServiceSeeder extends AbstractSeeder
                             'rule'          => 'required',
                         ],
                     ],
+                    'order'         => 5,
                 ],
             ],
             [
@@ -204,6 +217,7 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 6,
                 ],
             ],
             [
@@ -219,22 +233,8 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 7,
                 ],
-            ],
-            [
-                'attributes'    => [
-                    'field'         => 'published_at',
-                ],
-                'values'        => [
-                    'type'          => 'timestamp',
-                    'display_name'  => __('voyager::seeders.data_rows.published_at'),
-                    'required'      => 0,
-                    'browse'        => 1,
-                    'read'          => 1,
-                    'edit'          => 1,
-                    'add'           => 1,
-                    'delete'        => 1,
-                ]
             ],
             [
                 'attributes'    => [
@@ -260,6 +260,23 @@ class ServiceSeeder extends AbstractSeeder
                         'pivot'         => '1',
                         'taggable'      => '0',
                     ],
+                    'order'         => 8,
+                ]
+            ],
+            [
+                'attributes'    => [
+                    'field'         => 'published_at',
+                ],
+                'values'        => [
+                    'type'          => 'timestamp',
+                    'display_name'  => __('voyager::seeders.data_rows.published_at'),
+                    'required'      => 0,
+                    'browse'        => 1,
+                    'read'          => 1,
+                    'edit'          => 1,
+                    'add'           => 1,
+                    'delete'        => 1,
+                    'order'         => 9,
                 ]
             ],
             [
@@ -275,6 +292,7 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
+                    'order'         => 10,
                 ]
             ],
             [
@@ -290,6 +308,7 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
+                    'order'         => 11,
                 ]
             ],
         ];
@@ -299,7 +318,7 @@ class ServiceSeeder extends AbstractSeeder
 
     protected function buildMenu()
     {
-        $this->_buildMenu($this->getPluralName(), 4);
+        $this->_buildMenu($this->getPluralName(), 5);
     }
 
     protected function buildPermission()

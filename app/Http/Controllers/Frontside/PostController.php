@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontside;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -19,15 +20,13 @@ class PostController extends Controller
         $countItem = $query->get()->count();
 
         if(count($listCateId) > 0) {
-            $query = $query->whereIn('category_id', $listCateId);
-        }
-
-        if(request()->q) {
-            $query = $query->where('title', 'LIKE', '%' . request()->q . '%');
+            $query = $query->whereHas('categories', function($q) use ($listCateId) {
+                    $q->whereIn('id', $listCateId);
+            });
         }
 
         $result = $query->get()->count();
-
+        
         $data = $query->paginate(9);
         $recent = Post::take(10)->orderByDesc('id')->get();
         $category = Category::orderByDesc('order')->get();
@@ -43,5 +42,20 @@ class PostController extends Controller
         $query = Post::orderByDesc('id')->where('status', 'PUBLISHED');
         $countItem = $query->get()->count();
         return view('frontside.blog.detail', compact('data', 'recent', 'category', 'countItem'));
+    }
+
+    public function search(Request $request)
+    {
+        if ($request->isNotFilled('q')) {
+            return redirect()->back();
+        }
+
+        $posts = Post::where('status', Post::PUBLISHED)
+            ->where('title', 'like', "%{$request->input('q')}%")
+            ->orWhere('excerpt', 'like', "%{$request->input('q')}%")
+            ->orWhere('body', 'like', "%{$request->input('q')}%")
+            ->paginate(12);
+
+        return view('frontside.blog.search', compact('posts'));
     }
 }

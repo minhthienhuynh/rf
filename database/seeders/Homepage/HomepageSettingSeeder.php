@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\Homepage;
 
-use App\Http\Controllers\HomepageSettingController;
+use App\Http\Controllers\Admin\HomepageSettingController;
 use App\Models\HomepageSetting;
 use App\Models\Setting;
 use Database\Seeders\AbstractSeeder;
@@ -139,7 +139,7 @@ class HomepageSettingSeeder extends AbstractSeeder
                     [
                         'key'          => 'client.items',
                         'display_name' => 'Client list',
-                        'value'        => route('voyager.clients.index'),
+                        'value'        => url('/admin/clients'),
                         'details'      => null,
                         'type'         => Setting::TYPE_ITEMS,
                         'order'        => 3,
@@ -163,7 +163,7 @@ class HomepageSettingSeeder extends AbstractSeeder
 
     protected function buildMenu()
     {
-        $this->_buildMenu($this->getPluralName(), 10);
+        $this->_buildMenu($this->getPluralName(), 4);
     }
 
     protected function buildPermission()

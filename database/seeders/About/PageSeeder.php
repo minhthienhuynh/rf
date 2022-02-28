@@ -2,7 +2,7 @@
 
 namespace Database\Seeders\About;
 
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\Admin\PageController;
 use App\Models\Page;
 use Database\Seeders\AbstractSeeder;
 use Illuminate\Support\Arr;
@@ -16,6 +16,8 @@ class PageSeeder extends AbstractSeeder
 
     protected function buildData()
     {
+        $data = [];
+
         if (app()->environment('local')) {
             $data = [
                 [
@@ -34,26 +36,46 @@ class PageSeeder extends AbstractSeeder
                     'hero_picture' => url('/html/assets/img/images/visual-img-03.jpg'),
                     'published_at' => now(),
                 ],
-                [
-                    'title' => 'Our Members',
-                    'slug' => 'members',
-                    'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
-                    'content' => '<p>content</p>',
-                    'hero_picture' => url('/html/assets/img/images/visual-img-03.jpg'),
-                    'published_at' => now(),
-                ],
+            ];
+        }
+
+        $data[] = [
+                'title' => 'Our Members',
+                'slug' => 'members',
+                'description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                'content' => '<p>content</p>',
+                'hero_picture' => url('/html/assets/img/images/visual-img-03.jpg'),
+                'published_at' => now(),
             ];
 
-            foreach ($data as $datum) {
-                $this->getModel()::updateOrCreate(Arr::only($datum, 'slug'), Arr::except($datum, 'slug'));
+        foreach ($data as $datum) {
+            $model = Page::where('slug', $datum['slug'])->first();
+
+            if (!$model) {
+                $model = new Page();
             }
+
+            $model->title = $datum['title'];
+            $model->slug = $datum['slug'];
+            $model->description = $datum['description'];
+            $model->content = $datum['content'];
+            $model->hero_picture = $datum['hero_picture'];
+            $model->show_in_about = true;
+
+            $model->saveQuietly();
         }
     }
 
     protected function buildCRUD()
     {
         //Data Type
-        $dataType = $this->_buildDataType();
+        $dataType = $this->_buildDataType([
+            'order_column'         => 'order',
+            'order_display_column' => 'title',
+            'order_direction'      => 'asc',
+            'default_search_key'   => null,
+            'scope'                => null
+        ]);
 
         $dataRows = [
             [
@@ -69,6 +91,7 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
+                    'order'         => 1,
                 ],
             ],
             [
@@ -84,11 +107,8 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'details'       => [
-                        'display'       => [
-                            'width'         => 6,
-                        ],
-                    ],
+                    'details'       => [],
+                    'order'         => 2,
                 ],
             ],
             [
@@ -105,17 +125,14 @@ class PageSeeder extends AbstractSeeder
                     'add'           => 1,
                     'delete'        => 1,
                     'details'       => [
-                        'display'       => [
-                            'width'         => 6,
-                        ],
                         'slugify'       => [
                             'origin'        => 'title',
-                            'forceUpdate'   => true,
                         ],
                         'validation'    => [
                             'rule'          => 'unique:pages,slug',
                         ],
                     ],
+                    'order'         => 3,
                 ],
             ],
             [
@@ -131,6 +148,7 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 4,
                 ],
             ],
             [
@@ -151,6 +169,7 @@ class PageSeeder extends AbstractSeeder
                             'rule'          => 'required',
                         ],
                     ],
+                    'order'         => 5,
                 ],
             ],
             [
@@ -166,6 +185,23 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 6,
+                ],
+            ],
+            [
+                'attributes'    => [
+                    'field'         => 'show_in_about'
+                ],
+                'values'        => [
+                    'type'          => 'checkbox',
+                    'display_name'  => __('voyager::pages.data_rows.show_in_about'),
+                    'required'      => 0,
+                    'browse'        => 0,
+                    'read'          => 1,
+                    'edit'          => 1,
+                    'add'           => 1,
+                    'delete'        => 1,
+                    'order'         => 7,
                 ],
             ],
             [
@@ -181,6 +217,7 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 8,
                 ]
             ],
             [
@@ -196,6 +233,7 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
+                    'order'         => 9,
                 ]
             ],
             [
@@ -211,6 +249,7 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
+                    'order'         => 10,
                 ]
             ],
         ];
@@ -224,7 +263,7 @@ class PageSeeder extends AbstractSeeder
             'title' => 'About',
             'url' => '',
             'icon_class' => 'voyager-info-circled',
-            'order' => 4,
+            'order' => 6,
         ]);
     }
 

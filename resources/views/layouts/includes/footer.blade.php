@@ -50,26 +50,7 @@
                 </ul>
             </div>
             <div class="f-col-right">
-                <ul class="f-nav">
-                    <li class="f-nav-ttl"><a href="#">Company</a></li>
-                    <li><a href="#">Mission</a></li>
-                    <li><a href="#">Vision</a></li>
-                    <li><a href="#">Members</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Careers</a></li>
-                </ul>
-                <ul class="f-nav">
-                    <li class="f-nav-ttl"><a href="#">Services</a></li>
-                    <li><a href="#">Stewardship</a></li>
-                    <li><a href="#">Planning & Adaptive Management</a></li>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Timber</a></li>
-                    <li><a href="#">Geospatial and Software</a></li>
-                </ul>
-                <ul class="f-nav">
-                    <li class="f-nav-ttl"><a href="#">Help</a></li>
-                    <li><a href="#">Term and Conditions</a></li>
-                </ul>
+                {{ menu('user_footer', 'layouts.includes.menu-footer') }}
             </div>
         </div>
         <address class="text-center">©2022 by Resilient Forestry</address>

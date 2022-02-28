@@ -2,6 +2,7 @@
 
 return [
     'data_rows' => [
+        'categories' => 'Categories',
         'content' => 'Content',
         'description' => 'Description',
         'expired_at' => 'Expired At',
@@ -15,6 +16,7 @@ return [
         'posts' => 'Posts',
         'published_at' => 'Published At',
         'roles' => 'Roles',
+        'services' => 'Services',
         'slider' => 'Slider',
     ],
     'labels' => [

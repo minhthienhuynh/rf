@@ -210,7 +210,7 @@
 
 @section('page_header')
     <h1 class="page-title">
-        <i class="voyager-settings"></i> {{ __('voyager::generic.settings') }}
+        <i class="voyager-settings"></i> {{ __('voyager::generic.homepage_settings') }}
     </h1>
 @stop
 
@@ -222,7 +222,7 @@
     <div class="page-content settings container-fluid">
         <form action="{{ route('voyager.homepage-settings.update') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
-            <input type="hidden" name="homepage_setting_tab" class="homepage_setting_tab" value="{{ session('homepage_setting_tab') }}" />
+            <input type="hidden" name="homepage_setting_tab" class="homepage_setting_tab" value="{{ session('homepage_setting_tab', 'banner') }}" />
             <div class="panel">
 
                 <div class="page-content settings container-fluid">

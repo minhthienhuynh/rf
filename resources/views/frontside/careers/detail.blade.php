@@ -1,6 +1,6 @@
 @extends('layouts.master')
+@include('layouts.includes.seo', ['model'=> $data, 'type'=>''])
 @section('content')
-{{-- @dd($data) --}}
     <section class="main">
         <div class="page-visual" style="background-image: url('{{ asset('frontside/assets/img/images/visual-img-04.jpg')}}');"></div>
         <div class="container large post-detail">
@@ -16,6 +16,7 @@
             <div class="content-wrapper">
                 {!! $data->content !!}
             </div>
+            <p></p>
             <div class="post-detail-footer">
                 <a class="btn btn-primary btn-apply mr-3" href="{{ $data->link}}" target="_blank">Apply For This Job</a>
                 @if(!empty(json_decode($data->pdf)))
