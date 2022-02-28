@@ -210,6 +210,22 @@ class PageSeeder extends AbstractSeeder
             ],
             [
                 'attributes'    => [
+                    'field'         => 'landscape_image'
+                ],
+                'values'        => [
+                    'type'          => 'image',
+                    'display_name'  => __('voyager::seeders.data_rows.landscape_image'),
+                    'required'      => 1,
+                    'browse'        => 1,
+                    'read'          => 1,
+                    'edit'          => 1,
+                    'add'           => 1,
+                    'delete'        => 1,
+                    'order'         => 8,
+                ],
+            ],
+            [
+                'attributes'    => [
                     'field'         => 'show_in_about'
                 ],
                 'values'        => [
@@ -221,7 +237,7 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 8,
+                    'order'         => 9,
                 ],
             ],
             [
@@ -237,7 +253,7 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
-                    'order'         => 9,
+                    'order'         => 10,
                 ]
             ],
             [
@@ -253,7 +269,7 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
-                    'order'         => 10,
+                    'order'         => 11,
                 ]
             ],
             [
@@ -269,7 +285,7 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
-                    'order'         => 11,
+                    'order'         => 12,
                 ]
             ],
         ];

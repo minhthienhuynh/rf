@@ -27,7 +27,7 @@ class Page extends Model
     ];
 
     public static $subFields = [
-        'details' => ['slug', 'hero_picture', 'published_at', 'show_in_about'],
+        'details' => ['slug', 'hero_picture', 'landscape_image', 'published_at', 'show_in_about'],
     ];
 
     /**
@@ -42,6 +42,7 @@ class Page extends Model
         'description',
         'content',
         'hero_picture',
+        'landscape_image',
         'published_at',
     ];
 

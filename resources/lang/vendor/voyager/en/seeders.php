@@ -10,6 +10,7 @@ return [
         'hero_picture' => 'Hero Picture',
         'image' => 'Image',
         'link' => 'Link',
+        'landscape_image' => 'Landscape Image',
         'logo' => 'Logo',
         'menu_description' => 'Menu Description',
         'pdf' => 'Pdf',
