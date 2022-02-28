@@ -36,3 +36,13 @@
 .padding-topnn {
     padding-top: 2rem;
 }
+
+
+/* MEMBERS CSS */
+.section-members [class*="col-"] {
+    display: flex; 
+}
+
+.section-members [class*="col-"] .card { 
+    flex-grow: 1;
+}
