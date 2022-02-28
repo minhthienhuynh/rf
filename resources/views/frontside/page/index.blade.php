@@ -12,7 +12,7 @@
                 @endif
                 <span class="section-ttl">{{ $data->title }}</span>
             </h2>
-            @if ($slug == 'members')
+            @if ($slug == 'members' || $slug == 'people')
                 <div class="row section-members">
                     @foreach ($dataMember as $member)
                         <div class="col-sm-6 col-lg-4">
@@ -21,6 +21,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title primary-title text-center">
                                         <span class="section-sub-ttl">{{ $member->position }}</span>
+                                        <span class="section-ttl">{{ $member->full_name }}</span>
                                     </h4>
                                     <p class="card-text text-center">{{ $member->description }}</p>
                                 </div>

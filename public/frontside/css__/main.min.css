@@ -12236,12 +12236,6 @@ body.searching .page-2-column .page-content {
     height: 100%;
     display: block; }
 
-.latest-blog-section [class*="col-"] {
-  display: flex;
-  flex-direction: column; }
-  .latest-blog-section [class*="col-"] .card {
-    flex-grow: 1; }
-
 @media (min-width: 768px) {
   .sp {
     display: none !important; }
