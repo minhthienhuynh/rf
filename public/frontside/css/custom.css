@@ -46,3 +46,7 @@
 .section-members [class*="col-"] .card { 
     flex-grow: 1;
 }
+
+.aboutus-card .card-content {
+    text-transform: uppercase;
+}
