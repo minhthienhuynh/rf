@@ -19,7 +19,9 @@
             <p></p>
             <div class="post-detail-footer">
                 <a class="btn btn-primary btn-apply mr-3" href="{{ $data->link}}" target="_blank">Apply For This Job</a>
+                @if(!empty(json_decode($data->pdf)))
                 <a class="btn btn-light" href="{{ $data->pdf ? url(Storage::url(json_decode($data->pdf, true)[0]['download_link'])) : '' }}" download>Download Flyer</a></div>
+                @endif
         </div>
     </section>
 @endsection
