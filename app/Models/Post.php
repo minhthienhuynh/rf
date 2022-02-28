@@ -14,7 +14,7 @@ class Post extends Model
     ];
 
     public static $subFields = [
-        'details' => ['slug', 'status', 'featured', 'post_belongstomany_category_relationship', 'post_belongstomany_service_relationship'],
+        'details' => ['slug', 'status', 'featured', 'post_belongstomany_category_relationship', 'post_belongstomany_service_relationship', 'post_belongstomany_tag_relationship'],
         'media' => ['image'],
     ];
 
@@ -32,5 +32,13 @@ class Post extends Model
     public function services()
     {
         return $this->belongsToMany(Service::class);
+    }
+
+    /**
+     * The tags that belong to the post.
+     */
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
 }

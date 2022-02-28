@@ -19,6 +19,7 @@ return [
         'roles' => 'Roles',
         'services' => 'Services',
         'slider' => 'Slider',
+        'tags' => 'Tags',
     ],
     'labels' => [
         'details' => 'Details',
