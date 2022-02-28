@@ -63,7 +63,7 @@ class Page extends Model
         $menuService = new MenuService();
 
         static::saved(function (self $model) use ($menuService) {
-            if ($model->isDirty(['title', 'slug', 'show_in_about'])) {
+            if ($model->isDirty(['title', 'slug', 'menu_description', 'show_in_about'])) {
                 $menuService->updateHeaderMenuItems('ABOUT', self::getAll());
             }
         });

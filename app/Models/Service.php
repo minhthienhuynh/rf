@@ -73,7 +73,7 @@ class Service extends Model
         $menuService = new MenuService();
 
         static::saved(function (self $model) use ($menuService) {
-            if ($model->isDirty(['title', 'slug'])) {
+            if ($model->isDirty(['title', 'slug', 'menu_description'])) {
                 $menuService->updateHeaderMenuItems('SERVICES', self::getAll());
                 $menuService->updateFooterMenuItems('Services', self::getAll());
             }
