@@ -11976,7 +11976,7 @@ body.searching .page-2-column .page-content {
 .main > *:last-child {
   padding-bottom: 80px; }
 
-.section-members .col-md-4 {
+.section-members [class*="col-"] {
   display: flex;
   flex-direction: column; }
 
