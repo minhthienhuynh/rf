@@ -230,3 +230,13 @@
         display: block;
     }
 }
+
+.latest-blog-section {
+    [class*="col-"] {
+        display: flex;
+        flex-direction: column;
+        .card {
+            flex-grow: 1;
+        }
+    }
+}
