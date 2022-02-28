@@ -34,12 +34,16 @@
             if(url($item->link()) == url()->current()){
                 $isActive = 'active';
             }
+
+            if($item->title == 'ABOUT' && request()->is('about/*') || $item->title == 'SERVICES' && request()->is('service/*')){
+                $isActive = 'active';
+            }
             // Set Icon
             if(isset($options->icon) && $options->icon == true){
                 $icon = '<i class="' . $item->icon_class . '"></i>';
             }
         @endphp
-    
+
         <li class="{{ $level == 1 ? '' : 'sub-menu-item' }}">
             <a class="{{ $isActive }} {{ $level == 1 ? '' : 'sub-menu-item' }}" href="{{ url($item->link()) }}" target="{{ $item->target }}" style="{{ $styles }}">
                 {!! $icon !!}
