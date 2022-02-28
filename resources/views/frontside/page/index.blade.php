@@ -3,7 +3,9 @@
 @section('content')
     <section class="main">
         @if($slug != "term-and-conditions")
+            @if (!blank($data->landscape_image))
         <div class="page-visual" style="background-image: url('{{ voyager::image($data->landscape_image) }}');"></div>
+            @endif
         @endif
         <div class="container post-detail {{ $slug == "term-and-conditions" ? 'padding-topnn' : ''}}">
             <h2 class="primary-title text-center">
