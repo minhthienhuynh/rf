@@ -98,7 +98,7 @@
                                             src="{{ voyager::image($blog->image) }}" alt="{{ $blog->title }}"></a>
                                     <div class="card-body">
                                         <h5 class="card-title"><a href="{{ route('frontside.post.detail', $blog->slug) }}">{{ $blog->title }}</a></h5>
-                                        <p class="card-text">{{ $blog->description }}</p>
+                                        <p class="card-text">{{ $blog->excerpt }}</p>
                                         <div class="card-footer">
                                             <p class="post-date">{{ $blog->created_at->format('m/d/Y') }}</p><a class="post-link btn-more"
                                                 href="{{ route('frontside.post.detail', $blog->slug) }}">More</a>
