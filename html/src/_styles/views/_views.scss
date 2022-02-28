@@ -620,7 +620,7 @@ body.searching {
 }
 
 .section-members {
-    .col-md-4 {
+    [class*="col-"] {
         display: flex;
         flex-direction: column;
     }
