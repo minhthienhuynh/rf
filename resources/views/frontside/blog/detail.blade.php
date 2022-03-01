@@ -56,8 +56,12 @@
                     {!! $data->body !!}
                 </div>
                 <div class="block-tags">
-                    @foreach ($data->tags as $tag)
-                        <a class="tag" href="{{ route('blogs.search', ['q' => $tag->name]) }}">#{{ $tag->name }}</a>
+                    @foreach($data->categories as $cate)
+                        <a class="tag" href="{{ route('blogs.index') . '?category_id='. $cate->id }}">#{{ $cate->name }}</a>
+                    @endforeach
+
+                    @foreach($data->services as $service)
+                        <a class="tag" href="{{ route('services.show', $service->slug) }}">#{{ $service->title }}</a>
                     @endforeach
                 </div>
                 <div class="recent-blog sp mt-5">
