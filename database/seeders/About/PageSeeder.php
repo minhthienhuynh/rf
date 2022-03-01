@@ -199,7 +199,7 @@ class PageSeeder extends AbstractSeeder
                 'values'        => [
                     'type'          => 'image',
                     'display_name'  => __('voyager::seeders.data_rows.hero_picture'),
-                    'required'      => 1,
+                    'required'      => 0,
                     'browse'        => 1,
                     'read'          => 1,
                     'edit'          => 1,
@@ -215,7 +215,7 @@ class PageSeeder extends AbstractSeeder
                 'values'        => [
                     'type'          => 'image',
                     'display_name'  => __('voyager::seeders.data_rows.landscape_image'),
-                    'required'      => 1,
+                    'required'      => 0,
                     'browse'        => 1,
                     'read'          => 1,
                     'edit'          => 1,

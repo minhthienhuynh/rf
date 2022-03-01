@@ -47,6 +47,42 @@
     flex-grow: 1;
 }
 
-.aboutus-card .card-content {
+.aboutus-card .card-content .card-ttl {
     text-transform: uppercase;
+}
+
+.sub-menu-desc {
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
+}
+
+.nav.tab-title-only .nav-link {
+    font-size: 22px;
+}
+
+@media (max-width: 767.98px) {
+    .main-visual h2 {
+        font-size: 4.5vw;
+        font-weight: 500;
+    }
+    .main-visual .visual-desc {
+        font-size: 16px;
+    }
+    #menu-toggle {
+        width: 24px;
+        height: 24px;
+        top: 26px;
+    }
+    #menu-toggle span:nth-child(1) {
+        top: 6px; 
+    }
+    #menu-toggle span {
+        height: 2px;
+    }
+    #menu-toggle span:nth-child(2), #menu-toggle span:nth-child(3) {
+        top: 12px;
+    }
+    #menu-toggle span:nth-child(4) {
+        top: 18px;
+    }
 }

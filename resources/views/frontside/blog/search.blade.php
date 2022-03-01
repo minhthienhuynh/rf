@@ -18,7 +18,7 @@
                 <h2 class="primary-title text-center title-small">
                     <span class="section-sub-ttl">SEARCH RESULTS</span>
                     @if ($posts->total())
-                        <span class="main-ttl">We found <b>{{ $posts->total() }}</b> blogs for <b>“{{ request()->input('q') }}”</b></span>
+                        <span class="main-ttl">We found <b>{{ $posts->total() }}</b> posts with <b>“{{ request()->input('q') }}”</b></span>
                     @else
                         <span class="main-ttl">Your search for "<b>{{ request()->input('q') }}</b>" didn’t return any results.</span>
                     @endif
