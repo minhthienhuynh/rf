@@ -17,7 +17,7 @@
             @if ($data->count() > 0)
                 <div class="row list-jobs">
                     @foreach ($data as $item) 
-                        <div class="col-sm-6 col-lg-3">
+                        <div class="col-6 col-lg-3">
                             <div class="card post-card job-post"><a class="post-link-img" href="{{ route('frontside.careers.detail', $item->slug) }}"><img
                                         class="card-img-top" src="{{ Voyager::image($item->image) }}"
                                         alt=""></a>
