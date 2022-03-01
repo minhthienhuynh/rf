@@ -103,6 +103,7 @@
     .card-text {
         color: $gray02;
         line-height: 1.25em;
+        margin-bottom: 0 !important;
     }
     .card-footer {
         background: none;
@@ -112,6 +113,7 @@
         justify-content: space-between;
         margin-top: auto;
         padding-top: 20px;
+        align-items: center;
         .post-link {
             margin-left: auto;
         }
@@ -119,6 +121,7 @@
     .post-date {
         font-size: 14px;
         color: $gray03;
+        margin-bottom: 0 !important;
     }
     .btn-more {
         font-size: 14px;
@@ -172,7 +175,7 @@
     flex-wrap: wrap;
     justify-content: center;
     li {
-        margin: 20px 40px;
+        margin: 15px 25px;
     }
 }
 
