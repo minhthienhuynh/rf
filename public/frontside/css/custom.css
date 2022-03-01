@@ -50,3 +50,32 @@
 .aboutus-card .card-content {
     text-transform: uppercase;
 }
+
+
+
+@media (max-width: 767.98px) {
+    .main-visual h2 {
+        font-size: 4.5vw;
+        font-weight: 500;
+    }
+    .main-visual .visual-desc {
+        font-size: 16px;
+    }
+    #menu-toggle {
+        width: 24px;
+        height: 24px;
+        top: 26px;
+    }
+    #menu-toggle span:nth-child(1) {
+        top: 6px; 
+    }
+    #menu-toggle span {
+        height: 2px;
+    }
+    #menu-toggle span:nth-child(2), #menu-toggle span:nth-child(3) {
+        top: 12px;
+    }
+    #menu-toggle span:nth-child(4) {
+        top: 18px;
+    }
+}
