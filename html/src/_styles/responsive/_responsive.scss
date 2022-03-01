@@ -228,6 +228,11 @@
             right: 0;
         }
     }
+    .list-clients {
+        li {
+            margin: 2vw 1.5vw;
+        }
+    }
 }
 
 // Medium devices (tablets, less than 992px)
@@ -268,22 +273,22 @@
         }
     }
     .aboutus-card {
-        .card-content {
-            position: relative;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: auto;
-            padding: 20px 20px 40px;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-            background-color: #f1f1f1;
-            &:before {
-                opacity: 1;
-                right: 20px;
-                bottom: 10px
-            }
-        }
+        // .card-content {
+        //     position: relative;
+        //     left: 0;
+        //     top: 0;
+        //     width: 100%;
+        //     height: auto;
+        //     padding: 20px 20px 40px;
+        //     border-top-left-radius: 0;
+        //     border-top-right-radius: 0;
+        //     background-color: #f1f1f1;
+        //     &:before {
+        //         opacity: 1;
+        //         right: 20px;
+        //         bottom: 10px
+        //     }
+        // }
     }
     .section-blog {
         .post-card {
@@ -295,6 +300,7 @@
             margin-bottom: 30px;
         }
     }
+    
 }
 
 // Small devices (landscape phones, less than 768px)
@@ -631,6 +637,27 @@
             }
         }
     }
+    .list-clients {
+        li {
+            margin: 2vw 2vw;
+            img {
+                max-width: 18vw;
+            }
+        }
+    }
+    .pagination {
+        a {
+            &:not(.dir):not(.current) {
+                display: none;
+            }
+            &.current + a {
+                display: flex !important;
+            }
+        }
+        span {
+            display: none;
+        }
+    }
 }
 
 // X-Small devices (portrait phones, less than 576px)
@@ -673,6 +700,53 @@
             }
         }
     }
+    .latest-blog-section {
+        .row {
+            padding-left: 10px;
+            padding-right: 10px;
+            .col-6 {
+                padding-left: 5px !important;
+                padding-right: 5px !important;
+                .post-card {
+                    margin-bottom: 10px;
+                    .card-body {
+                        padding: 20px 10px;
+                        .card-text {
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .archive-post-card {
+        padding-left: 5px;
+        padding-right: 5px;
+        .col-6 {
+            padding-left: 5px !important;
+            padding-right: 5px !important;
+            .post-card {
+                margin-bottom: 10px;
+                .card-body {
+                    padding: 20px 10px;
+                    .card-text {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    .services-block-slider {
+        .post-card {
+            margin-bottom: 10px;
+            .card-body {
+                padding: 20px 10px;
+                .card-text {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
 }
 
 @media (max-width: 425px) {
@@ -709,17 +783,17 @@
             margin-bottom: 20px;
         }
     }
-    .services-content {
-        .services-block-slider {
-            .services-post {
-                width: 100%;
-                margin-right: 0;
-                &:nth-child(even) {
-                    margin-right: 0;
-                }
-            }
-        }
-    }
+    // .services-content {
+    //     .services-block-slider {
+    //         .services-post {
+    //             width: 100%;
+    //             margin-right: 0;
+    //             &:nth-child(even) {
+    //                 margin-right: 0;
+    //             }
+    //         }
+    //     }
+    // }
     .primary-title {
         font-size: 28px;
     }
@@ -773,8 +847,89 @@
     }
     .services-block-slider {
         .post-card {
-            width: 100%;
-            margin-right: 0;
+            width: calc(50% - 5px) !important;
+            margin-right: 10px !important;
+            &:nth-child(even) {
+                margin-right: 0 !important;
+            }
+        }
+    }
+}
+
+@media (max-width: 375px) {
+    .latest-blog-section {
+        .row {
+            .col-6 {
+                .post-card {
+                    .card-body {
+                        padding: 15px 10px;
+                        .card-title {
+                            font-size: 16px;
+                            margin-bottom: 0.7em;
+                        }
+                        .card-text {
+                            font-size: 12px;
+                        }
+                        .card-footer {
+                            padding-top: 10px;
+                            .post-date {
+                                font-size: 12px;
+                            }
+                            .btn-more {
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .archive-post-card {
+        .col-6 {
+            .post-card {
+                .card-body {
+                    padding: 15px 10px;
+                    .card-title {
+                        font-size: 16px;
+                        margin-bottom: 0.7em;
+                    }
+                    .card-text {
+                        font-size: 12px;
+                    }
+                    .card-footer {
+                        padding-top: 10px;
+                        .post-date {
+                            font-size: 12px;
+                        }
+                        .btn-more {
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .services-block-slider {
+        .post-card {
+            .card-body {
+                padding: 15px 10px;
+                .card-title {
+                    font-size: 16px;
+                    margin-bottom: 0.7em;
+                }
+                .card-text {
+                    font-size: 12px;
+                }
+                .card-footer {
+                    padding-top: 10px;
+                    .post-date {
+                        font-size: 12px;
+                    }
+                    .btn-more {
+                        font-size: 12px;
+                    }
+                }
+            }
         }
     }
 }
