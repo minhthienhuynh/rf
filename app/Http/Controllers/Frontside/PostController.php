@@ -11,6 +11,7 @@ class PostController extends Controller
     public function index()
     {
         $listCateId = [];
+        $catName = '';
         $cates = request()->category_id;
         if($cates) {
             $listCateId = explode(',',  $cates);
@@ -25,13 +26,17 @@ class PostController extends Controller
             });
         }
 
+        if(count($listCateId) == 1){
+            $catName = Category::findOrFail($listCateId[0]);
+        }
+
         $result = $query->get()->count();
         
         $data = $query->paginate(9);
         $recent = Post::take(10)->orderByDesc('id')->get();
         $category = Category::orderByDesc('order')->get();
 
-        return view('frontside.blog.index', compact('data', 'recent', 'category', 'countItem', 'result'));
+        return view('frontside.blog.index', compact('data', 'recent', 'category', 'countItem', 'result', 'catName', 'listCateId'));
     }
 
     public function detail($slug)
