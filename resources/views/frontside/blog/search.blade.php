@@ -26,7 +26,7 @@
                 <div class="row archive-post-card">
                     @if ($posts->total())
                         @foreach ($posts as $post)
-                            <div class="col-md-3">
+                            <div class="col-6 col-lg-3">
                                 <div class="card post-card services-post">
                                     <a class="post-link-img" href="{{ route('frontside.post.detail', $post->slug) }}">
                                         <img class="card-img-top" src="{{ Voyager::image($post->image) }}" alt="{{ $post->title }}">

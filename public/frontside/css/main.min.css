@@ -11976,7 +11976,7 @@ body.searching .page-2-column .page-content {
 .main > *:last-child {
   padding-bottom: 80px; }
 
-.section-members .col-md-4 {
+.section-members [class*="col-"] {
   display: flex;
   flex-direction: column; }
 
@@ -12142,7 +12142,8 @@ body.searching .page-2-column .page-content {
       color: inherit; }
   .post-card .card-text {
     color: #6F6F6F;
-    line-height: 1.25em; }
+    line-height: 1.25em;
+    margin-bottom: 0 !important; }
   .post-card .card-footer {
     background: none;
     border-top: none;
@@ -12150,12 +12151,14 @@ body.searching .page-2-column .page-content {
     display: flex;
     justify-content: space-between;
     margin-top: auto;
-    padding-top: 20px; }
+    padding-top: 20px;
+    align-items: center; }
     .post-card .card-footer .post-link {
       margin-left: auto; }
   .post-card .post-date {
     font-size: 14px;
-    color: #9D9D9D; }
+    color: #9D9D9D;
+    margin-bottom: 0 !important; }
   .post-card .btn-more {
     font-size: 14px; }
   .post-card .wrap-post-link {
@@ -12188,7 +12191,7 @@ body.searching .page-2-column .page-content {
   flex-wrap: wrap;
   justify-content: center; }
   .list-clients li {
-    margin: 20px 40px; }
+    margin: 15px 25px; }
 
 .aboutus-card {
   position: relative;
@@ -12357,7 +12360,9 @@ body.searching .page-2-column .page-content {
   .services-block-slider.block-full .slick-prev {
     left: 0; }
   .services-block-slider.block-full .slick-next {
-    right: 0; } }
+    right: 0; }
+  .list-clients li {
+    margin: 2vw 1.5vw; } }
 
 @media (max-width: 991.98px) {
   .header .container {
@@ -12375,20 +12380,6 @@ body.searching .page-2-column .page-content {
       margin-right: 20px; }
   .nav.tab-title-only .nav-link {
     font-size: 15px; }
-  .aboutus-card .card-content {
-    position: relative;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: auto;
-    padding: 20px 20px 40px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    background-color: #f1f1f1; }
-    .aboutus-card .card-content:before {
-      opacity: 1;
-      right: 20px;
-      bottom: 10px; }
   .section-blog .post-card {
     margin-bottom: 30px; }
   .row.list-jobs .job-post {
@@ -12636,7 +12627,17 @@ body.searching .page-2-column .page-content {
             margin-right: 0;
             margin-bottom: 30px; }
           .footer .f-navigation .f-col-right .f-nav li.f-nav-ttl {
-            margin-bottom: 10px; } }
+            margin-bottom: 10px; }
+  .list-clients li {
+    margin: 2vw 2vw; }
+    .list-clients li img {
+      max-width: 18vw; }
+  .pagination a:not(.dir):not(.current) {
+    display: none; }
+  .pagination a.current + a {
+    display: flex !important; }
+  .pagination span {
+    display: none; } }
 
 @media (max-width: 575.98px) {
   .contact-info-section {
@@ -12662,7 +12663,37 @@ body.searching .page-2-column .page-content {
     .block-gallery .gallery-thumbnail .slick-prev {
       left: 0; }
     .block-gallery .gallery-thumbnail .slick-next {
-      right: 0; } }
+      right: 0; }
+  .latest-blog-section .row {
+    padding-left: 10px;
+    padding-right: 10px; }
+    .latest-blog-section .row .col-6 {
+      padding-left: 5px !important;
+      padding-right: 5px !important; }
+      .latest-blog-section .row .col-6 .post-card {
+        margin-bottom: 10px; }
+        .latest-blog-section .row .col-6 .post-card .card-body {
+          padding: 20px 10px; }
+          .latest-blog-section .row .col-6 .post-card .card-body .card-text {
+            font-size: 14px; }
+  .archive-post-card {
+    padding-left: 5px;
+    padding-right: 5px; }
+    .archive-post-card .col-6 {
+      padding-left: 5px !important;
+      padding-right: 5px !important; }
+      .archive-post-card .col-6 .post-card {
+        margin-bottom: 10px; }
+        .archive-post-card .col-6 .post-card .card-body {
+          padding: 20px 10px; }
+          .archive-post-card .col-6 .post-card .card-body .card-text {
+            font-size: 14px; }
+  .services-block-slider .post-card {
+    margin-bottom: 10px; }
+    .services-block-slider .post-card .card-body {
+      padding: 20px 10px; }
+      .services-block-slider .post-card .card-body .card-text {
+        font-size: 14px; } }
 
 @media (max-width: 425px) {
   .main-nav {
@@ -12688,11 +12719,6 @@ body.searching .page-2-column .page-content {
     .main-visual .visual-desc {
       font-size: 16px;
       margin-bottom: 20px; }
-  .services-content .services-block-slider .services-post {
-    width: 100%;
-    margin-right: 0; }
-    .services-content .services-block-slider .services-post:nth-child(even) {
-      margin-right: 0; }
   .primary-title {
     font-size: 28px; }
   .section-clients {
@@ -12720,7 +12746,50 @@ body.searching .page-2-column .page-content {
   .breadcrumb li {
     font-size: 14px; }
   .services-block-slider .post-card {
-    width: 100%;
-    margin-right: 0; } }
+    width: calc(50% - 5px) !important;
+    margin-right: 10px !important; }
+    .services-block-slider .post-card:nth-child(even) {
+      margin-right: 0 !important; } }
+
+@media (max-width: 375px) {
+  .latest-blog-section .row .col-6 .post-card .card-body {
+    padding: 15px 10px; }
+    .latest-blog-section .row .col-6 .post-card .card-body .card-title {
+      font-size: 16px;
+      margin-bottom: 0.7em; }
+    .latest-blog-section .row .col-6 .post-card .card-body .card-text {
+      font-size: 12px; }
+    .latest-blog-section .row .col-6 .post-card .card-body .card-footer {
+      padding-top: 10px; }
+      .latest-blog-section .row .col-6 .post-card .card-body .card-footer .post-date {
+        font-size: 12px; }
+      .latest-blog-section .row .col-6 .post-card .card-body .card-footer .btn-more {
+        font-size: 12px; }
+  .archive-post-card .col-6 .post-card .card-body {
+    padding: 15px 10px; }
+    .archive-post-card .col-6 .post-card .card-body .card-title {
+      font-size: 16px;
+      margin-bottom: 0.7em; }
+    .archive-post-card .col-6 .post-card .card-body .card-text {
+      font-size: 12px; }
+    .archive-post-card .col-6 .post-card .card-body .card-footer {
+      padding-top: 10px; }
+      .archive-post-card .col-6 .post-card .card-body .card-footer .post-date {
+        font-size: 12px; }
+      .archive-post-card .col-6 .post-card .card-body .card-footer .btn-more {
+        font-size: 12px; }
+  .services-block-slider .post-card .card-body {
+    padding: 15px 10px; }
+    .services-block-slider .post-card .card-body .card-title {
+      font-size: 16px;
+      margin-bottom: 0.7em; }
+    .services-block-slider .post-card .card-body .card-text {
+      font-size: 12px; }
+    .services-block-slider .post-card .card-body .card-footer {
+      padding-top: 10px; }
+      .services-block-slider .post-card .card-body .card-footer .post-date {
+        font-size: 12px; }
+      .services-block-slider .post-card .card-body .card-footer .btn-more {
+        font-size: 12px; } }
 
 /*# sourceMappingURL=main.min.css.map */
