@@ -92,7 +92,7 @@
                 <div class="latest-blog-section">
                     <div class="row">
                         @foreach ($dataBlog as $blog)
-                            <div class="col-md-3">
+                            <div class="col-6 col-lg-3">    
                                 <div class="card post-card services-post"><a class="post-link-img"
                                         href="{{ route('frontside.post.detail', $blog->slug) }}"><img class="card-img-top"
                                             src="{{ voyager::image($blog->image) }}" alt="{{ $blog->title }}"></a>
