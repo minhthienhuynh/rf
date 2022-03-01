@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Service;
+use App\Models\Tag;
 use Database\Seeders\AbstractSeeder;
 use Illuminate\Support\Arr;
 
@@ -104,7 +105,7 @@ class PostSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
-                    'order'         => 11,
+                    'order'         => 12,
                 ],
             ],
             [
@@ -298,6 +299,33 @@ class PostSeeder extends AbstractSeeder
             ],
             [
                 'attributes'    => [
+                    'field'         => 'post_belongstomany_tag_relationship',
+                ],
+                'values'        => [
+                    'type'          => 'relationship',
+                    'display_name'  => __('voyager::seeders.data_rows.tags'),
+                    'required'      => 0,
+                    'browse'        => 0,
+                    'read'          => 1,
+                    'edit'          => 1,
+                    'add'           => 1,
+                    'delete'        => 1,
+                    'details'       => [
+                        'model'         => Tag::class,
+                        'table'         => app(Tag::class)->getTable(),
+                        'type'          => 'belongsToMany',
+                        'column'        => 'id',
+                        'key'           => 'id',
+                        'label'         => 'name',
+                        'pivot_table'   => 'post_tag',
+                        'pivot'         => '1',
+                        'taggable'      => 'on',
+                    ],
+                    'order'         => 11,
+                ]
+            ],
+            [
+                'attributes'    => [
                     'field'         => 'created_at',
                 ],
                 'values'        => [
@@ -309,7 +337,7 @@ class PostSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
-                    'order'         => 12,
+                    'order'         => 13,
                 ]
             ],
             [
@@ -325,7 +353,7 @@ class PostSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
-                    'order'         => 13,
+                    'order'         => 14,
                 ]
             ],
         ];

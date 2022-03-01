@@ -54,6 +54,9 @@ class PostController extends Controller
             ->where('title', 'like', "%{$request->input('q')}%")
             ->orWhere('excerpt', 'like', "%{$request->input('q')}%")
             ->orWhere('body', 'like', "%{$request->input('q')}%")
+            ->orWhereHas('tags', function ($query) use ($request) {
+                $query->where('name', $request->input('q'));
+            })
             ->paginate(12);
 
         return view('frontside.blog.search', compact('posts'));

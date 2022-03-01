@@ -6,6 +6,7 @@ use Database\Seeders\About\MemberSeeder;
 use Database\Seeders\About\PageSeeder;
 use Database\Seeders\Blog\CategorySeeder;
 use Database\Seeders\Blog\PostSeeder;
+use Database\Seeders\Blog\TagSeeder;
 use Database\Seeders\Homepage\ClientSeeder;
 use Database\Seeders\Homepage\HomepageSettingSeeder;
 use Database\Seeders\Menu\UserFooterMenuSeeder;
@@ -34,7 +35,7 @@ class DatabaseSeeder extends Seeder
         ]);
         $this->call(ServiceSeeder::class);
         $this->call([PageSeeder::class, MemberSeeder::class,]);
-        $this->call([CategorySeeder::class, PostSeeder::class,]);
+        $this->call([CategorySeeder::class, PostSeeder::class, TagSeeder::class]);
         $this->call(CareerSeeder::class);
         $this->call([HomepageSettingSeeder::class, ClientSeeder::class]);
         $this->call([UserHeaderMenuSeeder::class, UserFooterMenuSeeder::class]);

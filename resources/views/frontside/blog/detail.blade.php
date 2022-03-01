@@ -55,6 +55,11 @@
                 <div class="content-wrapper">
                     {!! $data->body !!}
                 </div>
+                <div class="block-tags">
+                    @foreach ($data->tags as $tag)
+                        <a class="tag" href="{{ route('blogs.search', ['q' => $tag->name]) }}">#{{ $tag->name }}</a>
+                    @endforeach
+                </div>
                 <div class="recent-blog sp mt-5">
                     <p class="sidebar-ttl">Recent Blogs</p>
                     <div class="siderbar-block">
