@@ -75,7 +75,7 @@
                 @if(count($listCateId) == 1)
                     <span class="section-sub-ttl">{{ $catName->name }} </span>
                 @elseif(count($listCateId) > 1)
-                    <span class="section-sub-ttl">{{ $result }} Results</span>
+                    <span class="section-sub-ttl">{{ $result }} Blogs</span>
                 @else
                     <span class="section-sub-ttl">ALL BLOGS</span>
                     <span class="section-ttl">Journeys to Nature</span>
