@@ -24,7 +24,7 @@
 <section class="main">
     <div class="page-visual" style="background-image: url('{{ asset("frontside/assets/img/images/visual-img-02.jpg")}}');"></div>
     <div class="page-2-column">
-        <div class="left-sidebar">
+        {{-- <div class="left-sidebar">
             <div class="searchbox">
                 <div class="input-text-wrapper">
                     <input class="search-input form-control blog-key-search" value="{{ request()->q }}" type="text"
@@ -69,7 +69,8 @@
                 </ul>
             </div>
             @endif
-        </div>
+        </div> --}}
+        @include('frontside.blog.include.sidebar')
         <div class="page-content">
             <h2 class="primary-title">
                 @if(count($listCateId) == 1)
@@ -118,28 +119,3 @@
 @endif
 @endsection
 
-@push('scripts')
-<script>
-    $('.form-check-input').on('change', () => {
-            let q = '{{ request()->q }}'
-            let arr = [];
-            let route = '{{ route("blogs.index") }}'
-            $('input.form-check-input:checkbox:checked').each(function () {
-                arr.push($(this).val());
-            });
-            window.location.href = route + "?category_id=" + arr.toString() + "&q=" + q
-        })    
-
-        $('.blog-key-search').on('input', function() {
-            let q = $(this).val()
-            let route = '{{ route("blogs.search") }}'
-
-            $(document).on('keypress', function(e) {
-                if (e.which == 13) {
-                    window.location.href = route + "?q=" + q
-                }
-            });
-        })
-        
-</script>
-@endpush

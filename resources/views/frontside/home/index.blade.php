@@ -117,7 +117,7 @@
         @if($dataClient->count() > 0)
         <div class="content-section section-clients">
             <div class="container large">
-                <h3 class="primary-title text-center"><span class="section-sub-ttl">{{ homepage_setting('client.subtitle') }}</span><span
+                <h3 class="primary-title text-center"><span class="section-sub-ttl">{{ homepage_setting('client.title') }}</span><span
                         class="section-ttl">{{ homepage_setting('client.subtitle') }}</span></h3>
                 <ul class="list-clients">
                     @foreach ($dataClient as $client)

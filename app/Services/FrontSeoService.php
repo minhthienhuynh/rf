@@ -66,9 +66,9 @@ class FrontSeoService
 
         switch ($type) {
             case 'home':
-                    $meta['title'] = 'Resilient forestry';
-                    $meta['keywords'] = 'Resilient forestry';
-                    $meta['description'] = 'Resilient forestry';
+                    $meta['title'] = Voyager::setting('site.title') ? Voyager::setting('site.title') : 'Resilient forestry';
+                    $meta['keywords'] = Voyager::setting('site.title') ? Voyager::setting('site.title') : 'Resilient forestry';
+                    $meta['description'] = Voyager::setting('site.description') ? Voyager::setting('site.description') : 'Resilient forestry';
                     $meta['og_image'] = asset('frontside/assets/img/images/logo.png');
                 break;
             case 'blog':
