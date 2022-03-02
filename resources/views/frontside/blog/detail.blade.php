@@ -5,7 +5,7 @@
         <div class="page-visual" style="background-image: url('{{ asset('frontside/assets/img/images/visual-img-02.jpg') }}');">
         </div>
         <div class="page-2-column">
-            <div class="left-sidebar">
+            {{-- <div class="left-sidebar">
                 <div class="searchbox">
                     <div class="input-text-wrapper">
                         <input class="search-input form-control" type="text" placeholder="Search">
@@ -46,7 +46,8 @@
                         </ul>
                     </div>
                 </div>
-            </div>
+            </div> --}}
+            @include('frontside.blog.include.sidebar')
 
             <div class="page-content post-detail">
                 <h2 class="post-detail-title">{{ $data->title }}</h2>
