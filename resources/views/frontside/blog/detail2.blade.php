@@ -4,7 +4,7 @@
 
 @section('content')
     <section class="main">
-        <div class="page-visual" style="background-image: url('frontside/assets/img/images/visual-img-02.jpg');"></div>
+        <div class="page-visual" style="background-image: url('/frontside/assets/img/images/visual-img-02.jpg');"></div>
         <div class="page-2-column">
             @include('frontside.blog.include.sidebar2')
             <div class="page-content post-detail">
