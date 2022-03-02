@@ -65,6 +65,15 @@
     margin-bottom: 5px;
 }
 
+.basic-slider .slick-track .slick-slide {
+    height: 420px;
+}
+
+.post-detail .content-wrapper hr {
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
 @media (max-width: 767.98px) {
     .main-visual h2 {
         font-size: 4.5vw;
