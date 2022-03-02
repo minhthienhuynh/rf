@@ -35,6 +35,10 @@
                 $isActive = 'active';
             }
 
+            if(url($item->link()) == route('blogs.index') && request()->is('blog/*')){
+                $isActive = 'active';   
+            }
+
             if($item->title == 'ABOUT' && request()->is('about/*') || $item->title == 'SERVICES' && request()->is('service/*')){
                 $isActive = 'active';
             }
