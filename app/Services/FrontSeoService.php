@@ -14,6 +14,7 @@ class FrontSeoService
         $meta['title'] = 'Resilient forestry';
         $meta['keywords'] = 'Resilient forestry';
         $meta['description'] = 'Resilient forestry';
+        $meta['favicon'] = asset('frontside/assets/img/images/favicon.ico');
 
         if (!empty($type)) {
             return $this->getCustom($meta, $type);
