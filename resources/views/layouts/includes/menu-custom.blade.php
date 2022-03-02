@@ -39,7 +39,9 @@
                 $isActive = 'active';   
             }
 
-            if($item->title == 'ABOUT' && request()->is('about/*') || $item->title == 'SERVICES' && request()->is('service/*')){
+            if(($item->title == 'ABOUT' && request()->is('about/*') 
+                || $item->title == 'SERVICES' && request()->is('service/*')) 
+                && url()->current() != route('pages.show', 'term-and-conditions')){
                 $isActive = 'active';
             }
             // Set Icon
