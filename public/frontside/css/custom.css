@@ -52,8 +52,8 @@
 }
 
 .sub-menu-desc {
-    line-clamp: 4;
-    -webkit-line-clamp: 4;
+    line-clamp: 6;
+    -webkit-line-clamp: 6;
 }
 
 .nav.tab-title-only .nav-link {
@@ -84,5 +84,11 @@
     }
     #menu-toggle span:nth-child(4) {
         top: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .aboutus-card .card-content .card-ttl {
+        font-size: 22px;
     }
 }
