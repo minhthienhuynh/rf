@@ -60,6 +60,11 @@
     font-size: 22px;
 }
 
+.list-clients li {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 @media (max-width: 767.98px) {
     .main-visual h2 {
         font-size: 4.5vw;

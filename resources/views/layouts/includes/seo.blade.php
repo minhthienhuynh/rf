@@ -7,6 +7,7 @@
 
 @section('seo')
 <title>{{ $meta['title'] }}</title>
+    <link rel="shortcut icon" href="{{$meta['favicon']}}" />
     <meta name="description" content="{{$meta['description']}}">
     <meta name="keywords" content="{{$meta['keywords']}}">
     <meta property="og:title" content="{{ $meta['title'] }}" />
