@@ -46,7 +46,7 @@ class PostController extends Controller
         $category = Category::orderByDesc('order')->get();
         $query = Post::orderByDesc('id')->where('status', 'PUBLISHED');
         $countItem = $query->get()->count();
-        return view('frontside.blog.detail', compact('data', 'recent', 'category', 'countItem'));
+        return view('frontside.blog.detail2', compact('data', 'recent', 'category', 'countItem'));
     }
 
     public function search(Request $request)

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@include('layouts.includes.seo', ['model'=> '', 'type'=>'blog'])
+@include('layouts.includes.seo', ['model' => '', 'type' => 'blog'])
 
 @section('content')
     <section class="main">
@@ -37,10 +37,7 @@
                     {{ $data->links('layouts.includes.bootstrap-4') }}
                 </div>
                 <div class="recent-blog sp mt-5">
-                    <p class="sidebar-ttl">Recent Blogs</p>
-                    <div class="siderbar-block">
-                        @include('frontside.blog.include.recent')
-                    </div>
+                    @include('frontside.blog.include.recent')
                 </div>
             </div>
         </div>
