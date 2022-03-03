@@ -99,6 +99,19 @@
     #menu-toggle span:nth-child(4) {
         top: 18px;
     }
+
+    .page-content .primary-title {
+        text-align: center;
+    }
+    .primary-title .section-sub-ttl {
+        font-size: 20px;
+    }
+    .search-content .title-small .section-sub-ttl {
+        font-size: 20px;
+    }
+    .search-content .title-small .main-ttl {
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 480px) {
