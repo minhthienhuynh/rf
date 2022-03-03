@@ -9,7 +9,7 @@
             @include('frontside.blog.include.sidebar2')
             <div class="page-content post-detail">
                 <h2 class="post-detail-title">{{ $data->title }}</h2>
-                <p class="post-detail-info">{{ $data->created_at->format('F d, Y') }}</p>
+                <p class="post-detail-info">{{ $data->created_at->format('D, F d, Y') }}</p>
                 <img src="{{ Voyager::image($data->image) }}" alt="{{ $data->title }}">
                 {!! $data->body !!}
                 <div class="block-tags">
