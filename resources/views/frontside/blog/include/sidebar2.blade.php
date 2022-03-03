@@ -10,7 +10,7 @@
     <div class="siderbar-block siderbar-block-category">
         <p class="sidebar-ttl">Category</p>
         <ul class="category-list">
-            <li><a class="list-icon" href="{{ route('blogs.index') }}">All blogs ({{ $data->total() }}) </a></li>
+            <li><a class="list-icon" href="{{ route('blogs.index') }}">All blogs ({{ $countItem }})</a></li>
             <li>
                 <form>
                     @php($itemIds = explode(',', request()->input('category_id', '')))
@@ -25,10 +25,7 @@
         </ul>
     </div>
     <div class="recent-blog pc">
-        <p class="sidebar-ttl">Recent Blogs</p>
-        <div class="siderbar-block">
-            @include('frontside.blog.include.recent')
-        </div>
+        @include('frontside.blog.include.recent')
     </div>
 </div>
 
