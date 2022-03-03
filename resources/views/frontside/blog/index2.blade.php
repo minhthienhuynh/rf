@@ -9,8 +9,14 @@
             @include('frontside.blog.include.sidebar2')
             <div class="page-content">
                 <h2 class="primary-title">
-                    <span class="section-sub-ttl">ALL BLOGS</span>
-                    <span class="section-ttl">Journeys to Nature</span>
+                    @if(count($listCateId) == 1)
+                        <span class="section-sub-ttl">{{ $catName->name }} </span>
+                    @elseif(count($listCateId) > 1)
+                        <span class="section-sub-ttl">{{ $result }} Blogs</span>
+                    @else
+                        <span class="section-sub-ttl">ALL BLOGS</span>
+                        <span class="section-ttl">Journeys to Nature</span>
+                    @endif
                 </h2>
                 <div class="row archive-post-card">
                     @foreach ($data as $item)
