@@ -965,11 +965,29 @@
             font-size: 14px;
         }
     }
+    .aboutus-card {
+        .card-content {
+            height: auto;
+            padding: 17px 20px 50px 20px;
+            &::before {
+                opacity: 1;
+                bottom: 15px;
+            }
+        }
+    }
 }
-@media (max-width: 340px) {
+@media (max-width: 360px) {
     .not-found-wrap {
         .not-found-title {
             font-size: 160px;
+        }
+    }
+    .aboutus-card {
+        .card-content {
+            padding-bottom: 40px;
+            &::before {
+                bottom: 10px;
+            }
         }
     }
 }
