@@ -10,7 +10,7 @@
     <div class="siderbar-block siderbar-block-category">
         <p class="sidebar-ttl">Category</p>
         <ul class="category-list">
-            <li><a class="list-icon" href="{{ route('blogs.index') }}">All blogs ({{ $countItem }})</a></li>
+            <li><a class="list-icon" href="{{ route('blogs.index') }}">All blog posts ({{ $countItem }})</a></li>
             <li>
                 <form>
                     @php($itemIds = explode(',', request()->input('category_id', '')))
