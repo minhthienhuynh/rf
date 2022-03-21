@@ -16,9 +16,11 @@
                     @foreach($data->categories as $category)
                         <a class="tag" href="{{ route('blogs.index', ['category_id' => $category->id]) }}">#{{ $category->name }}</a>
                     @endforeach
+                    {{--
                     @foreach($data->services as $service)
                         <a class="tag" href="{{ route('services.show', $service->slug) }}">#{{ $service->title }}</a>
                     @endforeach
+                    --}}
                 </div>
                 <div class="recent-blog sp mt-5">
                     @include('frontside.blog.include.recent')
