@@ -12284,7 +12284,9 @@ body.searching .page-2-column .page-content {
   line-height: 20px;
   transition: all 0.3s ease; }
   .not-found-wrap .btn-more:hover {
-    background-color: #126760; }
+    background-color: #126760;
+    color: #FFFFFF;
+    text-decoration: none; }
 
 @media (min-width: 768px) {
   .sp {

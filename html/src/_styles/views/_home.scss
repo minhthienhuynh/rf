@@ -304,6 +304,8 @@
         transition: all 0.3s ease;
         &:hover {
             background-color: darken($green, 10%);
+            color: $white;
+            text-decoration: none;
         }
     }
 }
