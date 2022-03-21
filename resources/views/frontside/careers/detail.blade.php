@@ -6,7 +6,7 @@
         <div class="container large post-detail">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('careers.index') }}">Career</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('careers.index') }}">Careers</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ $data->title }}</li>
                 </ol>
             </nav>
