@@ -2,6 +2,7 @@
  * Main JS : ACTIONs
  * 
  * 1. slick init
+ * 2. Handle click scroll to service homepage mobile
  */
 
 (function( $ ) {
@@ -46,6 +47,30 @@
     } else {
         $('html,body').animate({ scrollTop: p.top - offsetSP }, 800);
     }
+  }
+
+  /**
+   *  2. Handle click scroll to service homepage mobile
+   */
+  function handleScrollServiceMB() {
+    if(!$('.section-services').length
+    || $(window).width() > 767) { return; }
+
+    $('.section-services .nav-tabs .nav-link').each(function() {
+      $(this).on('click', function(e) {
+        e.preventDefault();
+        const tabId = $(this).data('bs-target');
+
+        setTimeout(() => {
+          $('html, body').animate({
+            scrollTop: $(tabId).offset().top - 80
+          },{
+              queue: false,
+              duration: 1000
+          });
+        }, 500);
+      })
+    });
   }
 
   /* OnLoad Window */
@@ -143,6 +168,8 @@
       $(this).parent().find('.search-input').val("").removeClass('inputed');
       $('body').removeClass('searching');
     });
+
+    handleScrollServiceMB();
   };
 
   window.onload = init;
