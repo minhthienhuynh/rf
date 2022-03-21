@@ -5,7 +5,7 @@
             <div class="section-info">
                 <dl>
                     <dt>Email</dt>
-                    <dd>{{ voyager::setting('site.email') }}</dd>
+                    <dd><a href="mailto:{{ voyager::setting('site.email') }}">{{ voyager::setting('site.email') }}</a></dd>
                 </dl>
                 <dl>
                     <dt>Address</dt>
@@ -13,7 +13,7 @@
                 </dl>
                 <dl>
                     <dt>Phone</dt>
-                    <dd>{{ voyager::setting('site.phone') }}</dd>
+                    <dd><a href="tel:{{ voyager::setting('site.phone') }}">{{ voyager::setting('site.phone') }}</a></dd>
                 </dl>
             </div>
         </div>

@@ -35,7 +35,7 @@
             <p class="sidebar-ttl">Category</p>
             <div class="siderbar-block">
                 <ul class="category-list">
-                    <li><a class="list-icon" href="{{ route('blogs.index') }}">All blogs
+                    <li><a class="list-icon" href="{{ route('blogs.index') }}">All blog posts
                             ({{ $countItem }}) </a></li>
                     @if ($category->count() > 0)
                     @foreach ($category as $catI)
@@ -76,10 +76,11 @@
                 @if(count($listCateId) == 1)
                     <span class="section-sub-ttl">{{ $catName->name }} </span>
                 @elseif(count($listCateId) > 1)
-                    <span class="section-sub-ttl">{{ $result }} Blogs</span>
+                <span class="section-sub-ttl">BLOG</span>
+                    <span class="section-ttl">Some Blog Posts</span>
                 @else
-                    <span class="section-sub-ttl">ALL BLOGS</span>
-                    <span class="section-ttl">Journeys to Nature</span>
+                    <span class="section-sub-ttl">BLOG</span>
+                    <span class="section-ttl">All Blog Posts</span>
                 @endif
 
             </h2>

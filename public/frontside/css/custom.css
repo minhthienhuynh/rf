@@ -119,3 +119,17 @@
         font-size: 22px;
     }
 }
+
+/* FOOTER */
+.section-info a {
+    color: #fff;
+}
+
+.section-info a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.global-nav > li .sub-menu {
+    opacity: 0;
+}

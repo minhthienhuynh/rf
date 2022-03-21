@@ -9,7 +9,7 @@
     <p class="sidebar-ttl">Category</p>
     <div class="siderbar-block">
         <ul class="category-list">
-            <li><a class="list-icon" href="{{ route('blogs.index') }}">All blogs
+            <li><a class="list-icon" href="{{ route('blogs.index') }}">All blog posts
                     ({{ $countItem }}) </a></li>
             @if ($category->count() > 0)
             @foreach ($category as $catI)
