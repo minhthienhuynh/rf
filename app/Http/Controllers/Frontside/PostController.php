@@ -31,12 +31,12 @@ class PostController extends Controller
         }
 
         $result = $query->get()->count();
-        
+
         $data = $query->paginate(9);
         $recent = Post::take(10)->orderByDesc('id')->get();
         $category = Category::orderByDesc('order')->get();
 
-        return view('frontside.blog.index2', compact('data', 'recent', 'category', 'countItem', 'result', 'catName', 'listCateId'));
+        return view('frontside.blog.index', compact('data', 'recent', 'category', 'countItem', 'result', 'catName', 'listCateId'));
     }
 
     public function detail($slug)
@@ -46,7 +46,7 @@ class PostController extends Controller
         $category = Category::orderByDesc('order')->get();
         $query = Post::orderByDesc('id')->where('status', 'PUBLISHED');
         $countItem = $query->get()->count();
-        return view('frontside.blog.detail2', compact('data', 'recent', 'category', 'countItem'));
+        return view('frontside.blog.detail', compact('data', 'recent', 'category', 'countItem'));
     }
 
     public function search(Request $request)

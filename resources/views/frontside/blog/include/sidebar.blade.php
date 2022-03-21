@@ -1,72 +1,43 @@
 <div class="left-sidebar">
     <div class="searchbox">
         <div class="input-text-wrapper">
-            <input class="search-input form-control blog-key-search" value="{{ request()->q }}" type="text"
-                placeholder="Search">
-            <div class="close-btn"></div>
+            <form action="{{ route("blogs.search") }}">
+                <input class="search-input form-control" type="text" name="q" minlength="3" value="{{ request()->input('q') }}" placeholder="Search" required>
+                <div class="close-btn"></div>
+            </form>
         </div>
     </div>
-    <p class="sidebar-ttl">Category</p>
-    <div class="siderbar-block">
+    <div class="siderbar-block siderbar-block-category">
+        <p class="sidebar-ttl">Category</p>
         <ul class="category-list">
-            <li><a class="list-icon" href="{{ route('blogs.index') }}">All blog posts
-                    ({{ $countItem }}) </a></li>
-            @if ($category->count() > 0)
-            @foreach ($category as $catI)
-            @php
-                $checked = request()->category_id;
-                $arrayC = explode(',', $checked);
-            @endphp
+            <li><a class="list-icon" href="{{ route('blogs.index') }}">All blog posts ({{ $countItem }})</a></li>
             <li>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" {{ in_array($catI->id, $arrayC) ? 'checked'
-                    : '' }} value="{{ $catI->id }}"
-                    id="flexCheckDefault_{{ $catI->id }}">
-                    <label class="form-check-label" for="flexCheckDefault_{{ $catI->id }}">{{ $catI->name }}
-                        ({{ $catI->posts->count() }})
-                    </label>
-                </div>
+                <form>
+                    @php($itemIds = explode(',', request()->input('category_id', '')))
+                    @foreach ($category as $item)
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="{{ $item->id }}" id="flexCheckDefault{{ $item->id }}" name="category_id[]" {{ in_array($item->id, $itemIds) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="flexCheckDefault{{ $item->id }}">{{ $item->name }} ({{ $item->posts->count() }})</label>
+                        </div>
+                    @endforeach
+                </form>
             </li>
-            @endforeach
-            @endif
         </ul>
     </div>
-    @if ($recent->count() > 0)
-    <p class="sidebar-ttl">Recent Blogs</p>
-    <div class="siderbar-block">
-        <ul class="category-list">
-            @foreach ($recent as $recentI)
-            <li>
-                <a href="{{ route('frontside.post.detail', $recentI->slug) }}">{{ $recentI->title }}</a>
-            </li>
-            @endforeach
-        </ul>
+    <div class="recent-blog pc">
+        @include('frontside.blog.include.recent')
     </div>
-    @endif
 </div>
 
 @push('scripts')
-<script>
-    $('.form-check-input').on('change', () => {
-            let q = '{{ request()->q }}'
+    <script>
+        $('.form-check-input').on('change', () => {
             let arr = [];
             let route = '{{ route("blogs.index") }}'
             $('input.form-check-input:checkbox:checked').each(function () {
                 arr.push($(this).val());
             });
-            window.location.href = route + "?category_id=" + arr.toString() + "&q=" + q
-        })    
-
-        $('.blog-key-search').on('input', function() {
-            let q = $(this).val()
-            let route = '{{ route("blogs.search") }}'
-
-            $(document).on('keypress', function(e) {
-                if (e.which == 13) {
-                    window.location.href = route + "?q=" + q
-                }
-            });
+            window.location.href = route + "?category_id=" + arr.toString();
         })
-        
-</script>
+    </script>
 @endpush

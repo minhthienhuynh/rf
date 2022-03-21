@@ -1,122 +1,51 @@
 @extends('layouts.master')
-@include('layouts.includes.seo', ['model'=> '', 'type'=>'blog'])
+
+@include('layouts.includes.seo', ['model' => '', 'type' => 'blog'])
+
 @section('content')
-
-@if(request()->q && $result == 0)
-<section class="main">
-    <div class="page-visual" style="background-image: url('{{ asset("frontside/assets/img/images/visual-img-02.jpg")}}');"></div>
-    <div class="page-2-column search-content">
-        <div class="searchbox">
-            <div class="input-text-wrapper">
-                <input class="search-input blog-key-search form-control" type="text" value="{{ request()->q }}"
-                    placeholder="Search">
-                <div class="close-btn"></div>
-            </div>
-        </div>
-        <div class="page-content">
-            <h2 class="primary-title text-center title-small"><span class="section-sub-ttl">SEARCH RESULTS</span><span
-                    class="main-ttl">Your search for "<b>{{ request()->q }}</b>" didn’t return any results.</span></h2>
-            <div class="row archive-post-card"></div>
-        </div>
-    </div>
-</section>
-@else
-<section class="main">
-    <div class="page-visual" style="background-image: url('{{ asset("frontside/assets/img/images/visual-img-02.jpg")}}');"></div>
-    <div class="page-2-column">
-        {{-- <div class="left-sidebar">
-            <div class="searchbox">
-                <div class="input-text-wrapper">
-                    <input class="search-input form-control blog-key-search" value="{{ request()->q }}" type="text"
-                        placeholder="Search">
-                    <div class="close-btn"></div>
-                </div>
-            </div>
-            <p class="sidebar-ttl">Category</p>
-            <div class="siderbar-block">
-                <ul class="category-list">
-                    <li><a class="list-icon" href="{{ route('blogs.index') }}">All blog posts
-                            ({{ $countItem }}) </a></li>
-                    @if ($category->count() > 0)
-                    @foreach ($category as $catI)
-                    @php
-                        $checked = request()->category_id;
-                        $arrayC = explode(',', $checked);
-                    @endphp
-                    <li>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" {{ in_array($catI->id, $arrayC) ? 'checked'
-                            : '' }} value="{{ $catI->id }}"
-                            id="flexCheckDefault_{{ $catI->id }}">
-                            <label class="form-check-label" for="flexCheckDefault_{{ $catI->id }}">{{ $catI->name }}
-                                ({{ $catI->posts->count() }})
-                            </label>
-                        </div>
-                    </li>
-                    @endforeach
+    <section class="main">
+        <div class="page-visual" style="background-image: url('/frontside/assets/img/images/visual-img-02.jpg');"></div>
+        <div class="page-2-column">
+            @include('frontside.blog.include.sidebar')
+            <div class="page-content">
+                <h2 class="primary-title">
+                    @if(count($listCateId) == 1)
+                        <span class="section-sub-ttl">{{ $catName->name }} </span>
+                    @elseif(count($listCateId) > 1)
+                        <span class="section-sub-ttl">{{ $result }} Blogs</span>
+                    @else
+                        <span class="section-sub-ttl">ALL BLOGS</span>
+                        <span class="section-ttl">Journeys to Nature</span>
                     @endif
-                </ul>
-            </div>
-            @if ($recent->count() > 0)
-            <p class="sidebar-ttl">Recent Blogs</p>
-            <div class="siderbar-block">
-                <ul class="category-list">
-                    @foreach ($recent as $recentI)
-                    <li>
-                        <a href="{{ route('frontside.post.detail', $recentI->slug) }}">{{ $recentI->title }}</a>
-                    </li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
-        </div> --}}
-        @include('frontside.blog.include.sidebar')
-        <div class="page-content">
-            <h2 class="primary-title">
-                @if(count($listCateId) == 1)
-                    <span class="section-sub-ttl">{{ $catName->name }} </span>
-                @elseif(count($listCateId) > 1)
-                <span class="section-sub-ttl">BLOG</span>
-                    <span class="section-ttl">Some Blog Posts</span>
-                @else
-                    <span class="section-sub-ttl">BLOG</span>
-                    <span class="section-ttl">All Blog Posts</span>
-                @endif
-
-            </h2>
-            <div class="row archive-post-card">
-                @if ($data->count() > 0)
-                @foreach ($data as $blog)
-                <div class="col-6 col-lg-4">
-                    <div class="card post-card services-post"><a class="post-link-img"
-                            href="{{ route('frontside.post.detail', $blog->slug) }}"><img class="card-img-top"
-                                src="{{ voyager::image($blog->image) }}" alt="{{ $blog->title }}"></a>
-                        <div class="card-body">
-                            <h5 class="card-title"><a href="{{ route('frontside.post.detail', $blog->slug) }}">{{
-                                    $blog->title }}</a>
-                            </h5>
-                            <p class="card-text">{{ $blog->excerpt }}</p>
-                            <div class="card-footer">
-                                <p class="post-date">{{ $blog->created_at->format('m/d/Y') }}</p><a
-                                    class="post-link btn-more"
-                                    href="{{ route('frontside.post.detail', $blog->slug) }}">More</a>
+                </h2>
+                <div class="row archive-post-card">
+                    @foreach ($data as $item)
+                        <div class="col-6 col-lg-4">
+                            <div class="card post-card services-post">
+                                <a class="post-link-img" href="{{ route('frontside.post.detail', $item->slug) }}">
+                                    <img class="card-img-top" src="{{ Voyager::image($item->image) }}" alt="{{ $item->title }}">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <a href="{{ route('frontside.post.detail', $item->slug) }}">{{ $item->title }}</a>
+                                    </h5>
+                                    <p class="card-text">{{ $item->excerpt }}</p>
+                                    <div class="card-footer">
+                                        <p class="post-date">{{ $item->created_at->format('m/d/Y') }}</p>
+                                        <a class="post-link btn-more" href="{{ route('frontside.post.detail', $item->slug) }}">More</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
-                @endforeach
-                @else
-                <div class="list-jobs">
-                    <h5>Data is empty</h5>
+                <div class="pagination">
+                    {{ $data->links('layouts.includes.bootstrap-4') }}
                 </div>
-                @endif
-            </div>
-            <div class="pagination">
-                {{ $data->links('layouts.includes.bootstrap-4') }}
+                <div class="recent-blog sp mt-5">
+                    @include('frontside.blog.include.recent')
+                </div>
             </div>
         </div>
-    </div>
-</section>
-@endif
+    </section>
 @endsection
-
