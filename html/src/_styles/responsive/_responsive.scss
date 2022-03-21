@@ -975,6 +975,14 @@
             }
         }
     }
+    .list-jobs {
+        .col-sm-6 {
+            width: 100%;
+        }
+        .job-post {
+            max-width: 366px;
+        }
+    }
 }
 @media (max-width: 360px) {
     .not-found-wrap {
