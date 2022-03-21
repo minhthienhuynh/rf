@@ -151,7 +151,6 @@
 :root .fa-flip-horizontal,
 :root .fa-flip-vertical,
 :root .fa-flip-both {
-  -webkit-filter: none;
   filter: none; }
 
 .fa-stack {
@@ -5832,9 +5831,6 @@ pre {
     border-color: #80bdff;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }
-  .form-control::-webkit-input-placeholder {
-    color: #6c757d;
-    opacity: 1; }
   .form-control::-webkit-input-placeholder, .form-control::-moz-placeholder, .form-control:-ms-input-placeholder, .form-control::-ms-input-placeholder, .form-control::placeholder {
     color: #6c757d;
     opacity: 1; }
@@ -10139,7 +10135,7 @@ button.bg-dark:focus, button.bg-dark:hover {
   left: 0;
   z-index: 1030; }
 
-@supports ((position: -webkit-sticky) or (position: sticky)) {
+@supports (position: sticky) {
   .sticky-top {
     position: -webkit-sticky;
     position: sticky;
@@ -11383,16 +11379,10 @@ body {
   letter-spacing: 0.008em;
   overflow-x: hidden; }
 
-::-webkit-input-placeholder {
-  font-family: 'Work Sans', sans-serif; }
-
 ::-moz-placeholder {
   font-family: 'Work Sans', sans-serif; }
 
 :-ms-input-placeholder {
-  font-family: 'Work Sans', sans-serif; }
-
-::-ms-input-placeholder {
   font-family: 'Work Sans', sans-serif; }
 
 ::placeholder {
@@ -11768,13 +11758,9 @@ img {
   padding: 5px 50px 5px 50px;
   height: 42px;
   background: url("../assets/img/icons/search.svg") left 17px center/24px no-repeat #FFFFFF; }
-  .search-input::-webkit-input-placeholder {
-    color: #9D9D9D; }
   .search-input::-moz-placeholder {
     color: #9D9D9D; }
   .search-input:-ms-input-placeholder {
-    color: #9D9D9D; }
-  .search-input::-ms-input-placeholder {
     color: #9D9D9D; }
   .search-input::placeholder {
     color: #9D9D9D; }
@@ -12244,6 +12230,61 @@ body.searching .page-2-column .page-content {
   flex-direction: column; }
   .latest-blog-section [class*="col-"] .card {
     flex-grow: 1; }
+
+.not-found-wrap {
+  text-align: center;
+  padding: 100px 0; }
+  .not-found-wrap .not-found-title {
+    font-weight: 800;
+    font-size: 270px;
+    line-height: 1;
+    color: #EEEEEE;
+    letter-spacing: 0.2px;
+    margin-bottom: 10px;
+    font-family: 'Open Sans', sans-serif; }
+  .not-found-wrap .txt {
+    font-family: 'DM Serif Display', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 60px;
+    letter-spacing: 0.2px;
+    color: #262626;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    position: relative; }
+    .not-found-wrap .txt::after {
+      content: '';
+      display: block;
+      width: 240px;
+      height: 1px;
+      background-color: #C6C6C6;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1; }
+
+.not-found-wrap .desc {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
+  color: #9D9D9D;
+  margin-bottom: 60px; }
+
+.not-found-wrap .btn-more {
+  background-color: #1A9288;
+  color: #FFFFFF;
+  padding: 10px 30px;
+  border-radius: 6px;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  transition: all 0.3s ease; }
+  .not-found-wrap .btn-more:hover {
+    background-color: #126760; }
 
 @media (min-width: 768px) {
   .sp {
@@ -12791,5 +12832,33 @@ body.searching .page-2-column .page-content {
         font-size: 12px; }
       .services-block-slider .post-card .card-body .card-footer .btn-more {
         font-size: 12px; } }
+
+@media (max-width: 1024px) {
+  .not-found-wrap .not-found-title {
+    font-size: 200px; }
+  .not-found-wrap .txt {
+    font-size: 40px;
+    line-height: 52px; } }
+
+@media (max-width: 767px) {
+  .not-found-wrap {
+    padding: 80px 0; }
+    .not-found-wrap .txt {
+      font-size: 24px;
+      line-height: 32px;
+      margin-bottom: 20px;
+      padding-bottom: 20px; }
+      .not-found-wrap .txt::after {
+        width: 180px; }
+    .not-found-wrap .desc {
+      font-size: 16px;
+      line-height: 20px;
+      margin-bottom: 30px; }
+    .not-found-wrap .btn-more {
+      font-size: 14px; } }
+
+@media (max-width: 340px) {
+  .not-found-wrap .not-found-title {
+    font-size: 160px; } }
 
 /*# sourceMappingURL=main.min.css.map */

@@ -1,0 +1,13 @@
+extends _layouts/default
+block vars
+	- var title="404"
+	- var menu_name = "404"
+
+block main
+	.page-visual(style="background-image: url('./assets/img/images/visual-img-05.png');")
+	.container
+		.not-found-wrap 
+			h1.not-found-title 404
+			.txt Are you lost in the forest?
+			.desc The page you requested could not be found.
+			a(href="/").btn-more Go to Homepage

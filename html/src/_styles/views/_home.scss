@@ -243,3 +243,67 @@
         }
     }
 }
+
+// 404
+.not-found-wrap {
+    text-align: center;
+    padding: 100px 0;
+    .not-found-title {
+        font-weight: 800;
+        font-size: 270px;
+        line-height: 1;
+        color: $grey;
+        letter-spacing: 0.2px;
+        margin-bottom: 10px;
+        font-family: 'Open Sans', sans-serif;
+
+    }
+    .txt {
+        font-family: 'DM Serif Display', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 48px;
+        line-height: 60px;
+        letter-spacing: 0.2px;
+        color: $gray01;
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+        position: relative;
+        &::after {
+            content: '';
+            display: block;
+            width: 240px;
+            height: 1px;
+            background-color: $gray04;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1;
+        }
+    }
+}
+.not-found-wrap {
+    .desc {
+        font-family: 'Work Sans', sans-serif;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 28px;
+        color: $gray03;
+        margin-bottom: 60px;
+    }
+    .btn-more {
+        background-color: $green;
+        color: $white;
+        padding: 10px 30px;
+        border-radius: 6px;
+        font-family: 'Work Sans', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        transition: all 0.3s ease;
+        &:hover {
+            background-color: darken($green, 10%);
+        }
+    }
+}
