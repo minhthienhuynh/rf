@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CareerSettingController;
 use App\Http\Controllers\Admin\HomepageSettingController;
 use App\Http\Controllers\Admin\ServiceController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +45,14 @@ Route::group(['prefix' => 'admin'], function () {
         Route::controller(HomepageSettingController::class)
             ->prefix('homepage-settings')
             ->name('homepage-settings.')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::post('/', 'update')->name('update');
+        });
+
+        Route::controller(CareerSettingController::class)
+            ->prefix('career-settings')
+            ->name('career-settings.')
             ->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::post('/', 'update')->name('update');

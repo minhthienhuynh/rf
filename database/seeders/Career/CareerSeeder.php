@@ -1,9 +1,10 @@
 <?php
 
-namespace Database\Seeders;
+namespace Database\Seeders\Career;
 
 use App\Http\Controllers\Admin\CareerController;
 use App\Models\Career;
+use Database\Seeders\AbstractSeeder;
 
 class CareerSeeder extends AbstractSeeder
 {
