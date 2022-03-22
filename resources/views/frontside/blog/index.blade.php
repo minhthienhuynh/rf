@@ -12,10 +12,11 @@
                     @if(count($listCateId) == 1)
                         <span class="section-sub-ttl">{{ $catName->name }} </span>
                     @elseif(count($listCateId) > 1)
-                        <span class="section-sub-ttl">{{ $result }} Blogs</span>
+                        <span class="section-sub-ttl">BLOG</span>
+                        <span class="section-ttl">Some Blog Posts</span>
                     @else
-                        <span class="section-sub-ttl">ALL BLOGS</span>
-                        <span class="section-ttl">Journeys to Nature</span>
+                        <span class="section-sub-ttl">BLOG</span>
+                        <span class="section-ttl">All Blog Posts</span>
                     @endif
                 </h2>
                 <div class="row archive-post-card">
