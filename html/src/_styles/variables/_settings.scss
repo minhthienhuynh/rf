@@ -14,6 +14,7 @@ $gray04: #C6C6C6;
 $gray06: #F8F8F8;
 $green: #1A9288;
 $lightgreen: #4AB499;
+$lightgreen2: #e5fbf5;
 $darkgreen: #166666;
 // Font
 
@@ -162,6 +163,15 @@ img {
 		&:focus {
 			background-color: $darkgreen !important;
 			border-color: $darkgreen !important;
+		}
+	}
+	&.btn-grey {
+		background-color: $gray04;
+		border-color: $gray04;
+		color: $white;
+		&:focus {
+			background-color: $gray03 !important;
+			border-color: $gray03 !important;
 		}
 	}
 }

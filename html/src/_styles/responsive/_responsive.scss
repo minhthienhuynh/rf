@@ -983,6 +983,21 @@
             max-width: 366px;
         }
     }
+    .post-detail-footer {
+        .pc {
+            display: none;
+        }
+        .mb {
+            display: inline-block;
+        }
+        .btn-apply {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+    }
+    .btn-apply {
+        min-width: auto;
+    }
 }
 @media (max-width: 360px) {
     .not-found-wrap {
