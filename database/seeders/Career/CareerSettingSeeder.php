@@ -87,6 +87,6 @@ class CareerSettingSeeder extends AbstractSeeder
 
     protected function buildPermission()
     {
-        $this->_buildPermission(['browse', 'read', 'edit']);
+        $this->_buildPermission(['browse', 'read', 'edit', 'delete']);
     }
 }

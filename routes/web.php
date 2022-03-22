@@ -48,6 +48,7 @@ Route::group(['prefix' => 'admin'], function () {
             ->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::post('/', 'update')->name('update');
+                Route::put('/{id}/delete_value', 'delete_value')->name('delete_value');
         });
 
         Route::controller(CareerSettingController::class)
@@ -56,6 +57,7 @@ Route::group(['prefix' => 'admin'], function () {
             ->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::post('/', 'update')->name('update');
+                Route::put('/{id}/delete_value', 'delete_value')->name('delete_value');
         });
     });
 });

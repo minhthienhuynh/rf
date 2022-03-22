@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\HomepageSetting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use TCG\Voyager\Http\Controllers\Controller;
 
 class HomepageSettingController extends Controller
@@ -54,6 +55,32 @@ class HomepageSettingController extends Controller
 
         return back()->with([
             'message'    => __('voyager::settings.successfully_saved'),
+            'alert-type' => 'success',
+        ]);
+    }
+
+    public function delete_value($id)
+    {
+        $setting = HomepageSetting::find($id);
+
+        // Check permission
+        $this->authorize('delete', $setting);
+
+        if (isset($setting->id)) {
+            // If the type is an image... Then delete it
+            if ($setting->type == 'image') {
+                if (Storage::disk(config('voyager.storage.disk'))->exists($setting->value)) {
+                    Storage::disk(config('voyager.storage.disk'))->delete($setting->value);
+                }
+            }
+            $setting->value = '';
+            $setting->save();
+        }
+
+        request()->session()->flash('setting_tab', $setting->group);
+
+        return back()->with([
+            'message'    => __('voyager::settings.successfully_removed', ['name' => $setting->display_name]),
             'alert-type' => 'success',
         ]);
     }

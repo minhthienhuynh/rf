@@ -221,6 +221,7 @@
 
     <div class="page-content settings container-fluid">
         <form action="{{ route('voyager.career-settings.update') }}" method="POST" enctype="multipart/form-data">
+            {{ method_field("PUT") }}
             {{ csrf_field() }}
             <input type="hidden" name="career_setting_tab" class="career_setting_tab" value="{{ session('career_setting_tab', 'index') }}" />
             <div class="panel">
@@ -259,7 +260,7 @@
                                     @elseif($setting->type == \App\Models\Setting::TYPE_IMAGE || $setting->type == \App\Models\Setting::TYPE_FILE)
                                         @if(isset( $setting->value ) && !empty( $setting->value ) && Storage::disk(config('voyager.storage.disk'))->exists($setting->value))
                                             <div class="img_settings_container">
-                                                <a href="{{ route('voyager.settings.delete_value', $setting->id) }}" class="voyager-x delete_value"></a>
+                                                <a href="{{ route('voyager.career-settings.delete_value', $setting->id) }}" class="voyager-x delete_value"></a>
                                                 <img src="{{ Storage::disk(config('voyager.storage.disk'))->url($setting->value) }}" style="width:200px; height:auto; padding:2px; border:1px solid #ddd; margin-bottom:10px;">
                                             </div>
                                             <div class="clearfix"></div>
@@ -270,7 +271,7 @@
                                                     <a class="fileType" target="_blank" href="{{ Storage::disk(config('voyager.storage.disk'))->url($file->download_link) }}">
                                                       {{ $file->original_name }}
                                                     </a>
-                                                    <a href="{{ route('voyager.settings.delete_value', $setting->id) }}" class="voyager-x delete_value"></a>
+                                                    <a href="{{ route('voyager.career-settings.delete_value', $setting->id) }}" class="voyager-x delete_value"></a>
                                                  </div>
                                                 @endforeach
                                             @endif
@@ -331,31 +332,6 @@
         </form>
     </div>
 
-    @can('delete', Voyager::model('Setting'))
-    <div class="modal modal-danger fade" tabindex="-1" id="delete_modal" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="{{ __('voyager::generic.close') }}">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title">
-                        <i class="voyager-trash"></i> {!! __('voyager::settings.delete_question', ['setting' => '<span id="delete_setting_title"></span>']) !!}
-                    </h4>
-                </div>
-                <div class="modal-footer">
-                    <form action="#" id="delete_form" method="POST">
-                        {{ method_field("DELETE") }}
-                        {{ csrf_field() }}
-                        <input type="submit" class="btn btn-danger pull-right delete-confirm" value="{{ __('voyager::settings.delete_confirm') }}">
-                    </form>
-                    <button type="button" class="btn btn-default pull-right" data-dismiss="modal">{{ __('voyager::generic.cancel') }}</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    @endcan
-
 @stop
 
 @section('javascript')
@@ -369,17 +345,6 @@
                     $('#toggle_options .voyager-double-up').removeClass('voyager-double-up').addClass('voyager-double-down');
                 }
             });
-
-            @can('delete', Voyager::model('Setting'))
-            $('.panel-actions .voyager-trash').click(function () {
-                var display = $(this).data('display-name') + '/' + $(this).data('display-key');
-
-                $('#delete_setting_title').text(display);
-
-                $('#delete_form')[0].action = '{{ route('voyager.settings.delete', [ 'id' => '__id' ]) }}'.replace('__id', $(this).data('id'));
-                $('#delete_modal').modal('show');
-            });
-            @endcan
 
             $('.toggleswitch').bootstrapToggle();
 
