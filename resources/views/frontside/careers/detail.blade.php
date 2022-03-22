@@ -17,11 +17,28 @@
                 {!! $data->content !!}
             </div>
             <p></p>
-            <div class="post-detail-footer">
-                <a class="btn btn-primary btn-apply mr-3" href="{{ $data->link}}" target="_blank">Apply For This Job</a>
-                @if(!empty(json_decode($data->pdf)))
-                <a class="btn btn-light" href="{{ $data->pdf ? url(Storage::url(json_decode($data->pdf, true)[0]['download_link'])) : '' }}" target="_blank">Download Flyer</a></div>
+            <hr class="my-4">
+            <div class="post-detail-status">
+                @if ($data->expired_at && $data->expired_at < now())
+                    <h3>Job Status<span class="btn status closed ml-4">Closed</span></h3>
+                    <div class="desc">We are not currently accepting applications for this position</div>
+                @else
+                    <h3>Job Status<span class="btn status open ml-4">Open</span></h3>
+                    <div class="desc">We are currently accepting applications for this position</div>
                 @endif
+            </div>
+            <div class="post-detail-footer">
+                @if ($data->expired_at && $data->expired_at < now())
+                    <a class="btn btn-grey btn-apply mr-3" href="javascript:void(0);">
+                        <span class="pc">Apply For This Job</span><span class="mb">Apply</span></a>
+                @else
+                    <a class="btn btn-primary btn-apply mr-3" href="{{ $data->link }}" target="_blank">
+                        <span class="pc">Apply For This Job</span><span class="mb">Apply</span></a>
+                @endif
+                @if (!empty(json_decode($data->pdf)))
+                    <a class="btn btn-light" href="{{ $data->pdf ? url(Storage::url(json_decode($data->pdf, true)[0]['download_link'])) : '' }}" target="_blank">Download Flyer</a>
+                @endif
+            </div>
         </div>
     </section>
 @endsection

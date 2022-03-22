@@ -34,4 +34,14 @@ class Career extends Model
         'published_at',
         'expired_at',
     ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'published_at' => 'datetime',
+        'expired_at' => 'datetime',
+    ];
 }
