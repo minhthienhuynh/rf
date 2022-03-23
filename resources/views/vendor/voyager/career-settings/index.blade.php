@@ -223,7 +223,7 @@
         <form action="{{ route('voyager.career-settings.update') }}" method="POST" enctype="multipart/form-data">
             {{ method_field("PUT") }}
             {{ csrf_field() }}
-            <input type="hidden" name="career_setting_tab" class="career_setting_tab" value="{{ session('career_setting_tab', 'index') }}" />
+            <input type="hidden" name="career_setting_tab" class="career_setting_tab" value="{{ session('career_setting_tab', 'Index') }}" />
             <div class="panel">
 
                 <div class="page-content settings container-fluid">
