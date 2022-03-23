@@ -100,7 +100,7 @@ class HomepageSettingSeeder extends AbstractSeeder
                     [
                         'key'          => 'about.items',
                         'display_name' => 'List',
-                        'details'      => ['model' => Page::class],
+                        'details'      => json_encode(['model' => Page::class]),
                         'type'         => Setting::TYPE_SELECT_DB,
                         'order'        => 3,
                     ],
