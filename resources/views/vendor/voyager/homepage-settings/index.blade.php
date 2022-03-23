@@ -288,7 +288,16 @@
                                                 @endforeach
                                             @endif
                                         </select>
-
+                                    @elseif($setting->type == \App\Models\Setting::TYPE_SELECT_DB)
+                                        @php($options = json_decode($setting->details))
+                                        @php($selectedValues = (isset($setting->value) && !empty($setting->value)) ? json_decode($setting->value, true) : [])
+                                        <select class="form-control db_select" name="{{ $setting->key }}[]" multiple>
+                                            @if(isset($options->model))
+                                                @foreach(app($options->model)->get() as $option)
+                                                    <option value="{{ $option->id }}" @if(in_array($option->id, $selectedValues)) selected="selected" @endif>{{ $option->title }}</option>
+                                                @endforeach
+                                            @endif
+                                        </select>
                                     @elseif($setting->type == \App\Models\Setting::TYPE_RADIO_BTN)
                                         <?php $options = json_decode($setting->details); ?>
                                         <?php $selected_value = (isset($setting->value) && !empty($setting->value)) ? $setting->value : NULL; ?>
@@ -363,16 +372,7 @@
         });
     </script>
     <script type="text/javascript">
-    $(".group_select").not('.group_select_new').select2({
-        tags: true,
-        width: 'resolve'
-    });
-    $(".group_select_new").select2({
-        tags: true,
-        width: 'resolve',
-        placeholder: '{{ __("voyager::generic.select_group") }}'
-    });
-    $(".group_select_new").val('').trigger('change');
+        $(".db_select").select2();
     </script>
     <iframe id="form_target" name="form_target" style="display:none"></iframe>
     <form id="my_form" action="{{ route('voyager.upload') }}" target="form_target" method="POST" enctype="multipart/form-data" style="width:0;height:0;overflow:hidden">

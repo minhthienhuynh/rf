@@ -13,6 +13,7 @@ class Setting extends Model
     public const TYPE_CHECKBOX = 'checkbox';
     public const TYPE_RADIO_BTN = 'radio_btn';
     public const TYPE_SELECT_DROPDOWN = 'select_dropdown';
+    public const TYPE_SELECT_DB = 'select_db';
     public const TYPE_FILE = 'file';
     public const TYPE_IMAGE = 'image';
     public const TYPE_ITEMS = 'items';

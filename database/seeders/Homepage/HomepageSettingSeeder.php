@@ -4,6 +4,7 @@ namespace Database\Seeders\Homepage;
 
 use App\Http\Controllers\Admin\HomepageSettingController;
 use App\Models\HomepageSetting;
+use App\Models\Page;
 use App\Models\Setting;
 use Database\Seeders\AbstractSeeder;
 use Illuminate\Support\Arr;
@@ -95,6 +96,13 @@ class HomepageSettingSeeder extends AbstractSeeder
                         'details'      => null,
                         'type'         => Setting::TYPE_TEXT,
                         'order'        => 2,
+                    ],
+                    [
+                        'key'          => 'about.items',
+                        'display_name' => 'List',
+                        'details'      => ['model' => Page::class],
+                        'type'         => Setting::TYPE_SELECT_DB,
+                        'order'        => 3,
                     ],
                 ],
             ],
