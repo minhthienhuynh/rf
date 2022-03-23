@@ -47,7 +47,7 @@ Route::group(['prefix' => 'admin'], function () {
             ->name('homepage-settings.')
             ->group(function () {
                 Route::get('/', 'index')->name('index');
-                Route::post('/', 'update')->name('update');
+                Route::put('/', 'update')->name('update');
                 Route::put('/{id}/delete_value', 'delete_value')->name('delete_value');
         });
 
@@ -56,7 +56,7 @@ Route::group(['prefix' => 'admin'], function () {
             ->name('career-settings.')
             ->group(function () {
                 Route::get('/', 'index')->name('index');
-                Route::post('/', 'update')->name('update');
+                Route::put('/', 'update')->name('update');
                 Route::put('/{id}/delete_value', 'delete_value')->name('delete_value');
         });
     });
