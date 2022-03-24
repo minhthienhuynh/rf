@@ -46,6 +46,8 @@
         $('html,body').animate({ scrollTop: p.top - offsetPC }, 800);
     } else {
         $('html,body').animate({ scrollTop: p.top - offsetSP }, 800);
+        $('#menu-toggle').removeClass('open');
+        $('body').removeClass('open-nav');
     }
   }
 
