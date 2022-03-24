@@ -74,14 +74,39 @@
     margin-bottom: 20px;
 }
 
+.main-visual .visual-button .btn-contact:hover {
+    color: #ddd;
+}
+
 @media (max-width: 767.98px) {
+    .main-visual {
+        position: relative;
+        margin-bottom: 40px;
+    }
     .main-visual h2 {
-        font-size: 4.5vw;
+        font-size: 36px;
         font-weight: 500;
     }
     .main-visual .visual-desc {
-        font-size: 16px;
+        font-size: 18px;
+        padding-left: 20px;
+        padding-right: 20px;
+        margin-bottom: 0;
     }
+    .main-visual .visual-button {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -60px;
+    }
+
+    .main-visual .visual-button .btn-contact {
+        background-color: #1A9288;
+    }
+    .main-visual .visual-button .btn-contact:hover {
+        color: #fff;
+    }
+
     #menu-toggle {
         width: 24px;
         height: 24px;
