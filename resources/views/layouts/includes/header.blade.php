@@ -11,10 +11,14 @@
                     <span class="btn" disabled></span>
                     @endif
                 </div>
-              </div> 
+              </div>
+            {{--
             <ul class="global-nav">
+            --}}
                 {{ menu('user', 'layouts.includes.menu-custom') }}
+            {{--
             </ul>
+            --}}
         </div>
         @if ( voyager::setting('site.header_login_link') )
             <div class="account-buttons">
