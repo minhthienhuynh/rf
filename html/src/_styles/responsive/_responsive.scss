@@ -998,6 +998,21 @@
     .btn-apply {
         min-width: auto;
     }
+    .post-card {
+        .card-text {
+            height: 70px;
+        }
+    }
+}
+@media (max-width: 375px) {
+    .post-card {
+        .card-text {
+            height: 60px;
+        }
+        .card-title {
+            height: 20px;
+        }
+    }
 }
 @media (max-width: 360px) {
     .not-found-wrap {

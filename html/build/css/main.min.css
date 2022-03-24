@@ -12319,6 +12319,20 @@ body.searching .page-2-column .page-content {
 .post-detail-footer .mb {
   display: none; }
 
+.post-card .card-title {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  height: 22px;
+  overflow: hidden; }
+
+.post-card .card-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 80px; }
+
 @media (min-width: 768px) {
   .sp {
     display: none !important; }
@@ -12907,7 +12921,15 @@ body.searching .page-2-column .page-content {
     padding-left: 30px;
     padding-right: 30px; }
   .btn-apply {
-    min-width: auto; } }
+    min-width: auto; }
+  .post-card .card-text {
+    height: 70px; } }
+
+@media (max-width: 375px) {
+  .post-card .card-text {
+    height: 60px; }
+  .post-card .card-title {
+    height: 20px; } }
 
 @media (max-width: 360px) {
   .not-found-wrap .not-found-title {
