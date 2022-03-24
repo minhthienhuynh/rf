@@ -166,3 +166,8 @@
     height: auto;
     padding-bottom: 10px;
 }
+@media (min-width: 768px) {
+    .global-nav > li:hover .sub-menu {
+        padding-bottom: 40px;
+    }
+}
