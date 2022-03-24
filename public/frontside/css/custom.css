@@ -160,7 +160,8 @@
     height: 0;
     padding-bottom: 0;
 }
-.open-nav .global-nav > li .sub-menu {
+.open-nav .global-nav > li .sub-menu,
+.global-nav > li:hover .sub-menu {
     opacity: 1;
     height: auto;
     padding-bottom: 10px;
