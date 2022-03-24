@@ -205,6 +205,9 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'details'       => [
+                        'desc'          => '(Size: 400x500)',
+                    ],
                     'order'         => 7,
                 ],
             ],
@@ -221,6 +224,9 @@ class PageSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'details'       => [
+                        'desc'          => '(Size: 1440x420)',
+                    ],
                     'order'         => 8,
                 ],
             ],

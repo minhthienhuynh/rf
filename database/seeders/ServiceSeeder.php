@@ -238,6 +238,9 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'details'       => [
+                        'desc'          => '(Size: 1440x420)',
+                    ],
                     'order'         => 7,
                 ],
             ],
@@ -254,6 +257,9 @@ class ServiceSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'details'       => [
+                        'desc'          => '(Size: 1145x590)',
+                    ],
                     'order'         => 8,
                 ],
             ],
