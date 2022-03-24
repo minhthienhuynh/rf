@@ -10,7 +10,7 @@
             <h3>{!! nl2br(career_setting('index.summary_title')) !!}</h3>
             {!! nl2br(career_setting('index.summary_desc')) !!}
             <hr class="my-5">
-            <h3>All Jobs</h3>
+            <h3>Open Positions</h3>
             @if ($data->count() > 0)
                 <div class="row list-jobs">
                     @foreach ($data as $item)
@@ -31,7 +31,9 @@
                 </div>
             @else
                 <div class="list-jobs">
-                    <h5>Data is empty !</h5>
+                    <p>There are currently no open positions with Resilient Forestry.</p>
+                    <p>If you would like to be notified when a new position opens, 
+                        <a href="#wait-a-field-in-setting">click here</a> to be added to our careers mailing list.</p>
                 </div>
             @endif
 

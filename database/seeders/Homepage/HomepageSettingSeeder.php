@@ -38,7 +38,7 @@ class HomepageSettingSeeder extends AbstractSeeder
                     ],
                     [
                         'key'          => 'banner.image',
-                        'display_name' => 'Image',
+                        'display_name' => 'Image (2000x846)',
                         'details'      => null,
                         'type'         => Setting::TYPE_IMAGE,
                         'order'        => 3,

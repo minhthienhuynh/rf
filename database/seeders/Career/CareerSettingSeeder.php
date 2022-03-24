@@ -23,7 +23,7 @@ class CareerSettingSeeder extends AbstractSeeder
                 'settings' => [
                     [
                         'key'          => 'index.banner',
-                        'display_name' => 'Banner',
+                        'display_name' => 'Banner (1440x420)',
                         'details'      => null,
                         'type'         => Setting::TYPE_IMAGE,
                         'order'        => 1,
