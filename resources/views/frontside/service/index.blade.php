@@ -47,7 +47,7 @@
 
             @endif
             <div class="section-button text-center"> <a class="text-link-arrow"
-                    href="{{ route('blogs.index', ['service_id' => $data->id]) }}">See More {{ $data->title }} projects</a>
+                    href="{{ route('blogs.index', ['service_id' => $data->id]) }}">See More {{ $data->title }} Projects</a>
             </div>
         </div>
     </section>
