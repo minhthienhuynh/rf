@@ -11,7 +11,7 @@
                 <h2 class="primary-title">
                     @if(count($listCateId) == 1)
                         <span class="section-sub-ttl">BLOG</span>
-                        <span class="section-ttl">{{ $catName->name }}</span>
+                        <span class="section-ttl">{{ $catName->name ?? $catName->title }}</span>
                     @elseif(count($listCateId) > 1)
                         <span class="section-sub-ttl">BLOG</span>
                         <span class="section-ttl">Some Blog Posts</span>
