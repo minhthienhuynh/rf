@@ -171,3 +171,7 @@
         padding-bottom: 40px;
     }
 }
+
+.uppercase {
+    text-transform: uppercase;
+}
