@@ -37,6 +37,23 @@ class CareerSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
+                    'order'         => 1,
+                ],
+            ],
+            [
+                'attributes'    => [
+                    'field'         => 'active',
+                ],
+                'values'        => [
+                    'type'          => 'checkbox',
+                    'display_name'  => __('voyager::seeders.data_rows.active'),
+                    'required'      => 0,
+                    'browse'        => 0,
+                    'read'          => 1,
+                    'edit'          => 1,
+                    'add'           => 1,
+                    'delete'        => 1,
+                    'order'         => 2,
                 ],
             ],
             [
@@ -52,6 +69,7 @@ class CareerSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 3,
                     'details'       => [
                         'display'       => [
                             'width'         => 6,
@@ -72,6 +90,7 @@ class CareerSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 4,
                     'details'       => [
                         'display'       => [
                             'width'         => 6,
@@ -99,6 +118,7 @@ class CareerSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 5,
                 ],
             ],
             [
@@ -114,6 +134,7 @@ class CareerSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 6,
                     'details'       => [
                         'validation'    => [
                             'rule'          => 'required',
@@ -134,6 +155,7 @@ class CareerSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 7,
                     'details'       => [
                         'validation'    => [
                             'rule'          => 'url',
@@ -154,6 +176,7 @@ class CareerSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 8,
                 ],
             ],
             [
@@ -169,6 +192,7 @@ class CareerSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 9,
                 ],
             ],
             [
@@ -184,6 +208,7 @@ class CareerSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 10,
                 ]
             ],
             [
@@ -199,6 +224,7 @@ class CareerSeeder extends AbstractSeeder
                     'edit'          => 1,
                     'add'           => 1,
                     'delete'        => 1,
+                    'order'         => 11,
                 ]
             ],
             [
@@ -214,6 +240,7 @@ class CareerSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
+                    'order'         => 12,
                 ]
             ],
             [
@@ -229,6 +256,7 @@ class CareerSeeder extends AbstractSeeder
                     'edit'          => 0,
                     'add'           => 0,
                     'delete'        => 0,
+                    'order'         => 13,
                 ]
             ],
         ];

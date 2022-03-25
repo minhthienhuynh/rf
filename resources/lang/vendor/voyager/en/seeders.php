@@ -2,6 +2,7 @@
 
 return [
     'data_rows' => [
+        'active' => 'Active',
         'categories' => 'Categories',
         'content' => 'Content',
         'description' => 'Description',
