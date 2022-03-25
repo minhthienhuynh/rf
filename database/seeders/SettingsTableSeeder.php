@@ -167,6 +167,18 @@ class SettingsTableSeeder extends Seeder
                 'group'        => 'Admin',
             ])->save();
         }
+
+        $setting = $this->findSetting('blog.banner');
+        if (!$setting->exists) {
+            $setting->fill([
+                'display_name' => __('voyager::seeders.settings.blog.banner'),
+                'value'        => '',
+                'details'      => '',
+                'type'         => 'image',
+                'order'        => 1,
+                'group'        => 'Blog',
+            ])->save();
+        }
     }
 
     /**

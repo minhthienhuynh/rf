@@ -2,6 +2,7 @@
 
 return [
     'data_rows' => [
+        'active' => 'Active',
         'categories' => 'Categories',
         'content' => 'Content',
         'description' => 'Description',
@@ -30,6 +31,9 @@ return [
     'settings' => [
         'admin' => [
             'description_value' => 'Admin for Laravel',
+        ],
+        'blog' => [
+            'banner' => 'Banner (1440x420)',
         ],
     ],
 ];

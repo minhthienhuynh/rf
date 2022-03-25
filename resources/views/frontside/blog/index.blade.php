@@ -4,7 +4,9 @@
 
 @section('content')
     <section class="main">
-        <div class="page-visual" style="background-image: url('/frontside/assets/img/images/visual-img-02.jpg');"></div>
+        @if (setting('blog.banner'))
+            <div class="page-visual" style="background-image: url('{{ Voyager::image(setting('blog.banner')) }}');"></div>
+        @endif
         <div class="page-2-column">
             @include('frontside.blog.include.sidebar')
             <div class="page-content">

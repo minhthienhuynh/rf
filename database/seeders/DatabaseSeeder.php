@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ServiceSeeder::class);
         $this->call([PageSeeder::class, MemberSeeder::class,]);
         $this->call([CategorySeeder::class, PostSeeder::class, TagSeeder::class]);
-        $this->call(CareerSettingSeeder::class, CareerSeeder::class);
+        $this->call([CareerSettingSeeder::class, CareerSeeder::class]);
         $this->call([HomepageSettingSeeder::class, ClientSeeder::class]);
         $this->call([UserHeaderMenuSeeder::class, UserFooterMenuSeeder::class]);
     }

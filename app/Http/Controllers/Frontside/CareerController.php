@@ -8,13 +8,17 @@ class CareerController extends Controller
 {
     public function index()
     {
-        $data = Career::orderByDesc('id')->get();
+        $data = Career::active()->orderByDesc('id')->get();
+
         return view('frontside.careers.index', compact('data'));
     }
 
     public function detail($slug)
     {
-        $data = Career::where('slug', $slug)->first();
+        $data = Career::active()->where('slug', $slug)->first();
+
+        abort_if(!$data, 404);
+
         return view('frontside.careers.detail', compact('data'));
     }
 }
