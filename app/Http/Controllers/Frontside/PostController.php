@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontside;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -34,6 +35,8 @@ class PostController extends Controller
             $query = $query->whereHas('services', function($q) {
                 $q->where('id', \request()->input('service_id'));
             });
+
+            $catName = Service::findOrFail(\request()->input('service_id'));
         }
 
         $result = $query->get()->count();
