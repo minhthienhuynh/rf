@@ -30,6 +30,12 @@ class PostController extends Controller
             $catName = Category::findOrFail($listCateId[0]);
         }
 
+        if (\request()->filled('service_id')) {
+            $query = $query->whereHas('services', function($q) {
+                $q->where('id', \request()->input('service_id'));
+            });
+        }
+
         $result = $query->get()->count();
 
         $data = $query->paginate(9);

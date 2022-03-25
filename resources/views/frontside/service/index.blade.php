@@ -44,10 +44,10 @@
                         </div>
                     @endforeach
                 </div>
-                
+
             @endif
             <div class="section-button text-center"> <a class="text-link-arrow"
-                    href="{{ route('blogs.index') }}">See all blog posts</a>
+                    href="{{ route('blogs.index', ['service_id' => $data->id]) }}">See More {{ $data->title }} projects</a>
             </div>
         </div>
     </section>
