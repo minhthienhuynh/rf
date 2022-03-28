@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
+use App\Models\Menu;
+use App\Models\MenuItem;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
-use TCG\Voyager\Facades\Voyager;
-use TCG\Voyager\Models\MenuItem;
 
 class MenuService
 {
@@ -15,7 +15,7 @@ class MenuService
      */
     public function updateHeaderMenuItems(string $itemTitle, Collection $children)
     {
-        $menu = Voyager::model('Menu')->where('name', 'user')->first();
+        $menu = Menu::where('name', 'user')->first();
         $menuItem = $menu->items()->where('title', $itemTitle)->first();
 
         if ($menuItem) {
@@ -28,7 +28,7 @@ class MenuService
      */
     public function updateFooterMenuItems(string $itemTitle, Collection $children)
     {
-        $menu = Voyager::model('Menu')->where('name', 'user_footer')->first();
+        $menu = Menu::where('name', 'user_footer')->first();
         $menuItem = $menu->items()->where('title', $itemTitle)->first();
 
         if ($menuItem) {
@@ -59,10 +59,10 @@ class MenuService
      */
     public function deleteMenuItem(string $title, string $parent = null)
     {
-        $menu = Voyager::model('Menu')->where('name', 'user')->first();
+        $menu = Menu::where('name', 'user')->first();
 
-        $item = MenuItem::where('title', $title)
-            ->where('menu_id', $menu->id)
+        $menuItem = $menu->items()
+            ->where('title', $title)
             ->when(!blank($parent), function (Builder $query) use ($parent) {
                 $query->whereHas('parent', function (Builder $query) use ($parent) {
                     $query->where('title', $parent);
@@ -70,6 +70,6 @@ class MenuService
             })
             ->first();
 
-        return $item->delete();
+        return $menuItem->delete();
     }
 }
