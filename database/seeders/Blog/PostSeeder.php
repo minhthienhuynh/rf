@@ -201,7 +201,7 @@ class PostSeeder extends AbstractSeeder
                     'add'           => 1,
                     'delete'        => 1,
                     'details'       => [
-                        'desc'          => '(Size: 1600x900)',
+                        'desc'          => '(Size: 1200x860)',
                     ],
                     'order'         => 6,
                 ],
