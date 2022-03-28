@@ -6,7 +6,10 @@
             <div class="page-visual" style="background-image: url('{{ Voyager::image(career_setting('index.banner')) }}');"></div>
         @endisset
         <div class="container large post-detail">
-            <h2 class="primary-title text-center"><span class="section-ttl">{!! nl2br(career_setting('index.title')) !!}</span></h2>
+            <h2 class="primary-title text-center">
+                <span class="section-sub-ttl">{{ career_setting('index.subtitle') }}</span>
+                <span class="section-ttl">{!! nl2br(career_setting('index.title')) !!}</span>
+            </h2>
             <h3>{!! nl2br(career_setting('index.summary_title')) !!}</h3>
             {!! nl2br(career_setting('index.summary_desc')) !!}
             <hr class="my-5">
@@ -32,7 +35,7 @@
             @else
                 <div class="list-jobs">
                     <p>There are currently no open positions with Resilient Forestry.</p>
-                    <p>If you would like to be notified when a new position opens, 
+                    <p>If you would like to be notified when a new position opens,
                         <a href="#wait-a-field-in-setting">click here</a> to be added to our careers mailing list.</p>
                 </div>
             @endif
