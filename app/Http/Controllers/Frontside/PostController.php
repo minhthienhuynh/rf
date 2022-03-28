@@ -41,7 +41,7 @@ class PostController extends Controller
 
         $result = $query->get()->count();
 
-        $data = $query->paginate(9);
+        $data = $query->paginate(6);
         $recent = Post::take(10)->orderByDesc('id')->get();
         $category = Category::orderByDesc('order')->get();
 
@@ -71,7 +71,7 @@ class PostController extends Controller
             ->orWhereHas('tags', function ($query) use ($request) {
                 $query->where('name', $request->input('q'));
             })
-            ->paginate(12);
+            ->paginate(6);
 
         return view('frontside.blog.search', compact('posts'));
     }
