@@ -635,6 +635,10 @@ body.searching {
             font-size: 24px;
             font-weight: 400;
             margin-bottom: 0.75em;
+            height: auto;
+            overflow: visible;
+            white-space: normal;
+            text-overflow: initial;
             .section-sub-ttl {
                 font-size: 66.67%;
                 text-transform: capitalize;
@@ -644,6 +648,11 @@ body.searching {
         .card-text {
             font-size: 14px;
             color: $gray03;
+            height: auto;
+            -webkit-line-clamp: initial;
+            -webkit-box-orient: initial;
+            overflow: visible;
+            text-overflow: initial;
         }
     }
 }
