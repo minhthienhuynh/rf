@@ -28,6 +28,23 @@
                 <div class="row archive-post-card">
                     @if ($posts->total())
                         @foreach ($posts as $post)
+                            @php
+                                $excerpt = trim(str_replace("\r\n", ' ', $post->excerpt));
+                                $content = trim(str_replace("\r\n", ' ', strip_tags(str_replace(['<br>', '</p>'], "\r\n", str_replace("\r\n", '', $post->body)))));
+                                $arr = explode(' ', $content);
+                                if (count($arr) > 20) {
+                                    $pos = array_key_first(preg_grep ('/' . request()->input('q') . '/i', $arr));
+                                    $text = ['...'];
+                                    for ($i = $pos - 10; $i < $pos + 10; $i++) {
+                                        if (isset($arr[$i])) {
+                                            $text[] = $arr[$i];
+                                        }
+                                    }
+                                    $text[] = '...';
+                                    $content = implode($text, ' ');
+                                }
+                            @endphp
+
                             <div class="col-6 col-lg-3">
                                 <div class="card post-card services-post">
                                     <a class="post-link-img" href="{{ route('frontside.post.detail', $post->slug) }}">
@@ -37,7 +54,7 @@
                                         <h5 class="card-title">
                                             <a href="{{ route('frontside.post.detail', $post->slug) }}">{{ $post->title }}</a>
                                         </h5>
-                                        <p class="card-text">{{ $post->excerpt }}</p>
+                                        <p class="card-text" data-excerpt="{{ $post->excerpt }}" data-body="{{ $content }}"></p>
                                         <div class="card-footer">
                                             <p class="post-date">{{ $post->published_at }}</p>
                                             <a class="post-link btn-more" href="{{ route('frontside.post.detail', $post->slug) }}">More</a>
@@ -61,42 +78,57 @@
         let searchParams = new URLSearchParams(window.location.search);
 
         if (searchParams.has('q')) {
-            $('.archive-post-card .card-title, .archive-post-card .card-text').each(function () {
+            $('.archive-post-card .card-title').each(function () {
                 let text = $(this).text();
-
                 let keyword = searchParams.get('q');
-                text = text.replace(new RegExp(keyword, 'g'), `<span class="highlight">${keyword}</span>`);
 
-                // strtoupper
-                let newKeyword = keyword.toUpperCase();
-                if (newKeyword !== keyword) {
-                    text = text.replace(new RegExp(newKeyword, 'g'), `<span class="highlight">${newKeyword}</span>`);
-                }
-
-                // strtolower
-                newKeyword = newKeyword.toLowerCase();
-                if (newKeyword !== keyword) {
-                    text = text.replace(new RegExp(newKeyword, 'g'), `<span class="highlight">${newKeyword}</span>`);
-                }
-
-                // ucfirst
-                newKeyword = newKeyword.replace(/^[a-z]/, function(letter) {
-                    return letter.toUpperCase();
-                });
-                if (newKeyword !== keyword) {
-                    text = text.replace(new RegExp(newKeyword, 'g'), `<span class="highlight">${newKeyword}</span>`);
-                }
-
-                // ucwords
-                newKeyword = newKeyword.replace(/\b[a-z]/g, function(letter) {
-                    return letter.toUpperCase();
-                });
-                if (newKeyword !== keyword) {
-                    text = text.replace(new RegExp(newKeyword, 'g'), `<span class="highlight">${newKeyword}</span>`);
-                }
-
-                $(this).html(text);
+                $(this).html(hightlight(text, keyword));
             });
+
+            $('.archive-post-card .card-text').each(function () {
+                let text = $(this).data('excerpt');
+                let keyword = searchParams.get('q');
+
+                if (text.search(new RegExp(keyword, 'gi')) === -1) {
+                    text = $(this).data('body');
+                }
+
+                $(this).html(hightlight(text, keyword));
+            });
+        }
+
+        function hightlight(text, keyword) {
+            text = text.replace(new RegExp(keyword, 'g'), `<span class="highlight">${keyword}</span>`);
+
+            // strtoupper
+            let newKeyword = keyword.toUpperCase();
+            if (newKeyword !== keyword) {
+                text = text.replace(new RegExp(newKeyword, 'g'), `<span class="highlight">${newKeyword}</span>`);
+            }
+
+            // strtolower
+            newKeyword = newKeyword.toLowerCase();
+            if (newKeyword !== keyword) {
+                text = text.replace(new RegExp(newKeyword, 'g'), `<span class="highlight">${newKeyword}</span>`);
+            }
+
+            // ucfirst
+            newKeyword = newKeyword.replace(/^[a-z]/, function(letter) {
+                return letter.toUpperCase();
+            });
+            if (newKeyword !== keyword) {
+                text = text.replace(new RegExp(newKeyword, 'g'), `<span class="highlight">${newKeyword}</span>`);
+            }
+
+            // ucwords
+            newKeyword = newKeyword.replace(/\b[a-z]/g, function(letter) {
+                return letter.toUpperCase();
+            });
+            if (newKeyword !== keyword) {
+                text = text.replace(new RegExp(newKeyword, 'g'), `<span class="highlight">${newKeyword}</span>`);
+            }
+
+            return text;
         }
 
         $('.close-btn').on('click', function () {
