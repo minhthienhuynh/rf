@@ -39,13 +39,14 @@
   
   // ANCHOR LINK
   function anchorLink(el) {
-    var p = $(el).offset();
-    var offsetPC = 0;
-    var offsetSP = 0;
+    const p = $(el).offset();
+    const offsetPC = 0;
+    const offsetSP = 80;
+
     if ($(window).width() > 750) {
         $('html,body').animate({ scrollTop: p.top - offsetPC }, 800);
     } else {
-        $('html,body').animate({ scrollTop: p.top - offsetSP }, 800);
+        $('html,body').animate({ scrollTop: p.top - offsetSP }, 0);
         $('#menu-toggle').removeClass('open');
         $('body').removeClass('open-nav');
     }

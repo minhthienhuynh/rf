@@ -12336,11 +12336,11 @@ body.searching .page-2-column .page-content {
 
 .post-card .card-text {
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 80px; }
+  height: 60px; }
 
 @media (min-width: 768px) {
   .sp {
@@ -12932,11 +12932,11 @@ body.searching .page-2-column .page-content {
   .btn-apply {
     min-width: auto; }
   .post-card .card-text {
-    height: 70px; } }
+    height: 50px; } }
 
 @media (max-width: 375px) {
   .post-card .card-text {
-    height: 60px; }
+    height: 42px; }
   .post-card .card-title {
     height: 20px; } }
 
