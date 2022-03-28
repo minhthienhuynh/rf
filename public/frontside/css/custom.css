@@ -175,3 +175,10 @@
 .uppercase {
     text-transform: uppercase;
 }
+
+@media (max-width: 767px) {
+    .list-jobs .col-6 {
+        flex: 0 0 auto;
+        max-width: 100%;
+    }
+}
