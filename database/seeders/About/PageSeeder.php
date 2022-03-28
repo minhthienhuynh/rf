@@ -5,7 +5,6 @@ namespace Database\Seeders\About;
 use App\Http\Controllers\Admin\PageController;
 use App\Models\Page;
 use Database\Seeders\AbstractSeeder;
-use Illuminate\Support\Arr;
 
 class PageSeeder extends AbstractSeeder
 {
@@ -38,18 +37,17 @@ class PageSeeder extends AbstractSeeder
                     'hero_picture' => url('/html/assets/img/images/visual-img-03.jpg'),
                     'published_at' => now(),
                 ],
+                [
+                    'title' => 'Our Members',
+                    'slug' => 'members',
+                    'menu_description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
+                    'description' => 'description',
+                    'content' => '<p>content</p>',
+                    'hero_picture' => url('/html/assets/img/images/visual-img-03.jpg'),
+                    'published_at' => now(),
+                ],
             ];
         }
-
-        $data[] = [
-                'title' => 'Our Members',
-                'slug' => 'members',
-                'menu_description' => 'Mea aeterno eleifen ntiopam ad, nam no suscipitquaeren.',
-                'description' => 'description',
-                'content' => '<p>content</p>',
-                'hero_picture' => url('/html/assets/img/images/visual-img-03.jpg'),
-                'published_at' => now(),
-            ];
 
         foreach ($data as $datum) {
             $model = Page::where('slug', $datum['slug'])->first();
