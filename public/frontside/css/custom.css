@@ -188,3 +188,9 @@
         display: flex; 
     }
 }
+
+@media (max-width: 767px) {
+    .post-card .card-text {
+        height: 60px;
+    }
+}
