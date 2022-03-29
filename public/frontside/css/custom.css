@@ -187,7 +187,4 @@
     .pagination span {
         display: inline-block; 
     }
-    .pagination a:not(.dir):not(.current) {
-        display: flex;
-    }
 }
