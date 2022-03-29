@@ -590,6 +590,27 @@ body.searching {
             }
         }
     }
+    .sidebar-ttl {
+        color: #262626;
+    }
+    ul {
+        &.category-list {
+            margin-left: 0;
+            li {
+                padding-left: 0;
+                font-style: 14px;
+                &::before {
+                    display: none;
+                }
+                &:not(:last-child) {
+                    margin-bottom: 15px;
+                }
+                a {
+                    color: #262626;
+                }
+            }
+        }
+    }
 }
 
 .block-tags {

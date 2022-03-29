@@ -11951,6 +11951,21 @@ body.searching .page-2-column .page-content {
     .post-detail ul li:not(:last-child) {
       margin-bottom: 0.3em; }
 
+.post-detail .sidebar-ttl {
+  color: #262626; }
+
+.post-detail ul.category-list {
+  margin-left: 0; }
+  .post-detail ul.category-list li {
+    padding-left: 0;
+    font-style: 14px; }
+    .post-detail ul.category-list li::before {
+      display: none; }
+    .post-detail ul.category-list li:not(:last-child) {
+      margin-bottom: 15px; }
+    .post-detail ul.category-list li a {
+      color: #262626; }
+
 .block-tags {
   margin-top: 40px; }
   .block-tags .tag {
