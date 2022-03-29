@@ -185,6 +185,6 @@
 
 @media (max-width: 767.98px) {
     .pagination span {
-        display: inline-block; 
+        display: flex; 
     }
 }
