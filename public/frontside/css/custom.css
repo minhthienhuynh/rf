@@ -194,3 +194,9 @@
         height: 60px;
     }
 }
+
+@media (max-width: 500px) {
+    .archive-post-card .post-card .card-text {
+        height: 38px;
+    }
+}
