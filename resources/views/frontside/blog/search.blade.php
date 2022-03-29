@@ -34,13 +34,18 @@
                                 $arr = explode(' ', $content);
                                 if (count($arr) > 20) {
                                     $pos = array_key_first(preg_grep ('/' . request()->input('q') . '/i', $arr));
-                                    $text = ['...'];
+                                    $text = [];
+                                    if ($pos > 10) {
+                                        $text[] = '...';
+                                    }
                                     for ($i = $pos - 10; $i < $pos + 10; $i++) {
                                         if (isset($arr[$i])) {
                                             $text[] = $arr[$i];
                                         }
                                     }
-                                    $text[] = '...';
+                                    if (array_key_last($text) >= $pos + 9) {
+                                        $text[] = '...';
+                                    }
                                     $content = implode($text, ' ');
                                 }
                             @endphp
