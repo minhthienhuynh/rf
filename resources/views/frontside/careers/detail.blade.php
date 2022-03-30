@@ -2,7 +2,9 @@
 @include('layouts.includes.seo', ['model'=> $data, 'type'=>''])
 @section('content')
     <section class="main">
-        <div class="page-visual" style="background-image: url('{{ asset('frontside/assets/img/images/visual-img-04.jpg')}}');"></div>
+        @if(career_setting('index.banner'))
+            <div class="page-visual" style="background-image: url('{{ Voyager::image(career_setting('index.banner')) }}');"></div>
+        @endisset
         <div class="container large post-detail">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
