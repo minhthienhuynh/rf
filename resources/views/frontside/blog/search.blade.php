@@ -30,24 +30,9 @@
                         @foreach ($posts as $post)
                             @php
                                 $excerpt = trim(str_replace("\r\n", ' ', $post->excerpt));
+                                $excerpt = str_compact(request()->input('q'), $excerpt);
                                 $content = trim(str_replace("\r\n", ' ', strip_tags(str_replace(['<br>', '</p>'], "\r\n", str_replace("\r\n", '', $post->body)))));
-                                $arr = explode(' ', $content);
-                                if (count($arr) > 20) {
-                                    $pos = array_key_first(preg_grep ('/' . request()->input('q') . '/i', $arr));
-                                    $text = [];
-                                    if ($pos > 10) {
-                                        $text[] = '...';
-                                    }
-                                    for ($i = $pos - 10; $i < $pos + 10; $i++) {
-                                        if (isset($arr[$i])) {
-                                            $text[] = $arr[$i];
-                                        }
-                                    }
-                                    if (array_key_last($text) >= $pos + 9) {
-                                        $text[] = '...';
-                                    }
-                                    $content = implode($text, ' ');
-                                }
+                                $content = str_compact(request()->input('q'), $content);
                             @endphp
 
                             <div class="col-6 col-lg-3">
@@ -59,7 +44,7 @@
                                         <h5 class="card-title">
                                             <a href="{{ route('frontside.post.detail', $post->slug) }}">{{ $post->title }}</a>
                                         </h5>
-                                        <p class="card-text" data-excerpt="{{ $post->excerpt }}" data-body="{{ $content }}"></p>
+                                        <p class="card-text" data-excerpt="{{ $excerpt }}" data-body="{{ $content }}"></p>
                                         <div class="card-footer">
                                             <p class="post-date">{{ $post->published_at }}</p>
                                             <a class="post-link btn-more" href="{{ route('frontside.post.detail', $post->slug) }}">More</a>
