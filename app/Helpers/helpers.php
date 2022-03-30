@@ -21,22 +21,22 @@ if (!function_exists('str_compact')) {
     function str_compact(string $search, string $string, int $number = 20): string
     {
         $arr = explode(' ', $string);
+        $pos = array_key_first(preg_grep("/{$search}/i", $arr));
 
-        if (count($arr) > $number) {
-            $pos = array_key_first(preg_grep("/{$search}/i", $arr));
+        if ($pos && count($arr) > $number) {
             $words = [];
 
             if ($pos > ($number / 2)) {
                 $words[] = '...';
             }
 
-            for ($i = $pos - ($number / 2); $i < $pos + ($number / 2); $i++) {
+            for ($i = $pos - ($number / 2); $i < $pos + ($number / 2) + 1; $i++) {
                 if (isset($arr[$i])) {
                     $words[] = $arr[$i];
                 }
             }
 
-            if (array_key_last($words) >= $number) {
+            if (count($words) >= $number + 2) {
                 $words[] = '...';
             }
 
