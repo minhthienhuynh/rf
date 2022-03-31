@@ -193,6 +193,14 @@
     .post-card .card-text {
         height: 52px;
     }
+    .list-jobs .post-card .card-text {
+        height: auto;
+        display: block;
+        -webkit-line-clamp: initial;
+        -webkit-box-orient: initial;
+        overflow: visible;
+        text-overflow: initial;
+    }
 }
 
 @media (max-width: 375px) {
