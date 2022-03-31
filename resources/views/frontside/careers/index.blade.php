@@ -36,7 +36,7 @@
                 <div class="list-jobs">
                     <p>There are currently no open positions with Resilient Forestry.</p>
                     <p>If you would like to be notified when a new position opens,
-                        <a href="#wait-a-field-in-setting">click here</a> to be added to our careers mailing list.</p>
+                        <a href="{{ career_setting('index.no_career_link') }}">click here</a> to be added to our careers mailing list.</p>
                 </div>
             @endif
 
