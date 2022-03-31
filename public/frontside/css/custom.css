@@ -191,18 +191,12 @@
 
 @media (max-width: 767px) {
     .post-card .card-text {
-        height: 50px;
-    }
-}
-
-@media (max-width: 500px) {
-    .archive-post-card .post-card .card-text {
-        height: 42px;
+        height: 52px;
     }
 }
 
 @media (max-width: 375px) {
     .post-card .card-text {
-        height: 42px;
+        height: 44px;
     }
 }

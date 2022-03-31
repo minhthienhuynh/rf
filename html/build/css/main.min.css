@@ -12947,11 +12947,11 @@ body.searching .page-2-column .page-content {
   .btn-apply {
     min-width: auto; }
   .post-card .card-text {
-    height: 50px; } }
+    height: 52px; } }
 
 @media (max-width: 375px) {
   .post-card .card-text {
-    height: 42px; }
+    height: 44px; }
   .post-card .card-title {
     height: 20px; } }
 
